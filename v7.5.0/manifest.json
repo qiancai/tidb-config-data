@@ -1,7 +1,7 @@
 {
   "version": "v7.5.0",
   "cluster_tag": "${PLAYGROUND_TAG}",
-  "captured_at": "2026-05-02T19:12:12.508326+08:00",
+  "captured_at": "2026-05-02T20:36:34.061322+08:00",
   "sanitized": true,
   "raw_dir": "raw-sanitized",
   "sql_endpoint": {
@@ -18,7 +18,7 @@
   "normalized_counts": {
     "version": 1,
     "cluster_info": 4,
-    "system_variables": 1119,
+    "system_variables": 875,
     "show_config": 1741,
     "show_config_tidb": 196,
     "show_config_tikv": 685,
@@ -78,28 +78,28 @@
   "files": [
     {
       "path": "SUMMARY.md",
-      "bytes": 772,
-      "sha256": "39e1a2466023b85cd61276fe2af9cc3f6df6f5f361288d19229ef49bd19e2763"
+      "bytes": 771,
+      "sha256": "ce5fe9a4e3cc913a2422ef220048b1e066f0a99fbf7dfcd2b22fe8bf78158073"
     },
     {
       "path": "normalized/cluster_info.json",
-      "bytes": 1166,
-      "sha256": "08a682020cbb83255c4f5b8434609ff7a25a8ac574787ba16a519efa43ad53d3"
+      "bytes": 1165,
+      "sha256": "b956bae79927af1496c8983ba16fd78c20b92b884284726ed0bb984d9f6de83a"
     },
     {
       "path": "normalized/cluster_info.tsv",
-      "bytes": 589,
-      "sha256": "ff74cd7d8bf27aeb706e251a2dabea79b7aa85123ca6a813b56ddcb132d73e2a"
+      "bytes": 588,
+      "sha256": "d3c7af2d118e45f7828df2b96d9686018c4eb2c9a12882b308c7cb838ee10a35"
     },
     {
       "path": "normalized/show_config.json",
       "bytes": 250156,
-      "sha256": "d16bda839b4c7bb5efd8f861cb00868065d0c77a6b0600f40608e9d1b1deeee6"
+      "sha256": "a5fc86fe14802dd9d708702a70f9ffda8528b3fc09b5220edc3f64bdc68686cb"
     },
     {
       "path": "normalized/show_config.tsv",
       "bytes": 122839,
-      "sha256": "19f728c7682722b2c96f149ebe3ad97e841b3c19676357612a4a1bcf0b0bbe9b"
+      "sha256": "a636c438673d567ca7240734ce1a12e35309736788c75d92576a1d9ae0bf20e8"
     },
     {
       "path": "normalized/show_config_pd.json",
@@ -143,13 +143,13 @@
     },
     {
       "path": "normalized/system_variables.json",
-      "bytes": 275146,
-      "sha256": "524cd39133d83d2169e9285a410bacddad94f2954e1cfb90a28c91e665c1c92c"
+      "bytes": 225994,
+      "sha256": "67d0db0ddfda78d2f90c0c20ae86c72e2a7c72dad2e36aad95f30e7bcbb5391d"
     },
     {
       "path": "normalized/system_variables.tsv",
-      "bytes": 64672,
-      "sha256": "ce1df947e92004c968b536dc039c1332e493501276fda8964d34818c96b25f15"
+      "bytes": 65254,
+      "sha256": "fc5396935c6eddf15bd4182269115e503cd31ef434be03d30d80f649aec8cc81"
     },
     {
       "path": "normalized/version.json",

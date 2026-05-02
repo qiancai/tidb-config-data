@@ -1,7 +1,7 @@
 {
   "version": "v7.5.7",
   "cluster_tag": "${PLAYGROUND_TAG}",
-  "captured_at": "2026-05-02T19:13:19.792016+08:00",
+  "captured_at": "2026-05-02T20:37:43.941131+08:00",
   "sanitized": true,
   "raw_dir": "raw-sanitized",
   "sql_endpoint": {
@@ -18,7 +18,7 @@
   "normalized_counts": {
     "version": 1,
     "cluster_info": 4,
-    "system_variables": 1124,
+    "system_variables": 876,
     "show_config": 1746,
     "show_config_tidb": 200,
     "show_config_tikv": 687,
@@ -78,18 +78,18 @@
   "files": [
     {
       "path": "SUMMARY.md",
-      "bytes": 772,
-      "sha256": "e0351ecc252695805af6b8581b4fe505bc7a66d9cd4f344b006b48b13410366d"
+      "bytes": 771,
+      "sha256": "dab716a17f230cff6d0b69b99fcff171afa814af52bf38317c11c9f4c0803613"
     },
     {
       "path": "normalized/cluster_info.json",
-      "bytes": 1163,
-      "sha256": "bc4faec1093c46bf82e36fd376f8975ae4dec241b85f58773b9b6743dbb71e30"
+      "bytes": 1165,
+      "sha256": "8e890a2279431e6198d95b15c7881e75ff1a9d5c16fb12be5f607ae59ddecc3c"
     },
     {
       "path": "normalized/cluster_info.tsv",
-      "bytes": 586,
-      "sha256": "9c4c8a627ae44e4a14eb393edd5799d2ad51c589733fcf8d90a0731e971b851a"
+      "bytes": 588,
+      "sha256": "4ad861380e6a9211186a5de9307b897fc17eed4fd6fb9209b60a873cb1ae5380"
     },
     {
       "path": "normalized/show_config.json",
@@ -143,13 +143,13 @@
     },
     {
       "path": "normalized/system_variables.json",
-      "bytes": 276381,
-      "sha256": "c09d6ab7e0c5e3da236bdc4f6e900ee824970e57c4258d8499fad0ee57fb0123"
+      "bytes": 226445,
+      "sha256": "1ddb070f040741eec0276477745295947c6b34345603ebfdc6ea9996ab7a12b5"
     },
     {
       "path": "normalized/system_variables.tsv",
-      "bytes": 64915,
-      "sha256": "a514299f0988ab3ae6db83ea89445e763636aa186b77b45b8c880e62e546d2e8"
+      "bytes": 65509,
+      "sha256": "cc821c6d120ecbb6d5eeb9173cdfc9305958dd4918a97489076f338cb44b132b"
     },
     {
       "path": "normalized/version.json",

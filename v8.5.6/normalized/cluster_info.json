@@ -5,8 +5,8 @@
     "STATUS_ADDRESS": "${LOCALHOST}:2379",
     "VERSION": "8.5.6",
     "GIT_HASH": "21bd0a379e5f9d2be11a92d17645a6ada19f02c1",
-    "START_TIME": "2026-05-02 19:16:18",
-    "UPTIME": "23.880263s",
+    "START_TIME": "2026-05-02 20:41:08",
+    "UPTIME": "27.465405s",
     "SERVER_ID": "0"
   },
   {
@@ -15,9 +15,9 @@
     "STATUS_ADDRESS": "${LOCALHOST}:10080",
     "VERSION": "8.5.6",
     "GIT_HASH": "ae18096e023780bb56bfce33698abec0d4640d0a",
-    "START_TIME": "2026-05-02 19:16:32",
-    "UPTIME": "9.880259s",
-    "SERVER_ID": "1115"
+    "START_TIME": "2026-05-02 20:41:21",
+    "UPTIME": "14.46539s",
+    "SERVER_ID": "1044"
   },
   {
     "TYPE": "tiflash",
@@ -25,8 +25,8 @@
     "STATUS_ADDRESS": "${LOCALHOST}:20292",
     "VERSION": "8.5.6",
     "GIT_HASH": "836d94d143d2ed30b56781bad12e4decb1621d7c",
-    "START_TIME": "2026-05-02 19:16:40",
-    "UPTIME": "1.880264s",
+    "START_TIME": "2026-05-02 20:41:34",
+    "UPTIME": "1.465408s",
     "SERVER_ID": "0"
   },
   {
@@ -35,8 +35,8 @@
     "STATUS_ADDRESS": "${LOCALHOST}:20180",
     "VERSION": "8.5.6",
     "GIT_HASH": "74a92daaed2c91b11c6253593e471cd725a7b3d4",
-    "START_TIME": "2026-05-02 19:16:23",
-    "UPTIME": "18.880264s",
+    "START_TIME": "2026-05-02 20:41:11",
+    "UPTIME": "24.465407s",
     "SERVER_ID": "0"
   }
 ]

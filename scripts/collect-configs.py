@@ -7,6 +7,7 @@ import argparse
 import csv
 import datetime as dt
 import hashlib
+import io
 import json
 import os
 import pathlib
@@ -34,6 +35,41 @@ NORMALIZED_QUERIES = {
     "show_config_pd": "SHOW CONFIG WHERE Type='pd'",
     "show_config_tiflash": "SHOW CONFIG WHERE Type='tiflash'",
 }
+
+NORMALIZED_COLUMNS = {
+    "version": ["tidb_version"],
+    "cluster_info": ["TYPE", "INSTANCE", "STATUS_ADDRESS", "VERSION", "GIT_HASH", "START_TIME", "UPTIME", "SERVER_ID"],
+    "system_variables": [
+        "VARIABLE_NAME",
+        "VARIABLE_SCOPE",
+        "DEFAULT_VALUE",
+        "CURRENT_VALUE",
+        "MIN_VALUE",
+        "MAX_VALUE",
+        "POSSIBLE_VALUES",
+        "IS_NOOP",
+    ],
+    "show_config": ["Type", "Instance", "Name", "Value"],
+    "show_config_tidb": ["Type", "Instance", "Name", "Value"],
+    "show_config_tikv": ["Type", "Instance", "Name", "Value"],
+    "show_config_pd": ["Type", "Instance", "Name", "Value"],
+    "show_config_tiflash": ["Type", "Instance", "Name", "Value"],
+}
+
+SYSTEM_VARIABLES_JSON_QUERY = """
+SELECT JSON_OBJECT(
+  'VARIABLE_NAME', VARIABLE_NAME,
+  'VARIABLE_SCOPE', VARIABLE_SCOPE,
+  'DEFAULT_VALUE', DEFAULT_VALUE,
+  'CURRENT_VALUE', CURRENT_VALUE,
+  'MIN_VALUE', MIN_VALUE,
+  'MAX_VALUE', MAX_VALUE,
+  'POSSIBLE_VALUES', POSSIBLE_VALUES,
+  'IS_NOOP', IS_NOOP
+) AS row_json
+FROM INFORMATION_SCHEMA.VARIABLES_INFO
+ORDER BY VARIABLE_NAME
+"""
 
 
 def parse_args() -> argparse.Namespace:
@@ -123,12 +159,51 @@ def run_mysql(args: argparse.Namespace, sql: str) -> str:
     return subprocess.check_output(cmd, text=True)
 
 
+def run_mysql_json_rows(args: argparse.Namespace, sql: str) -> list[dict[str, Any]]:
+    cmd = [
+        "mysql",
+        "--comments",
+        "--host",
+        args.mysql_host,
+        "--port",
+        str(args.mysql_port),
+        "-u",
+        args.mysql_user,
+        "--batch",
+        "--raw",
+        "--skip-column-names",
+        "-e",
+        sql,
+    ]
+    output = subprocess.check_output(cmd, text=True)
+    rows = []
+    for line in output.splitlines():
+        if line.strip():
+            rows.append(json.loads(line))
+    return rows
+
+
 def tsv_to_rows(tsv_text: str) -> list[dict[str, str | None]]:
     rows: list[dict[str, str | None]] = []
     reader = csv.DictReader(tsv_text.splitlines(), delimiter="\t")
     for row in reader:
         rows.append({key: (None if val == "NULL" else val) for key, val in row.items()})
     return rows
+
+
+def rows_to_tsv(rows: list[dict[str, Any]], columns: list[str]) -> str:
+    output = io.StringIO()
+    writer = csv.DictWriter(output, fieldnames=columns, delimiter="\t", lineterminator="\n")
+    writer.writeheader()
+    for row in rows:
+        writer.writerow({column: "NULL" if row.get(column) is None else row.get(column) for column in columns})
+    return output.getvalue()
+
+
+def sanitize_rows(rows: list[dict[str, Any]], rules: list[tuple[str, str]] | None) -> list[dict[str, Any]]:
+    if not rules:
+        return rows
+    return json.loads(sanitize_text(json.dumps(rows, ensure_ascii=False), rules))
 
 
 def http_get_json(url: str) -> Any:
@@ -226,9 +301,13 @@ def main() -> int:
 
     counts: dict[str, int] = {}
     for name, sql in NORMALIZED_QUERIES.items():
-        tsv = run_mysql(args, sql)
-        write_text(normalized_dir / f"{name}.tsv", tsv, rules)
-        rows = tsv_to_rows(sanitize_text(tsv, rules) if rules else tsv)
+        if name == "system_variables":
+            rows = sanitize_rows(run_mysql_json_rows(args, SYSTEM_VARIABLES_JSON_QUERY), rules)
+            tsv = rows_to_tsv(rows, NORMALIZED_COLUMNS[name])
+        else:
+            tsv = run_mysql(args, sql)
+            rows = tsv_to_rows(sanitize_text(tsv, rules) if rules else tsv)
+        write_text(normalized_dir / f"{name}.tsv", tsv, None if name == "system_variables" else rules)
         write_json(normalized_dir / f"{name}.json", rows, None)
         counts[name] = len(rows)
 

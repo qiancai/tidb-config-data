@@ -62,6 +62,41 @@ def check_sha256sums(base: pathlib.Path, errors: list[str]) -> None:
             errors.append(f"SHA256 mismatch: {rel}")
 
 
+def check_required_field(rows: list[dict], field: str, label: str, errors: list[str]) -> None:
+    blanks = [idx for idx, row in enumerate(rows, start=1) if not str(row.get(field) or "").strip()]
+    if blanks:
+        sample = ", ".join(str(idx) for idx in blanks[:5])
+        errors.append(f"{label}: blank {field} in row(s) {sample}")
+
+
+def check_unique(rows: list[dict], fields: list[str], label: str, errors: list[str]) -> None:
+    seen: dict[tuple[str, ...], int] = {}
+    for idx, row in enumerate(rows, start=1):
+        key = tuple(str(row.get(field) or "") for field in fields)
+        if key in seen:
+            errors.append(f"{label}: duplicate {fields} at rows {seen[key]} and {idx}: {key}")
+            return
+        seen[key] = idx
+
+
+def check_normalized_content(base: pathlib.Path, errors: list[str]) -> None:
+    system_variables = load_json(base / "normalized" / "system_variables.json")
+    check_required_field(system_variables, "VARIABLE_NAME", "system_variables.json", errors)
+    check_unique(system_variables, ["VARIABLE_NAME"], "system_variables.json", errors)
+
+    for name in [
+        "show_config",
+        "show_config_tidb",
+        "show_config_tikv",
+        "show_config_pd",
+        "show_config_tiflash",
+    ]:
+        rows = load_json(base / "normalized" / f"{name}.json")
+        for field in ["Type", "Instance", "Name"]:
+            check_required_field(rows, field, f"{name}.json", errors)
+        check_unique(rows, ["Type", "Instance", "Name"], f"{name}.json", errors)
+
+
 def main() -> int:
     args = parse_args()
     base = pathlib.Path(args.capture_dir).resolve()
@@ -99,6 +134,7 @@ def main() -> int:
                     errors.append(f"count mismatch {name}.tsv: expected {expected}, got {actual}")
 
         check_sha256sums(base, errors)
+        check_normalized_content(base, errors)
 
         if args.require_sanitized:
             suspicious = ["/Users/", "127.0.0.1", "tidb-v856"]

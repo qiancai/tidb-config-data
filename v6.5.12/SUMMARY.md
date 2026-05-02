@@ -11,7 +11,7 @@ Captured from a local TiUP playground cluster.
 
 ## Counts
 
-- System variables: 1022
+- System variables: 799
 - SHOW CONFIG total: 1666
 - TiDB config rows: 175
 - TiKV config rows: 659

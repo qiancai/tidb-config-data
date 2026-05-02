@@ -92,7 +92,7 @@ explicit_defaults_for_timestamp	NONE	ON	ON	NULL	NULL	NULL	YES
 flush	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
 flush_time	GLOBAL	0	0	0	31536000	NULL	YES
 foreign_key_checks	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
-ft_boolean_syntax	GLOBAL	+ -><()~*:""&|	+ -><()~*:""&|	NULL	NULL	NULL	YES
+ft_boolean_syntax	GLOBAL	"+ -><()~*:""""&|"	"+ -><()~*:""""&|"	NULL	NULL	NULL	YES
 ft_max_word_len	NONE	84	84	NULL	NULL	NULL	YES
 ft_min_word_len	NONE	4	4	NULL	NULL	NULL	YES
 ft_query_expansion_limit	NONE	20	20	NULL	NULL	NULL	YES
@@ -544,247 +544,247 @@ tidb_cdc_write_source	SESSION	0	0	0	15	NULL	NO
 tidb_check_mb4_value_in_utf8	INSTANCE	ON	ON	NULL	NULL	NULL	NO
 tidb_checksum_table_concurrency	SESSION	4	4	1	256	NULL	NO
 tidb_committer_concurrency	GLOBAL	128	128	1	10000	NULL	NO
-tidb_config	INSTANCE		{
-	"advertise-address": "${LOCALHOST}",
-	"alter-primary-key": false,
-	"autoscaler-addr": "tiflash-autoscale-lb.tiflash-autoscale.svc.cluster.local:8081",
-	"autoscaler-cluster-id": "",
-	"autoscaler-type": "aws",
-	"ballast-object-size": 0,
-	"binlog": {
-		"binlog-socket": "",
-		"enable": false,
-		"ignore-error": false,
-		"strategy": "range",
-		"write-timeout": "15s"
+tidb_config	INSTANCE		"{
+	""advertise-address"": ""${LOCALHOST}"",
+	""alter-primary-key"": false,
+	""autoscaler-addr"": ""tiflash-autoscale-lb.tiflash-autoscale.svc.cluster.local:8081"",
+	""autoscaler-cluster-id"": """",
+	""autoscaler-type"": ""aws"",
+	""ballast-object-size"": 0,
+	""binlog"": {
+		""binlog-socket"": """",
+		""enable"": false,
+		""ignore-error"": false,
+		""strategy"": ""range"",
+		""write-timeout"": ""15s""
 	},
-	"compatible-kill-query": false,
-	"cors": "",
-	"delay-clean-table-lock": 0,
-	"deprecate-integer-display-length": false,
-	"disaggregated-tiflash": false,
-	"enable-enum-length-limit": true,
-	"enable-forwarding": false,
-	"enable-global-index": false,
-	"enable-global-kill": true,
-	"enable-table-lock": false,
-	"enable-tcp4-only": false,
-	"enable-telemetry": false,
-	"experimental": {
-		"allow-expression-index": false
+	""compatible-kill-query"": false,
+	""cors"": """",
+	""delay-clean-table-lock"": 0,
+	""deprecate-integer-display-length"": false,
+	""disaggregated-tiflash"": false,
+	""enable-enum-length-limit"": true,
+	""enable-forwarding"": false,
+	""enable-global-index"": false,
+	""enable-global-kill"": true,
+	""enable-table-lock"": false,
+	""enable-tcp4-only"": false,
+	""enable-telemetry"": false,
+	""experimental"": {
+		""allow-expression-index"": false
 	},
-	"graceful-wait-before-shutdown": 0,
-	"host": "${LOCALHOST}",
-	"index-limit": 64,
-	"initialize-sql-file": "",
-	"instance": {
-		"ddl_slow_threshold": 300,
-		"max_connections": 0,
-		"plugin_dir": "/data/deploy/plugin",
-		"plugin_load": "",
-		"tidb_check_mb4_value_in_utf8": true,
-		"tidb_enable_collect_execution_info": true,
-		"tidb_enable_ddl": true,
-		"tidb_enable_slow_log": true,
-		"tidb_expensive_query_time_threshold": 60,
-		"tidb_force_priority": "NO_PRIORITY",
-		"tidb_general_log": false,
-		"tidb_pprof_sql_cpu": false,
-		"tidb_rc_read_check_ts": false,
-		"tidb_record_plan_in_slow_log": 1,
-		"tidb_slow_log_threshold": 300,
-		"tidb_stmt_summary_enable_persistent": false,
-		"tidb_stmt_summary_file_max_backups": 0,
-		"tidb_stmt_summary_file_max_days": 3,
-		"tidb_stmt_summary_file_max_size": 64,
-		"tidb_stmt_summary_filename": "tidb-statements.log"
+	""graceful-wait-before-shutdown"": 0,
+	""host"": ""${LOCALHOST}"",
+	""index-limit"": 64,
+	""initialize-sql-file"": """",
+	""instance"": {
+		""ddl_slow_threshold"": 300,
+		""max_connections"": 0,
+		""plugin_dir"": ""/data/deploy/plugin"",
+		""plugin_load"": """",
+		""tidb_check_mb4_value_in_utf8"": true,
+		""tidb_enable_collect_execution_info"": true,
+		""tidb_enable_ddl"": true,
+		""tidb_enable_slow_log"": true,
+		""tidb_expensive_query_time_threshold"": 60,
+		""tidb_force_priority"": ""NO_PRIORITY"",
+		""tidb_general_log"": false,
+		""tidb_pprof_sql_cpu"": false,
+		""tidb_rc_read_check_ts"": false,
+		""tidb_record_plan_in_slow_log"": 1,
+		""tidb_slow_log_threshold"": 300,
+		""tidb_stmt_summary_enable_persistent"": false,
+		""tidb_stmt_summary_file_max_backups"": 0,
+		""tidb_stmt_summary_file_max_days"": 3,
+		""tidb_stmt_summary_file_max_size"": 64,
+		""tidb_stmt_summary_filename"": ""tidb-statements.log""
 	},
-	"is-tiflashcompute-fixed-pool": false,
-	"isolation-read": {
-		"engines": [
-			"tikv",
-			"tiflash",
-			"tidb"
+	""is-tiflashcompute-fixed-pool"": false,
+	""isolation-read"": {
+		""engines"": [
+			""tikv"",
+			""tiflash"",
+			""tidb""
 		]
 	},
-	"keyspace-name": "",
-	"labels": {},
-	"lease": "45s",
-	"log": {
-		"disable-error-stack": null,
-		"disable-timestamp": null,
-		"enable-error-stack": null,
-		"enable-timestamp": null,
-		"file": {
-			"filename": "${TIUP_DATA_DIR}/tidb-0/tidb.log",
-			"max-backups": 0,
-			"max-days": 0,
-			"max-size": 300
+	""keyspace-name"": """",
+	""labels"": {},
+	""lease"": ""45s"",
+	""log"": {
+		""disable-error-stack"": null,
+		""disable-timestamp"": null,
+		""enable-error-stack"": null,
+		""enable-timestamp"": null,
+		""file"": {
+			""filename"": ""${TIUP_DATA_DIR}/tidb-0/tidb.log"",
+			""max-backups"": 0,
+			""max-days"": 0,
+			""max-size"": 300
 		},
-		"format": "text",
-		"level": "info",
-		"slow-query-file": "tidb-slow.log",
-		"timeout": 0
+		""format"": ""text"",
+		""level"": ""info"",
+		""slow-query-file"": ""tidb-slow.log"",
+		""timeout"": 0
 	},
-	"max-ballast-object-size": 0,
-	"max-index-length": 3072,
-	"new_collations_enabled_on_first_bootstrap": true,
-	"opentracing": {
-		"enable": false,
-		"reporter": {
-			"buffer-flush-interval": 0,
-			"local-agent-host-port": "",
-			"log-spans": false,
-			"queue-size": 0
+	""max-ballast-object-size"": 0,
+	""max-index-length"": 3072,
+	""new_collations_enabled_on_first_bootstrap"": true,
+	""opentracing"": {
+		""enable"": false,
+		""reporter"": {
+			""buffer-flush-interval"": 0,
+			""local-agent-host-port"": """",
+			""log-spans"": false,
+			""queue-size"": 0
 		},
-		"rpc-metrics": false,
-		"sampler": {
-			"max-operations": 0,
-			"param": 1,
-			"sampling-refresh-interval": 0,
-			"sampling-server-url": "",
-			"type": "const"
+		""rpc-metrics"": false,
+		""sampler"": {
+			""max-operations"": 0,
+			""param"": 1,
+			""sampling-refresh-interval"": 0,
+			""sampling-server-url"": """",
+			""type"": ""const""
 		}
 	},
-	"path": "${LOCALHOST}:2379",
-	"pd-client": {
-		"pd-server-timeout": 3
+	""path"": ""${LOCALHOST}:2379"",
+	""pd-client"": {
+		""pd-server-timeout"": 3
 	},
-	"performance": {
-		"analyze-partition-concurrency-quota": 16,
-		"bind-info-lease": "3s",
-		"cross-join": true,
-		"distinct-agg-push-down": false,
-		"enable-load-fmsketch": false,
-		"enable-stats-cache-mem-quota": false,
-		"enforce-mpp": false,
-		"force-init-stats": false,
-		"gogc": 100,
-		"lite-init-stats": false,
-		"max-procs": 0,
-		"max-txn-ttl": 3600000,
-		"plan-replayer-dump-worker-concurrency": 1,
-		"plan-replayer-gc-lease": "10m",
-		"projection-push-down": false,
-		"pseudo-estimate-ratio": 0.8,
-		"server-memory-quota": 0,
-		"stats-lease": "3s",
-		"stats-load-concurrency": 5,
-		"stats-load-queue-size": 1000,
-		"stmt-count-limit": 5000,
-		"tcp-keep-alive": true,
-		"tcp-no-delay": true,
-		"txn-entry-size-limit": 6291456,
-		"txn-total-size-limit": 104857600
+	""performance"": {
+		""analyze-partition-concurrency-quota"": 16,
+		""bind-info-lease"": ""3s"",
+		""cross-join"": true,
+		""distinct-agg-push-down"": false,
+		""enable-load-fmsketch"": false,
+		""enable-stats-cache-mem-quota"": false,
+		""enforce-mpp"": false,
+		""force-init-stats"": false,
+		""gogc"": 100,
+		""lite-init-stats"": false,
+		""max-procs"": 0,
+		""max-txn-ttl"": 3600000,
+		""plan-replayer-dump-worker-concurrency"": 1,
+		""plan-replayer-gc-lease"": ""10m"",
+		""projection-push-down"": false,
+		""pseudo-estimate-ratio"": 0.8,
+		""server-memory-quota"": 0,
+		""stats-lease"": ""3s"",
+		""stats-load-concurrency"": 5,
+		""stats-load-queue-size"": 1000,
+		""stmt-count-limit"": 5000,
+		""tcp-keep-alive"": true,
+		""tcp-no-delay"": true,
+		""txn-entry-size-limit"": 6291456,
+		""txn-total-size-limit"": 104857600
 	},
-	"pessimistic-txn": {
-		"constraint-check-in-place-pessimistic": true,
-		"deadlock-history-capacity": 10,
-		"deadlock-history-collect-retryable": false,
-		"max-retry-count": 256,
-		"pessimistic-auto-commit": false
+	""pessimistic-txn"": {
+		""constraint-check-in-place-pessimistic"": true,
+		""deadlock-history-capacity"": 10,
+		""deadlock-history-collect-retryable"": false,
+		""max-retry-count"": 256,
+		""pessimistic-auto-commit"": false
 	},
-	"plugin": {},
-	"port": 4000,
-	"prepared-plan-cache": {},
-	"proxy-protocol": {
-		"fallbackable": false,
-		"header-timeout": 5,
-		"networks": ""
+	""plugin"": {},
+	""port"": 4000,
+	""prepared-plan-cache"": {},
+	""proxy-protocol"": {
+		""fallbackable"": false,
+		""header-timeout"": 5,
+		""networks"": """"
 	},
-	"repair-mode": false,
-	"repair-table-list": [],
-	"security": {
-		"auth-token-jwks": "",
-		"auth-token-refresh-interval": "1h0m0s",
-		"auto-tls": true,
-		"cluster-ssl-ca": "",
-		"cluster-ssl-cert": "",
-		"cluster-ssl-key": "",
-		"cluster-verify-cn": null,
-		"disconnect-on-expired-password": true,
-		"enable-sem": false,
-		"rsa-key-size": 4096,
-		"secure-bootstrap": false,
-		"session-token-signing-cert": "",
-		"session-token-signing-key": "",
-		"skip-grant-table": false,
-		"spilled-file-encryption-method": "plaintext",
-		"ssl-ca": "",
-		"ssl-cert": "",
-		"ssl-key": "",
-		"tls-version": ""
+	""repair-mode"": false,
+	""repair-table-list"": [],
+	""security"": {
+		""auth-token-jwks"": """",
+		""auth-token-refresh-interval"": ""1h0m0s"",
+		""auto-tls"": true,
+		""cluster-ssl-ca"": """",
+		""cluster-ssl-cert"": """",
+		""cluster-ssl-key"": """",
+		""cluster-verify-cn"": null,
+		""disconnect-on-expired-password"": true,
+		""enable-sem"": false,
+		""rsa-key-size"": 4096,
+		""secure-bootstrap"": false,
+		""session-token-signing-cert"": """",
+		""session-token-signing-key"": """",
+		""skip-grant-table"": false,
+		""spilled-file-encryption-method"": ""plaintext"",
+		""ssl-ca"": """",
+		""ssl-cert"": """",
+		""ssl-key"": """",
+		""tls-version"": """"
 	},
-	"server-version": "",
-	"skip-register-to-dashboard": false,
-	"socket": "/tmp/tidb-4000.sock",
-	"split-region-max-num": 1000,
-	"split-table": true,
-	"status": {
-		"grpc-concurrent-streams": 1024,
-		"grpc-initial-window-size": 2097152,
-		"grpc-keepalive-time": 10,
-		"grpc-keepalive-timeout": 3,
-		"grpc-max-send-msg-size": 2147483647,
-		"metrics-addr": "",
-		"metrics-interval": 15,
-		"record-db-label": false,
-		"record-db-qps": false,
-		"report-status": true,
-		"status-host": "0.0.0.0",
-		"status-port": 10080
+	""server-version"": """",
+	""skip-register-to-dashboard"": false,
+	""socket"": ""/tmp/tidb-4000.sock"",
+	""split-region-max-num"": 1000,
+	""split-table"": true,
+	""status"": {
+		""grpc-concurrent-streams"": 1024,
+		""grpc-initial-window-size"": 2097152,
+		""grpc-keepalive-time"": 10,
+		""grpc-keepalive-timeout"": 3,
+		""grpc-max-send-msg-size"": 2147483647,
+		""metrics-addr"": """",
+		""metrics-interval"": 15,
+		""record-db-label"": false,
+		""record-db-qps"": false,
+		""report-status"": true,
+		""status-host"": ""0.0.0.0"",
+		""status-port"": 10080
 	},
-	"store": "tikv",
-	"stores-refresh-interval": 60,
-	"table-column-count-limit": 1017,
-	"temp-dir": "/tmp/tidb",
-	"tidb-edition": "",
-	"tidb-enable-exit-check": false,
-	"tidb-max-reuse-chunk": 64,
-	"tidb-max-reuse-column": 256,
-	"tidb-release-version": "",
-	"tikv-client": {
-		"async-commit": {
-			"allowed-clock-drift": 500000000,
-			"keys-limit": 256,
-			"safe-window": 2000000000,
-			"total-key-size-limit": 4096
+	""store"": ""tikv"",
+	""stores-refresh-interval"": 60,
+	""table-column-count-limit"": 1017,
+	""temp-dir"": ""/tmp/tidb"",
+	""tidb-edition"": """",
+	""tidb-enable-exit-check"": false,
+	""tidb-max-reuse-chunk"": 64,
+	""tidb-max-reuse-column"": 256,
+	""tidb-release-version"": """",
+	""tikv-client"": {
+		""async-commit"": {
+			""allowed-clock-drift"": 500000000,
+			""keys-limit"": 256,
+			""safe-window"": 2000000000,
+			""total-key-size-limit"": 4096
 		},
-		"batch-wait-size": 8,
-		"commit-timeout": "41s",
-		"copr-cache": {
-			"capacity-mb": 1000
+		""batch-wait-size"": 8,
+		""commit-timeout"": ""41s"",
+		""copr-cache"": {
+			""capacity-mb"": 1000
 		},
-		"enable-chunk-rpc": true,
-		"grpc-compression-type": "none",
-		"grpc-connection-count": 4,
-		"grpc-initial-conn-window-size": 134217728,
-		"grpc-initial-window-size": 134217728,
-		"grpc-keepalive-time": 10,
-		"grpc-keepalive-timeout": 3,
-		"max-batch-size": 128,
-		"max-batch-wait-time": 0,
-		"overload-threshold": 200,
-		"region-cache-ttl": 600,
-		"resolve-lock-lite-threshold": 16,
-		"store-limit": 0,
-		"store-liveness-timeout": "1s",
-		"ttl-refreshed-txn-size": 33554432
+		""enable-chunk-rpc"": true,
+		""grpc-compression-type"": ""none"",
+		""grpc-connection-count"": 4,
+		""grpc-initial-conn-window-size"": 134217728,
+		""grpc-initial-window-size"": 134217728,
+		""grpc-keepalive-time"": 10,
+		""grpc-keepalive-timeout"": 3,
+		""max-batch-size"": 128,
+		""max-batch-wait-time"": 0,
+		""overload-threshold"": 200,
+		""region-cache-ttl"": 600,
+		""resolve-lock-lite-threshold"": 16,
+		""store-limit"": 0,
+		""store-liveness-timeout"": ""1s"",
+		""ttl-refreshed-txn-size"": 33554432
 	},
-	"tmp-storage-path": "/var/folders/14/1k29ygbn5cxd6ydccy7djh800000gn/T/501_tidb/MTI3LjAuMC4xOjQwMDAvMC4wLjAuMDoxMDA4MA==/tmp-storage",
-	"tmp-storage-quota": -1,
-	"token-limit": 1000,
-	"top-sql": {
-		"receiver-address": ""
+	""tmp-storage-path"": ""/var/folders/14/1k29ygbn5cxd6ydccy7djh800000gn/T/501_tidb/MTI3LjAuMC4xOjQwMDAvMC4wLjAuMDoxMDA4MA==/tmp-storage"",
+	""tmp-storage-quota"": -1,
+	""token-limit"": 1000,
+	""top-sql"": {
+		""receiver-address"": """"
 	},
-	"transaction-summary": {
-		"transaction-id-digest-min-duration": 2147483647,
-		"transaction-summary-capacity": 500
+	""transaction-summary"": {
+		""transaction-id-digest-min-duration"": 2147483647,
+		""transaction-summary-capacity"": 500
 	},
-	"treat-old-version-utf8-as-utf8mb4": true,
-	"use-autoscaler": false,
-	"version-comment": ""
-}	NULL	NULL	NULL	NO
+	""treat-old-version-utf8-as-utf8mb4"": true,
+	""use-autoscaler"": false,
+	""version-comment"": """"
+}"	NULL	NULL	NULL	NO
 tidb_constraint_check_in_place	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
 tidb_constraint_check_in_place_pessimistic	SESSION	ON	ON	NULL	NULL	NULL	NO
 tidb_cost_model_version	SESSION,GLOBAL	2	2	1	2	NULL	NO
@@ -900,9 +900,9 @@ tidb_index_merge_intersection_concurrency	SESSION,GLOBAL	-1	-1	1	256	NULL	NO
 tidb_index_serial_scan_concurrency	SESSION,GLOBAL	1	1	1	256	NULL	NO
 tidb_init_chunk_size	SESSION,GLOBAL	32	32	1	32	NULL	NO
 tidb_isolation_read_engines	SESSION	tikv,tiflash,tidb	tikv,tiflash,tidb	NULL	NULL	NULL	NO
-tidb_last_ddl_info	SESSION		{"query":"","seq_num":0}	NULL	NULL	NULL	NO
+tidb_last_ddl_info	SESSION		"{""query"":"""",""seq_num"":0}"	NULL	NULL	NULL	NO
 tidb_last_plan_replayer_token	SESSION			NULL	NULL	NULL	NO
-tidb_last_query_info	SESSION		{"txn_scope":"global","start_ts":0,"for_update_ts":0}	NULL	NULL	NULL	NO
+tidb_last_query_info	SESSION		"{""txn_scope"":""global"",""start_ts"":0,""for_update_ts"":0}"	NULL	NULL	NULL	NO
 tidb_last_txn_info	SESSION			NULL	NULL	NULL	NO
 tidb_load_based_replica_read_threshold	SESSION,GLOBAL	1s	1s	NULL	NULL	NULL	NO
 tidb_lock_unchanged_keys	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
@@ -1057,7 +1057,7 @@ tiflash_fine_grained_shuffle_batch_size	SESSION,GLOBAL	8192	8192	1	1844674407370
 tiflash_fine_grained_shuffle_stream_count	SESSION,GLOBAL	0	0	-1	1024	NULL	NO
 time_format	NONE	%H:%i:%s	%H:%i:%s	NULL	NULL	NULL	YES
 time_zone	SESSION,GLOBAL	SYSTEM	SYSTEM	NULL	NULL	NULL	NO
-timestamp	SESSION	0	1777720678.610026	0	2147483647	NULL	NO
+timestamp	SESSION	0	1777725314.889431	0	2147483647	NULL	NO
 tls_version	NONE	TLSv1,TLSv1.1,TLSv1.2	TLSv1,TLSv1.1,TLSv1.2	NULL	NULL	NULL	YES
 tmp_table_size	SESSION,GLOBAL	16777216	16777216	1024	18446744073709551615	NULL	YES
 tmpdir	NONE	/var/tmp/	/var/tmp/	NULL	NULL	NULL	YES

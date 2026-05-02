@@ -343,8 +343,8 @@ pd	${LOCALHOST}:2379	schedule.store-limit-mode	manual
 pd	${LOCALHOST}:2379	schedule.store-limit-version	v1
 pd	${LOCALHOST}:2379	schedule.store-limit.1.add-peer	15
 pd	${LOCALHOST}:2379	schedule.store-limit.1.remove-peer	15
-pd	${LOCALHOST}:2379	schedule.store-limit.108.add-peer	30
-pd	${LOCALHOST}:2379	schedule.store-limit.108.remove-peer	30
+pd	${LOCALHOST}:2379	schedule.store-limit.112.add-peer	30
+pd	${LOCALHOST}:2379	schedule.store-limit.112.remove-peer	30
 pd	${LOCALHOST}:2379	schedule.swtich-witness-interval	1h0m0s
 pd	${LOCALHOST}:2379	schedule.tolerant-size-ratio	0
 pd	${LOCALHOST}:2379	schedule.witness-schedule-limit	4

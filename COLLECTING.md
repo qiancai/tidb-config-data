@@ -9,6 +9,8 @@ The MVP workflow is script-first:
 3. `scripts/validate-capture.py` verifies JSON, counts, and checksums.
 4. `scripts/sanitize-configs.py` can create a sanitized copy of an existing capture.
 5. `scripts/sync-versions.py` syncs the release list from TiDB self-managed release notes.
+6. `scripts/import-tidb.py` imports validated repo data into a TiDB Cloud Starter query layer.
+7. `scripts/compare-configs.py` generates the repo-backed comparison read model.
 
 ## MVP Scope
 
@@ -122,6 +124,26 @@ v8.5.6/
 scripts/validate-capture.py v8.5.6 --require-sanitized
 ```
 
+## Import To Database
+
+After the sanitized data is committed, import it into the derived TiDB database:
+
+```bash
+scripts/import-tidb.py --ssl --reset
+```
+
+See `DATABASE.md` for connection environment variables, schema details, and raw payload policy.
+
+## Compare Versions
+
+Generate a screenshot-style comparison payload directly from the repository:
+
+```bash
+scripts/compare-configs.py --from-version v8.1.2 --to-version v8.5.6 --content-type system_variables
+```
+
+See `COMPARISON.md` for status semantics and read-model fields.
+
 ## Sync Versions
 
 ```bash
@@ -138,7 +160,7 @@ DMR versions are recorded, but not marked as selected for capture by default.
 
 ## Notes
 
-- System variables come from `INFORMATION_SCHEMA.VARIABLES_INFO`.
+- System variables come from `INFORMATION_SCHEMA.VARIABLES_INFO` and are collected as one JSON object per row before being written to JSON/TSV. This avoids corrupting rows when a variable value contains embedded newlines.
 - Normalized component values come from `SHOW CONFIG`.
 - Raw TiKV and TiFlash payloads use `full=true`.
 - TiFlash live config does not expose the complete C++ engine-store default catalog. Generate that catalog separately from TiFlash source and docs.

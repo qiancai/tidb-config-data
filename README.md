@@ -8,6 +8,8 @@ The data is intended for comparing TiDB system variables and component configura
 
 - `README.md`: repository overview, dataset index, and data layout.
 - `COLLECTING.md`: reproducible capture workflow, scripts, endpoints, cleanup, and validation steps.
+- `DATABASE.md`: TiDB Cloud Starter schema, import workflow, and persistence policy.
+- `COMPARISON.md`: comparison status semantics, read model, and query/script usage.
 - `v*/SUMMARY.md`: generated summary for one captured TiDB version.
 
 ## Current MVP Dataset
@@ -16,14 +18,14 @@ The first dataset covers representative modern LTS versions:
 
 | Version | System variables | SHOW CONFIG | TiDB | TiKV | PD | TiFlash |
 |---|---:|---:|---:|---:|---:|---:|
-| v6.5.12 | 1022 | 1666 | 175 | 659 | 155 | 677 |
-| v7.1.6 | 1090 | 1692 | 192 | 669 | 174 | 657 |
-| v7.5.0 | 1119 | 1741 | 196 | 685 | 181 | 679 |
-| v7.5.7 | 1124 | 1746 | 200 | 687 | 180 | 679 |
-| v8.1.0 | 1142 | 1797 | 203 | 709 | 185 | 700 |
-| v8.1.2 | 1142 | 1806 | 203 | 705 | 186 | 712 |
-| v8.5.0 | 1150 | 1784 | 200 | 710 | 156 | 718 |
-| v8.5.6 | 1187 | 1801 | 206 | 718 | 158 | 719 |
+| v6.5.12 | 799 | 1666 | 175 | 659 | 155 | 677 |
+| v7.1.6 | 850 | 1692 | 192 | 669 | 174 | 657 |
+| v7.5.0 | 875 | 1741 | 196 | 685 | 181 | 679 |
+| v7.5.7 | 876 | 1746 | 200 | 687 | 180 | 679 |
+| v8.1.0 | 891 | 1797 | 203 | 709 | 185 | 700 |
+| v8.1.2 | 891 | 1806 | 203 | 705 | 186 | 712 |
+| v8.5.0 | 904 | 1784 | 200 | 710 | 156 | 718 |
+| v8.5.6 | 935 | 1801 | 206 | 718 | 158 | 719 |
 
 The version scope is recorded in `mvp-versions.json`. The broader TiDB self-managed release list is recorded in `versions.json`.
 
@@ -55,6 +57,22 @@ v8.5.6/
 ```
 
 Use `normalized/` for comparison, indexing, and database import. Use `raw-sanitized/` as the source snapshot fallback when normalized output misses details.
+
+## Database Layer
+
+The Git repository is the canonical source of truth. A TiDB Cloud Starter database can be used as a rebuildable query layer for search, diff, APIs, and UI workflows.
+
+See `DATABASE.md` for the schema and import flow:
+
+```bash
+scripts/import-tidb.py --ssl --reset
+```
+
+See `COMPARISON.md` for the comparison read model:
+
+```bash
+scripts/compare-configs.py --from-version v8.1.2 --to-version v8.5.6 --content-type system_variables
+```
 
 ## Data Sources
 

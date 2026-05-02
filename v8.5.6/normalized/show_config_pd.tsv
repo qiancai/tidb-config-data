@@ -133,8 +133,8 @@ pd	${LOCALHOST}:2379	schedule.split-merge-interval	1h0m0s
 pd	${LOCALHOST}:2379	schedule.store-limit-version	v1
 pd	${LOCALHOST}:2379	schedule.store-limit.1.add-peer	15
 pd	${LOCALHOST}:2379	schedule.store-limit.1.remove-peer	15
-pd	${LOCALHOST}:2379	schedule.store-limit.134.add-peer	30
-pd	${LOCALHOST}:2379	schedule.store-limit.134.remove-peer	30
+pd	${LOCALHOST}:2379	schedule.store-limit.132.add-peer	30
+pd	${LOCALHOST}:2379	schedule.store-limit.132.remove-peer	30
 pd	${LOCALHOST}:2379	schedule.switch-witness-interval	1h0m0s
 pd	${LOCALHOST}:2379	schedule.tolerant-size-ratio	0
 pd	${LOCALHOST}:2379	schedule.witness-schedule-limit	4

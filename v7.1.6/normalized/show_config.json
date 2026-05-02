@@ -2066,13 +2066,13 @@
   {
     "Type": "pd",
     "Instance": "${LOCALHOST}:2379",
-    "Name": "schedule.store-limit.108.add-peer",
+    "Name": "schedule.store-limit.112.add-peer",
     "Value": "30"
   },
   {
     "Type": "pd",
     "Instance": "${LOCALHOST}:2379",
-    "Name": "schedule.store-limit.108.remove-peer",
+    "Name": "schedule.store-limit.112.remove-peer",
     "Value": "30"
   },
   {
