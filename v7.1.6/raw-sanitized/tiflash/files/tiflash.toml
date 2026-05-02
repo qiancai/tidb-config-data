@@ -1,0 +1,6 @@
+[flash]
+[flash.proxy]
+config = "${TIUP_DATA_DIR}/tiflash-0/tiflash_proxy.toml"
+
+[logger]
+level = "debug"

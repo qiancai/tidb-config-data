@@ -1,0 +1,1188 @@
+VARIABLE_NAME	VARIABLE_SCOPE	DEFAULT_VALUE	CURRENT_VALUE	MIN_VALUE	MAX_VALUE	POSSIBLE_VALUES	IS_NOOP
+allow_auto_random_explicit_insert	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+authentication_ldap_sasl_auth_method_name	GLOBAL	SCRAM-SHA-1	SCRAM-SHA-1	NULL	NULL	SCRAM-SHA-1,SCRAM-SHA-256,GSSAPI	NO
+authentication_ldap_sasl_bind_base_dn	GLOBAL			NULL	NULL	NULL	NO
+authentication_ldap_sasl_bind_root_dn	GLOBAL			NULL	NULL	NULL	NO
+authentication_ldap_sasl_bind_root_pwd	GLOBAL			NULL	NULL	NULL	NO
+authentication_ldap_sasl_ca_path	GLOBAL			NULL	NULL	NULL	NO
+authentication_ldap_sasl_init_pool_size	GLOBAL	10	10	1	32767	NULL	NO
+authentication_ldap_sasl_max_pool_size	GLOBAL	1000	1000	1	32767	NULL	NO
+authentication_ldap_sasl_server_host	GLOBAL			NULL	NULL	NULL	NO
+authentication_ldap_sasl_server_port	GLOBAL	389	389	1	65535	NULL	NO
+authentication_ldap_sasl_tls	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+authentication_ldap_sasl_user_search_attr	GLOBAL	uid	uid	NULL	NULL	NULL	NO
+authentication_ldap_simple_auth_method_name	GLOBAL	SIMPLE	SIMPLE	NULL	NULL	NULL	NO
+authentication_ldap_simple_bind_base_dn	GLOBAL			NULL	NULL	NULL	NO
+authentication_ldap_simple_bind_root_dn	GLOBAL			NULL	NULL	NULL	NO
+authentication_ldap_simple_bind_root_pwd	GLOBAL			NULL	NULL	NULL	NO
+authentication_ldap_simple_ca_path	GLOBAL			NULL	NULL	NULL	NO
+authentication_ldap_simple_init_pool_size	GLOBAL	10	10	1	32767	NULL	NO
+authentication_ldap_simple_max_pool_size	GLOBAL	1000	1000	1	32767	NULL	NO
+authentication_ldap_simple_server_host	GLOBAL			NULL	NULL	NULL	NO
+authentication_ldap_simple_server_port	GLOBAL	389	389	1	65535	NULL	NO
+authentication_ldap_simple_tls	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+authentication_ldap_simple_user_search_attr	GLOBAL	uid	uid	NULL	NULL	NULL	NO
+auto_increment_increment	SESSION,GLOBAL	1	1	1	65535	NULL	NO
+auto_increment_offset	SESSION,GLOBAL	1	1	1	65535	NULL	NO
+autocommit	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+automatic_sp_privileges	GLOBAL	1	1	NULL	NULL	NULL	YES
+avoid_temporal_upgrade	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+back_log	NONE	80	80	NULL	NULL	NULL	YES
+basedir	NONE	/usr/local/mysql	/usr/local/mysql	NULL	NULL	NULL	YES
+big_tables	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+bind_address	NONE	*	*	NULL	NULL	NULL	YES
+binlog_cache_size	GLOBAL	32768	32768	NULL	NULL	NULL	YES
+binlog_checksum	GLOBAL	CRC32	CRC32	NULL	NULL	NULL	YES
+binlog_direct_non_transactional_updates	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+binlog_error_action	SESSION,GLOBAL	IGNORE_ERROR	IGNORE_ERROR	NULL	NULL	NULL	YES
+binlog_format	SESSION,GLOBAL	STATEMENT	STATEMENT	NULL	NULL	NULL	YES
+binlog_group_commit_sync_delay	GLOBAL			NULL	NULL	NULL	YES
+binlog_group_commit_sync_no_delay_count	GLOBAL			NULL	NULL	NULL	YES
+binlog_gtid_simple_recovery	NONE	1	1	NULL	NULL	NULL	YES
+binlog_max_flush_queue_time	GLOBAL	0	0	NULL	NULL	NULL	YES
+binlog_order_commits	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+binlog_row_image	SESSION,GLOBAL	FULL	FULL	NULL	NULL	NULL	YES
+binlog_rows_query_log_events	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+binlog_stmt_cache_size	GLOBAL	32768	32768	NULL	NULL	NULL	YES
+binlogging_impossible_mode	SESSION,GLOBAL	IGNORE_ERROR	IGNORE_ERROR	NULL	NULL	NULL	YES
+block_encryption_mode	SESSION,GLOBAL	aes-128-ecb	aes-128-ecb	NULL	NULL	aes-128-ecb,aes-192-ecb,aes-256-ecb,aes-128-cbc,aes-192-cbc,aes-256-cbc,aes-128-ofb,aes-192-ofb,aes-256-ofb,aes-128-cfb,aes-192-cfb,aes-256-cfb	NO
+bulk_insert_buffer_size	SESSION,GLOBAL	8388608	8388608	NULL	NULL	NULL	YES
+character_set_client	SESSION,GLOBAL	utf8mb4	utf8mb4	NULL	NULL	NULL	NO
+character_set_connection	SESSION,GLOBAL	utf8mb4	utf8mb4	NULL	NULL	NULL	NO
+character_set_database	SESSION,GLOBAL	utf8mb4	utf8mb4	NULL	NULL	NULL	NO
+character_set_filesystem	SESSION,GLOBAL	binary	binary	NULL	NULL	NULL	YES
+character_set_results	SESSION,GLOBAL	utf8mb4	utf8mb4	NULL	NULL	NULL	NO
+character_set_server	SESSION,GLOBAL	utf8mb4	utf8mb4	NULL	NULL	NULL	NO
+character_set_system	NONE	utf8	utf8	NULL	NULL	NULL	YES
+character_sets_dir	NONE	/usr/local/mysql-5.6.25-osx10.8-x86_64/share/charsets/	/usr/local/mysql-5.6.25-osx10.8-x86_64/share/charsets/	NULL	NULL	NULL	YES
+check_proxy_users	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+collation_connection	SESSION,GLOBAL	utf8mb4_bin	utf8mb4_general_ci	NULL	NULL	NULL	NO
+collation_database	SESSION,GLOBAL	utf8mb4_bin	utf8mb4_bin	NULL	NULL	NULL	NO
+collation_server	SESSION,GLOBAL	utf8mb4_bin	utf8mb4_bin	NULL	NULL	NULL	NO
+completion_type	SESSION,GLOBAL	NO_CHAIN	NO_CHAIN	NULL	NULL	NULL	YES
+concurrent_insert	GLOBAL	AUTO	AUTO	NULL	NULL	NULL	YES
+connect_timeout	GLOBAL	10	10	2	31536000	NULL	YES
+core_file	NONE	OFF	OFF	NULL	NULL	NULL	YES
+cte_max_recursion_depth	SESSION,GLOBAL	1000	1000	0	4294967295	NULL	NO
+datadir	NONE	${LOCALHOST}:2379	${LOCALHOST}:2379	NULL	NULL	NULL	NO
+date_format	NONE	%Y-%m-%d	%Y-%m-%d	NULL	NULL	NULL	YES
+datetime_format	NONE	%Y-%m-%d %H:%i:%s	%Y-%m-%d %H:%i:%s	NULL	NULL	NULL	YES
+ddl_slow_threshold	INSTANCE	300	300	0	2147483647	NULL	NO
+debug	SESSION,GLOBAL			NULL	NULL	NULL	YES
+debug_sync	SESSION			NULL	NULL	NULL	YES
+default_authentication_plugin	GLOBAL	mysql_native_password	mysql_native_password	NULL	NULL	mysql_native_password,caching_sha2_password,tidb_sm3_password,authentication_ldap_sasl,authentication_ldap_simple	NO
+default_collation_for_utf8mb4	SESSION,GLOBAL	utf8mb4_bin	utf8mb4_bin	NULL	NULL	NULL	NO
+default_password_lifetime	GLOBAL	0	0	0	65535	NULL	NO
+default_storage_engine	SESSION,GLOBAL	InnoDB	InnoDB	NULL	NULL	NULL	YES
+default_tmp_storage_engine	SESSION,GLOBAL	InnoDB	InnoDB	NULL	NULL	NULL	YES
+default_week_format	SESSION,GLOBAL	0	0	0	7	NULL	NO
+delay_key_write	GLOBAL	ON	ON	NULL	NULL	OFF,ON,ALL	YES
+delayed_insert_limit	GLOBAL	100	100	NULL	NULL	NULL	YES
+delayed_insert_timeout	GLOBAL	300	300	NULL	NULL	NULL	YES
+delayed_queue_size	GLOBAL	1000	1000	NULL	NULL	NULL	YES
+disconnect_on_expired_password	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+div_precision_increment	SESSION,GLOBAL	4	4	0	30	NULL	NO
+end_markers_in_json	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+enforce_gtid_consistency	GLOBAL	OFF	OFF	NULL	NULL	OFF,ON,WARN	YES
+eq_range_index_dive_limit	SESSION,GLOBAL	200	200	NULL	NULL	NULL	YES
+error_count	SESSION	0	0	NULL	NULL	NULL	NO
+event_scheduler	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+executed_gtids_compression_period	GLOBAL			NULL	NULL	NULL	YES
+expire_logs_days	GLOBAL	0	0	NULL	NULL	NULL	YES
+explicit_defaults_for_timestamp	NONE	ON	ON	NULL	NULL	NULL	YES
+flush	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+flush_time	GLOBAL	0	0	0	31536000	NULL	YES
+foreign_key_checks	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+ft_boolean_syntax	GLOBAL	+ -><()~*:""&|	+ -><()~*:""&|	NULL	NULL	NULL	YES
+ft_max_word_len	NONE	84	84	NULL	NULL	NULL	YES
+ft_min_word_len	NONE	4	4	NULL	NULL	NULL	YES
+ft_query_expansion_limit	NONE	20	20	NULL	NULL	NULL	YES
+ft_stopword_file	NONE	(built-in)	(built-in)	NULL	NULL	NULL	YES
+general_log	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+general_log_file	GLOBAL	/usr/local/mysql/data/${LOCALHOST_NAME}.log	/usr/local/mysql/data/${LOCALHOST_NAME}.log	NULL	NULL	NULL	YES
+group_concat_max_len	SESSION,GLOBAL	1024	1024	4	18446744073709551615	NULL	NO
+gtid_executed_compression_period	GLOBAL			NULL	NULL	NULL	YES
+gtid_mode	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+gtid_next	SESSION			NULL	NULL	NULL	YES
+gtid_purged	GLOBAL			NULL	NULL	NULL	YES
+have_compress	NONE	YES	YES	NULL	NULL	NULL	YES
+have_crypt	NONE	YES	YES	NULL	NULL	NULL	YES
+have_dynamic_loading	NONE	YES	YES	NULL	NULL	NULL	YES
+have_geometry	NONE	YES	YES	NULL	NULL	NULL	YES
+have_openssl	NONE	YES	YES	NULL	NULL	NULL	NO
+have_profiling	NONE	NO	NO	NULL	NULL	NULL	YES
+have_query_cache	NONE	YES	YES	NULL	NULL	NULL	YES
+have_rtree_keys	NONE	YES	YES	NULL	NULL	NULL	YES
+have_ssl	NONE	YES	YES	NULL	NULL	NULL	NO
+have_symlink	NONE	YES	YES	NULL	NULL	NULL	YES
+host_cache_size	GLOBAL	279	279	NULL	NULL	NULL	YES
+hostname	NONE	MacBook-Pro-4.local	MacBook-Pro-4.local	NULL	NULL	NULL	NO
+identity	SESSION	0	0	0	18446744073709551615	NULL	NO
+ignore_builtin_innodb	NONE	0	0	NULL	NULL	NULL	YES
+information_schema_stats_expiry	SESSION,GLOBAL	86400	86400	NULL	NULL	NULL	YES
+init_connect	GLOBAL			NULL	NULL	NULL	NO
+init_slave	GLOBAL			NULL	NULL	NULL	YES
+innodb_adaptive_flushing	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+innodb_adaptive_flushing_lwm	GLOBAL	10	10	NULL	NULL	NULL	YES
+innodb_adaptive_hash_index	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+innodb_adaptive_max_sleep_delay	GLOBAL	150000	150000	NULL	NULL	NULL	YES
+innodb_additional_mem_pool_size	NONE	8388608	8388608	NULL	NULL	NULL	YES
+innodb_api_bk_commit_interval	GLOBAL	5	5	NULL	NULL	NULL	YES
+innodb_api_disable_rowlock	NONE	0	0	NULL	NULL	NULL	YES
+innodb_api_enable_binlog	NONE	0	0	NULL	NULL	NULL	YES
+innodb_api_enable_mdl	NONE	0	0	NULL	NULL	NULL	YES
+innodb_api_trx_level	GLOBAL	0	0	NULL	NULL	NULL	YES
+innodb_autoextend_increment	GLOBAL	64	64	NULL	NULL	NULL	YES
+innodb_autoinc_lock_mode	NONE	1	1	NULL	NULL	NULL	YES
+innodb_buffer_pool_dump_at_shutdown	GLOBAL	0	0	NULL	NULL	NULL	YES
+innodb_buffer_pool_dump_now	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+innodb_buffer_pool_dump_pct	GLOBAL			NULL	NULL	NULL	YES
+innodb_buffer_pool_filename	GLOBAL	ib_buffer_pool	ib_buffer_pool	NULL	NULL	NULL	YES
+innodb_buffer_pool_instances	NONE	8	8	NULL	NULL	NULL	YES
+innodb_buffer_pool_load_abort	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+innodb_buffer_pool_load_at_startup	NONE	1	1	NULL	NULL	NULL	YES
+innodb_buffer_pool_load_now	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+innodb_buffer_pool_size	GLOBAL	134217728	134217728	NULL	NULL	NULL	YES
+innodb_change_buffer_max_size	GLOBAL	25	25	NULL	NULL	NULL	YES
+innodb_change_buffering	GLOBAL	all	all	NULL	NULL	NULL	YES
+innodb_checksum_algorithm	GLOBAL	innodb	innodb	NULL	NULL	NULL	YES
+innodb_checksums	NONE	ON	ON	NULL	NULL	NULL	YES
+innodb_cmp_per_index_enabled	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+innodb_commit_concurrency	GLOBAL	0	0	0	1000	NULL	YES
+innodb_compression_failure_threshold_pct	GLOBAL	5	5	NULL	NULL	NULL	YES
+innodb_compression_level	GLOBAL	6	6	NULL	NULL	NULL	YES
+innodb_compression_pad_pct_max	GLOBAL	50	50	NULL	NULL	NULL	YES
+innodb_concurrency_tickets	GLOBAL	5000	5000	NULL	NULL	NULL	YES
+innodb_create_intrinsic	SESSION			NULL	NULL	NULL	YES
+innodb_data_file_path	NONE	ibdata1:12M:autoextend	ibdata1:12M:autoextend	NULL	NULL	NULL	YES
+innodb_default_row_format	GLOBAL	dynamic	dynamic	NULL	NULL	redundant,compact,dynamic	YES
+innodb_disable_sort_file_cache	GLOBAL	0	0	NULL	NULL	NULL	YES
+innodb_doublewrite	NONE	1	1	NULL	NULL	NULL	YES
+innodb_fast_shutdown	GLOBAL	1	1	0	2	NULL	YES
+innodb_file_format	GLOBAL	Barracuda	Barracuda	NULL	NULL	Antelope,Barracuda	YES
+innodb_file_format_check	NONE	1	1	NULL	NULL	NULL	YES
+innodb_file_format_max	GLOBAL	Antelope	Antelope	NULL	NULL	NULL	YES
+innodb_file_per_table	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+innodb_fill_factor	GLOBAL			NULL	NULL	NULL	YES
+innodb_flush_log_at_timeout	GLOBAL	1	1	NULL	NULL	NULL	YES
+innodb_flush_log_at_trx_commit	GLOBAL	1	1	NULL	NULL	NULL	YES
+innodb_flush_neighbors	GLOBAL	1	1	NULL	NULL	NULL	YES
+innodb_flush_sync	GLOBAL			NULL	NULL	NULL	YES
+innodb_flushing_avg_loops	GLOBAL	30	30	NULL	NULL	NULL	YES
+innodb_force_load_corrupted	NONE	0	0	NULL	NULL	NULL	YES
+innodb_force_recovery	NONE	0	0	NULL	NULL	NULL	YES
+innodb_ft_aux_table	GLOBAL			NULL	NULL	NULL	YES
+innodb_ft_cache_size	NONE	8000000	8000000	NULL	NULL	NULL	YES
+innodb_ft_enable_diag_print	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+innodb_ft_enable_stopword	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+innodb_ft_max_token_size	NONE	84	84	NULL	NULL	NULL	YES
+innodb_ft_min_token_size	NONE	3	3	NULL	NULL	NULL	YES
+innodb_ft_num_word_optimize	GLOBAL	2000	2000	NULL	NULL	NULL	YES
+innodb_ft_result_cache_limit	GLOBAL	2000000000	2000000000	NULL	NULL	NULL	YES
+innodb_ft_server_stopword_table	GLOBAL			NULL	NULL	NULL	YES
+innodb_ft_sort_pll_degree	NONE	2	2	NULL	NULL	NULL	YES
+innodb_ft_total_cache_size	NONE	640000000	640000000	NULL	NULL	NULL	YES
+innodb_ft_user_stopword_table	SESSION,GLOBAL			NULL	NULL	NULL	YES
+innodb_io_capacity	GLOBAL	200	200	NULL	NULL	NULL	YES
+innodb_io_capacity_max	GLOBAL	2000	2000	NULL	NULL	NULL	YES
+innodb_large_prefix	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+innodb_lock_wait_timeout	SESSION,GLOBAL	50	50	1	3600	NULL	NO
+innodb_locks_unsafe_for_binlog	NONE	0	0	NULL	NULL	NULL	YES
+innodb_log_buffer_size	NONE	8388608	8388608	NULL	NULL	NULL	YES
+innodb_log_checksum_algorithm	GLOBAL			NULL	NULL	NULL	YES
+innodb_log_compressed_pages	GLOBAL	1	1	NULL	NULL	NULL	YES
+innodb_log_file_size	NONE	50331648	50331648	NULL	NULL	NULL	YES
+innodb_log_files_in_group	NONE	2	2	NULL	NULL	NULL	YES
+innodb_log_group_home_dir	NONE	./	./	NULL	NULL	NULL	YES
+innodb_log_write_ahead_size	GLOBAL			NULL	NULL	NULL	YES
+innodb_lru_scan_depth	GLOBAL	1024	1024	NULL	NULL	NULL	YES
+innodb_max_dirty_pages_pct	GLOBAL	75	75	NULL	NULL	NULL	YES
+innodb_max_dirty_pages_pct_lwm	GLOBAL	0	0	NULL	NULL	NULL	YES
+innodb_max_purge_lag	GLOBAL	0	0	NULL	NULL	NULL	YES
+innodb_max_purge_lag_delay	GLOBAL	0	0	NULL	NULL	NULL	YES
+innodb_max_undo_log_size	GLOBAL			NULL	NULL	NULL	YES
+innodb_mirrored_log_groups	NONE	1	1	NULL	NULL	NULL	YES
+innodb_monitor_disable	GLOBAL			NULL	NULL	NULL	YES
+innodb_monitor_enable	GLOBAL			NULL	NULL	NULL	YES
+innodb_monitor_reset	GLOBAL			NULL	NULL	NULL	YES
+innodb_monitor_reset_all	GLOBAL			NULL	NULL	NULL	YES
+innodb_old_blocks_pct	GLOBAL	37	37	NULL	NULL	NULL	YES
+innodb_old_blocks_time	GLOBAL	1000	1000	NULL	NULL	NULL	YES
+innodb_online_alter_log_max_size	GLOBAL	134217728	134217728	NULL	NULL	NULL	YES
+innodb_open_files	NONE	2000	2000	NULL	NULL	NULL	YES
+innodb_optimize_fulltext_only	GLOBAL	0	0	NULL	NULL	NULL	YES
+innodb_optimize_point_storage	SESSION			NULL	NULL	NULL	YES
+innodb_page_size	NONE	16384	16384	NULL	NULL	NULL	YES
+innodb_print_all_deadlocks	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+innodb_purge_batch_size	GLOBAL	300	300	NULL	NULL	NULL	YES
+innodb_purge_rseg_truncate_frequency	GLOBAL			NULL	NULL	NULL	YES
+innodb_purge_threads	NONE	1	1	NULL	NULL	NULL	YES
+innodb_random_read_ahead	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+innodb_read_ahead_threshold	GLOBAL	56	56	NULL	NULL	NULL	YES
+innodb_read_io_threads	NONE	4	4	NULL	NULL	NULL	YES
+innodb_read_only	NONE	0	0	NULL	NULL	NULL	YES
+innodb_replication_delay	GLOBAL	0	0	NULL	NULL	NULL	YES
+innodb_rollback_on_timeout	NONE	0	0	NULL	NULL	NULL	YES
+innodb_rollback_segments	GLOBAL	128	128	NULL	NULL	NULL	YES
+innodb_sort_buffer_size	NONE	1048576	1048576	NULL	NULL	NULL	YES
+innodb_spin_wait_delay	GLOBAL	6	6	NULL	NULL	NULL	YES
+innodb_stats_auto_recalc	GLOBAL	1	1	NULL	NULL	NULL	YES
+innodb_stats_method	GLOBAL	nulls_equal	nulls_equal	NULL	NULL	NULL	YES
+innodb_stats_on_metadata	GLOBAL	0	0	NULL	NULL	NULL	YES
+innodb_stats_persistent	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+innodb_stats_persistent_sample_pages	GLOBAL	20	20	NULL	NULL	NULL	YES
+innodb_stats_sample_pages	GLOBAL	8	8	NULL	NULL	NULL	YES
+innodb_stats_transient_sample_pages	GLOBAL	8	8	NULL	NULL	NULL	YES
+innodb_status_output	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+innodb_status_output_locks	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+innodb_strict_mode	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	YES
+innodb_support_xa	SESSION,GLOBAL	1	1	NULL	NULL	NULL	YES
+innodb_sync_array_size	NONE	1	1	NULL	NULL	NULL	YES
+innodb_sync_spin_loops	GLOBAL	30	30	NULL	NULL	NULL	YES
+innodb_table_locks	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	YES
+innodb_thread_concurrency	GLOBAL	0	0	NULL	NULL	NULL	YES
+innodb_thread_sleep_delay	GLOBAL	10000	10000	NULL	NULL	NULL	YES
+innodb_undo_directory	NONE	.	.	NULL	NULL	NULL	YES
+innodb_undo_log_truncate	GLOBAL			NULL	NULL	NULL	YES
+innodb_undo_logs	GLOBAL	128	128	NULL	NULL	NULL	YES
+innodb_undo_tablespaces	NONE	0	0	NULL	NULL	NULL	YES
+innodb_use_native_aio	NONE	0	0	NULL	NULL	NULL	YES
+innodb_use_sys_malloc	NONE	1	1	NULL	NULL	NULL	YES
+innodb_version	NONE	5.6.25	5.6.25	NULL	NULL	NULL	YES
+innodb_write_io_threads	NONE	4	4	NULL	NULL	NULL	YES
+insert_id	SESSION			NULL	NULL	NULL	YES
+interactive_timeout	SESSION,GLOBAL	28800	28800	1	31536000	NULL	NO
+internal_tmp_disk_storage_engine	GLOBAL			NULL	NULL	NULL	YES
+join_buffer_size	SESSION,GLOBAL	262144	262144	NULL	NULL	NULL	YES
+keep_files_on_create	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+key_buffer_size	GLOBAL	8388608	8388608	NULL	NULL	NULL	YES
+key_cache_age_threshold	GLOBAL	300	300	NULL	NULL	NULL	YES
+key_cache_block_size	GLOBAL	1024	1024	NULL	NULL	NULL	YES
+key_cache_division_limit	GLOBAL	100	100	NULL	NULL	NULL	YES
+large_files_support	NONE	1	1	NULL	NULL	NULL	YES
+large_page_size	NONE	0	0	NULL	NULL	NULL	YES
+large_pages	NONE	OFF	OFF	NULL	NULL	NULL	YES
+last_insert_id	SESSION	0	0	0	18446744073709551615	NULL	NO
+last_plan_from_binding	SESSION	OFF	OFF	NULL	NULL	NULL	NO
+last_plan_from_cache	SESSION	OFF	OFF	NULL	NULL	NULL	NO
+last_sql_use_alloc	SESSION	OFF	ON	NULL	NULL	NULL	NO
+lc_messages	SESSION,GLOBAL	en_US	en_US	NULL	NULL	NULL	YES
+lc_messages_dir	NONE	/usr/local/mysql-5.6.25-osx10.8-x86_64/share/	/usr/local/mysql-5.6.25-osx10.8-x86_64/share/	NULL	NULL	NULL	YES
+lc_time_names	SESSION,GLOBAL	en_US	en_US	NULL	NULL	NULL	YES
+license	NONE	Apache License 2.0	Apache License 2.0	NULL	NULL	NULL	NO
+local_infile	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+lock_wait_timeout	SESSION,GLOBAL	31536000	31536000	NULL	NULL	NULL	YES
+locked_in_memory	NONE	0	0	NULL	NULL	NULL	YES
+log_backward_compatible_user_definitions	GLOBAL			NULL	NULL	NULL	YES
+log_bin_trust_function_creators	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+log_bin_use_v1_row_events	NONE	0	0	NULL	NULL	NULL	YES
+log_error	NONE	/usr/local/mysql/data/${LOCALHOST_NAME}.err	/usr/local/mysql/data/${LOCALHOST_NAME}.err	NULL	NULL	NULL	YES
+log_error_verbosity	GLOBAL			NULL	NULL	NULL	YES
+log_output	NONE	FILE	FILE	NULL	NULL	NULL	YES
+log_queries_not_using_indexes	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+log_slave_updates	NONE	OFF	OFF	NULL	NULL	NULL	YES
+log_slow_admin_statements	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+log_slow_slave_statements	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+log_syslog	GLOBAL			NULL	NULL	NULL	YES
+log_syslog_facility	GLOBAL			NULL	NULL	NULL	YES
+log_syslog_include_pid	GLOBAL			NULL	NULL	NULL	YES
+log_syslog_tag	GLOBAL			NULL	NULL	NULL	YES
+log_throttle_queries_not_using_indexes	GLOBAL	0	0	NULL	NULL	NULL	YES
+log_timestamps	GLOBAL			NULL	NULL	NULL	YES
+log_warnings	GLOBAL	1	1	NULL	NULL	NULL	YES
+long_query_time	SESSION,GLOBAL	10.000000	10.000000	NULL	NULL	NULL	YES
+low_priority_updates	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+lower_case_file_system	NONE	1	1	NULL	NULL	NULL	YES
+lower_case_table_names	NONE	2	2	NULL	NULL	NULL	YES
+master_info_repository	GLOBAL	FILE	FILE	NULL	NULL	NULL	YES
+master_verify_checksum	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+max_allowed_packet	SESSION,GLOBAL	67108864	67108864	1024	1073741824	NULL	NO
+max_binlog_cache_size	GLOBAL	18446744073709547520	18446744073709547520	NULL	NULL	NULL	YES
+max_binlog_size	GLOBAL	1073741824	1073741824	NULL	NULL	NULL	YES
+max_binlog_stmt_cache_size	GLOBAL	18446744073709547520	18446744073709547520	NULL	NULL	NULL	YES
+max_connect_errors	GLOBAL	100	100	1	18446744073709551615	NULL	YES
+max_connections	INSTANCE	0	0	0	100000	NULL	NO
+max_delayed_threads	SESSION,GLOBAL	20	20	NULL	NULL	NULL	YES
+max_digest_length	NONE	1024	1024	NULL	NULL	NULL	YES
+max_error_count	SESSION,GLOBAL	64	64	NULL	NULL	NULL	YES
+max_execution_time	SESSION,GLOBAL	0	0	0	2147483647	NULL	NO
+max_heap_table_size	SESSION,GLOBAL	16777216	16777216	NULL	NULL	NULL	YES
+max_insert_delayed_threads	SESSION,GLOBAL	20	20	NULL	NULL	NULL	YES
+max_join_size	SESSION,GLOBAL	18446744073709551615	18446744073709551615	NULL	NULL	NULL	YES
+max_length_for_sort_data	SESSION,GLOBAL	1024	1024	NULL	NULL	NULL	YES
+max_points_in_geometry	SESSION,GLOBAL	65536	65536	NULL	NULL	NULL	YES
+max_prepared_stmt_count	GLOBAL	-1	-1	-1	1048576	NULL	NO
+max_relay_log_size	GLOBAL	0	0	NULL	NULL	NULL	YES
+max_seeks_for_key	SESSION,GLOBAL	18446744073709551615	18446744073709551615	NULL	NULL	NULL	YES
+max_sort_length	SESSION,GLOBAL	1024	1024	4	8388608	NULL	YES
+max_sp_recursion_depth	SESSION,GLOBAL	0	0	0	255	NULL	YES
+max_statement_time	SESSION,GLOBAL			NULL	NULL	NULL	YES
+max_tmp_tables	NONE	32	32	NULL	NULL	NULL	YES
+max_user_connections	SESSION,GLOBAL	0	0	0	4294967295	NULL	YES
+max_write_lock_count	GLOBAL	18446744073709551615	18446744073709551615	NULL	NULL	NULL	YES
+metadata_locks_cache_size	NONE	1024	1024	NULL	NULL	NULL	YES
+metadata_locks_hash_instances	NONE	8	8	NULL	NULL	NULL	YES
+min_examined_row_limit	SESSION,GLOBAL	0	0	NULL	NULL	NULL	YES
+mpp_exchange_compression_mode	SESSION,GLOBAL	UNSPECIFIED	UNSPECIFIED	NULL	NULL	NULL	NO
+mpp_version	SESSION,GLOBAL	UNSPECIFIED	UNSPECIFIED	NULL	NULL	NULL	NO
+multi_range_count	NONE	256	256	NULL	NULL	NULL	YES
+myisam_data_pointer_size	GLOBAL	6	6	NULL	NULL	NULL	YES
+myisam_max_sort_file_size	GLOBAL	9223372036853727232	9223372036853727232	NULL	NULL	NULL	YES
+myisam_mmap_size	NONE	18446744073709551615	18446744073709551615	NULL	NULL	NULL	YES
+myisam_recover_options	NONE	OFF	OFF	NULL	NULL	NULL	YES
+myisam_repair_threads	SESSION,GLOBAL	1	1	NULL	NULL	NULL	YES
+myisam_sort_buffer_size	SESSION,GLOBAL	8388608	8388608	NULL	NULL	NULL	YES
+myisam_stats_method	SESSION,GLOBAL	nulls_unequal	nulls_unequal	NULL	NULL	NULL	YES
+myisam_use_mmap	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+mysql_native_password_proxy_users	GLOBAL			NULL	NULL	NULL	YES
+ndb_blob_write_batch_bytes	SESSION,GLOBAL			NULL	NULL	NULL	YES
+ndb_deferred_constraints	SESSION,GLOBAL			NULL	NULL	NULL	YES
+ndb_distribution	GLOBAL			NULL	NULL	NULL	YES
+ndb_eventbuffer_free_percent	GLOBAL			NULL	NULL	NULL	YES
+ndb_eventbuffer_max_alloc	GLOBAL			NULL	NULL	NULL	YES
+ndb_force_send	SESSION,GLOBAL			NULL	NULL	NULL	YES
+ndb_index_stat_enable	SESSION,GLOBAL			NULL	NULL	NULL	YES
+ndb_index_stat_option	SESSION,GLOBAL			NULL	NULL	NULL	YES
+ndb_join_pushdown	SESSION,GLOBAL			NULL	NULL	NULL	YES
+ndb_log_binlog_index	GLOBAL			NULL	NULL	NULL	YES
+ndb_log_empty_epochs	GLOBAL			NULL	NULL	NULL	YES
+ndb_log_updated_only	GLOBAL			NULL	NULL	NULL	YES
+ndb_optimization_delay	GLOBAL			NULL	NULL	NULL	YES
+ndb_recv_thread_cpu_mask	NONE			NULL	NULL	NULL	YES
+ndb_show_foreign_key_mock_tables	GLOBAL			NULL	NULL	NULL	YES
+ndb_table_no_logging	SESSION			NULL	NULL	NULL	YES
+ndb_use_transactions	SESSION,GLOBAL			NULL	NULL	NULL	YES
+ndbinfo_max_rows	SESSION,GLOBAL			NULL	NULL	NULL	YES
+ndbinfo_show_hidden	SESSION,GLOBAL			NULL	NULL	NULL	YES
+net_buffer_length	SESSION,GLOBAL	16384	16384	1024	1048576	NULL	YES
+net_read_timeout	SESSION,GLOBAL	30	30	NULL	NULL	NULL	YES
+net_retry_count	SESSION,GLOBAL	10	10	NULL	NULL	NULL	YES
+net_write_timeout	SESSION,GLOBAL	60	60	NULL	NULL	NULL	YES
+new	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+offline_mode	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+old	NONE	0	0	NULL	NULL	NULL	YES
+old_alter_table	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+old_passwords	SESSION,GLOBAL	0	0	0	2	NULL	YES
+open_files_limit	NONE	5000	5000	NULL	NULL	NULL	YES
+optimizer_prune_level	SESSION,GLOBAL	1	1	NULL	NULL	NULL	YES
+optimizer_search_depth	SESSION,GLOBAL	62	62	NULL	NULL	NULL	YES
+optimizer_switch	NONE	index_merge=on,index_merge_union=on,index_merge_sort_union=on,index_merge_intersection=on,engine_condition_pushdown=on,index_condition_pushdown=on,mrr=on,mrr_cost_based=on,block_nested_loop=on,batched_key_access=off,materialization=on,semijoin=on,loosescan=on,firstmatch=on,subquery_materialization_cost_based=on,use_index_extensions=on	index_merge=on,index_merge_union=on,index_merge_sort_union=on,index_merge_intersection=on,engine_condition_pushdown=on,index_condition_pushdown=on,mrr=on,mrr_cost_based=on,block_nested_loop=on,batched_key_access=off,materialization=on,semijoin=on,loosescan=on,firstmatch=on,subquery_materialization_cost_based=on,use_index_extensions=on	NULL	NULL	NULL	YES
+optimizer_trace	SESSION,GLOBAL	enabled=off,one_line=off	enabled=off,one_line=off	NULL	NULL	NULL	YES
+optimizer_trace_features	SESSION,GLOBAL	greedy_search=on,range_optimizer=on,dynamic_range=on,repeated_subselect=on	greedy_search=on,range_optimizer=on,dynamic_range=on,repeated_subselect=on	NULL	NULL	NULL	YES
+optimizer_trace_limit	SESSION,GLOBAL	1	1	NULL	NULL	NULL	YES
+optimizer_trace_max_mem_size	SESSION,GLOBAL	16384	16384	NULL	NULL	NULL	YES
+optimizer_trace_offset	SESSION,GLOBAL	-1	-1	NULL	NULL	NULL	YES
+password_history	GLOBAL	0	0	0	4294967295	NULL	NO
+password_reuse_interval	GLOBAL	0	0	0	4294967295	NULL	NO
+pd_enable_follower_handle_region	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+performance_schema	NONE	OFF	OFF	NULL	NULL	NULL	YES
+performance_schema_accounts_size	NONE	100	100	NULL	NULL	NULL	YES
+performance_schema_digests_size	NONE	10000	10000	NULL	NULL	NULL	YES
+performance_schema_events_stages_history_long_size	NONE	10000	10000	NULL	NULL	NULL	YES
+performance_schema_events_stages_history_size	NONE	10	10	NULL	NULL	NULL	YES
+performance_schema_events_statements_history_long_size	NONE	10000	10000	NULL	NULL	NULL	YES
+performance_schema_events_statements_history_size	NONE	10	10	NULL	NULL	NULL	YES
+performance_schema_events_waits_history_long_size	NONE	10000	10000	NULL	NULL	NULL	YES
+performance_schema_events_waits_history_size	NONE	10	10	NULL	NULL	NULL	YES
+performance_schema_hosts_size	NONE	100	100	NULL	NULL	NULL	YES
+performance_schema_max_cond_classes	NONE	80	80	NULL	NULL	NULL	YES
+performance_schema_max_cond_instances	NONE	3504	3504	NULL	NULL	NULL	YES
+performance_schema_max_file_classes	NONE	50	50	NULL	NULL	NULL	YES
+performance_schema_max_file_handles	NONE	32768	32768	NULL	NULL	NULL	YES
+performance_schema_max_file_instances	NONE	7693	7693	NULL	NULL	NULL	YES
+performance_schema_max_mutex_classes	NONE	200	200	NULL	NULL	NULL	YES
+performance_schema_max_mutex_instances	NONE	15906	15906	NULL	NULL	NULL	YES
+performance_schema_max_rwlock_classes	NONE	40	40	NULL	NULL	NULL	YES
+performance_schema_max_rwlock_instances	NONE	9102	9102	NULL	NULL	NULL	YES
+performance_schema_max_socket_classes	NONE	10	10	NULL	NULL	NULL	YES
+performance_schema_max_socket_instances	NONE	322	322	NULL	NULL	NULL	YES
+performance_schema_max_stage_classes	NONE	150	150	NULL	NULL	NULL	YES
+performance_schema_max_statement_classes	NONE	168	168	NULL	NULL	NULL	YES
+performance_schema_max_table_handles	NONE	4000	4000	NULL	NULL	NULL	YES
+performance_schema_max_table_instances	NONE	12500	12500	NULL	NULL	NULL	YES
+performance_schema_max_thread_classes	NONE	50	50	NULL	NULL	NULL	YES
+performance_schema_max_thread_instances	NONE	402	402	NULL	NULL	NULL	YES
+performance_schema_session_connect_attrs_size	NONE	512	512	NULL	NULL	NULL	YES
+performance_schema_setup_actors_size	NONE	100	100	NULL	NULL	NULL	YES
+performance_schema_setup_objects_size	NONE	100	100	NULL	NULL	NULL	YES
+performance_schema_users_size	NONE	100	100	NULL	NULL	NULL	YES
+pid_file	NONE	/usr/local/mysql/data/${LOCALHOST_NAME}.pid	/usr/local/mysql/data/${LOCALHOST_NAME}.pid	NULL	NULL	NULL	YES
+plugin_audit_log_buffer_size	INSTANCE	30	0	NULL	NULL	NULL	NO
+plugin_audit_log_flush_interval	INSTANCE	30	30	NULL	NULL	NULL	NO
+plugin_dir	INSTANCE	/data/deploy/plugin	/data/deploy/plugin	NULL	NULL	NULL	NO
+plugin_load	INSTANCE			NULL	NULL	NULL	NO
+port	NONE	4000	4000	0	65535	NULL	NO
+preload_buffer_size	SESSION,GLOBAL	32768	32768	NULL	NULL	NULL	YES
+profiling	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+profiling_history_size	SESSION,GLOBAL	15	15	NULL	NULL	NULL	YES
+protocol_version	NONE	10	10	NULL	NULL	NULL	YES
+pseudo_slave_mode	SESSION	OFF	OFF	NULL	NULL	NULL	YES
+pseudo_thread_id	SESSION			NULL	NULL	NULL	YES
+query_alloc_block_size	SESSION,GLOBAL	8192	8192	NULL	NULL	NULL	YES
+query_cache_limit	GLOBAL	1048576	1048576	NULL	NULL	NULL	YES
+query_cache_min_res_unit	GLOBAL	4096	4096	NULL	NULL	NULL	YES
+query_cache_size	SESSION,GLOBAL	1048576	1048576	NULL	NULL	NULL	YES
+query_cache_type	SESSION,GLOBAL	OFF	OFF	NULL	NULL	OFF,ON,DEMAND	YES
+query_cache_wlock_invalidate	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+query_prealloc_size	SESSION,GLOBAL	8192	8192	NULL	NULL	NULL	YES
+rand_seed1	SESSION	0	0	0	2147483647	NULL	NO
+rand_seed2	SESSION	0	0	0	2147483647	NULL	NO
+range_alloc_block_size	SESSION,GLOBAL	4096	4096	NULL	NULL	NULL	YES
+rbr_exec_mode	SESSION			NULL	NULL	NULL	YES
+read_buffer_size	SESSION,GLOBAL	131072	131072	NULL	NULL	NULL	YES
+read_only	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+read_rnd_buffer_size	SESSION,GLOBAL	262144	262144	NULL	NULL	NULL	YES
+relay_log_info_file	NONE	relay-log.info	relay-log.info	NULL	NULL	NULL	YES
+relay_log_info_repository	GLOBAL	FILE	FILE	NULL	NULL	NULL	YES
+relay_log_purge	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+relay_log_recovery	NONE	0	0	NULL	NULL	NULL	YES
+relay_log_space_limit	NONE	0	0	NULL	NULL	NULL	YES
+report_port	NONE	3306	3306	NULL	NULL	NULL	YES
+require_secure_transport	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+rewriter_enabled	GLOBAL			NULL	NULL	NULL	YES
+rewriter_verbose	GLOBAL			NULL	NULL	NULL	YES
+rpl_semi_sync_master_enabled	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+rpl_semi_sync_master_timeout	GLOBAL	10000	10000	0	9223372036854775807	NULL	YES
+rpl_semi_sync_master_trace_level	GLOBAL			NULL	NULL	NULL	YES
+rpl_semi_sync_master_wait_for_slave_count	GLOBAL	1	1	1	65535	NULL	YES
+rpl_semi_sync_master_wait_no_slave	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+rpl_semi_sync_master_wait_point	GLOBAL	AFTER_SYNC	AFTER_SYNC	NULL	NULL	AFTER_SYNC,AFTER_COMMIT	YES
+rpl_semi_sync_slave_enabled	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+rpl_semi_sync_slave_trace_level	GLOBAL			NULL	NULL	NULL	YES
+rpl_stop_slave_timeout	GLOBAL	31536000	31536000	NULL	NULL	NULL	YES
+secure_auth	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+server_id	GLOBAL	0	0	NULL	NULL	NULL	YES
+server_id_bits	NONE	32	32	NULL	NULL	NULL	YES
+server_uuid	NONE	00000000-0000-0000-0000-000000000000	00000000-0000-0000-0000-000000000000	NULL	NULL	NULL	YES
+session_track_gtids	SESSION,GLOBAL	OFF	OFF	NULL	NULL	OFF,OWN_GTID,ALL_GTIDS	YES
+session_track_schema	SESSION,GLOBAL			NULL	NULL	NULL	YES
+session_track_state_change	SESSION,GLOBAL			NULL	NULL	NULL	YES
+session_track_system_variables	SESSION,GLOBAL			NULL	NULL	NULL	YES
+sha256_password_proxy_users	GLOBAL			NULL	NULL	NULL	YES
+show_compatibility_56	GLOBAL			NULL	NULL	NULL	YES
+show_old_temporals	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+skip_external_locking	NONE	1	1	NULL	NULL	NULL	YES
+skip_name_resolve	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+skip_networking	NONE	0	0	NULL	NULL	NULL	YES
+skip_show_database	NONE	0	0	NULL	NULL	NULL	YES
+slave_allow_batching	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+slave_checkpoint_group	GLOBAL	512	512	NULL	NULL	NULL	YES
+slave_checkpoint_period	GLOBAL	300	300	NULL	NULL	NULL	YES
+slave_compressed_protocol	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+slave_exec_mode	GLOBAL	STRICT	STRICT	NULL	NULL	NULL	YES
+slave_load_tmpdir	NONE	/var/tmp/	/var/tmp/	NULL	NULL	NULL	YES
+slave_max_allowed_packet	GLOBAL	1073741824	1073741824	NULL	NULL	NULL	YES
+slave_net_timeout	GLOBAL	3600	3600	NULL	NULL	NULL	YES
+slave_parallel_type	GLOBAL			NULL	NULL	NULL	YES
+slave_parallel_workers	GLOBAL	0	0	NULL	NULL	NULL	YES
+slave_pending_jobs_size_max	GLOBAL	16777216	16777216	NULL	NULL	NULL	YES
+slave_preserve_commit_order	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+slave_rows_search_algorithms	GLOBAL	TABLE_SCAN,INDEX_SCAN	TABLE_SCAN,INDEX_SCAN	NULL	NULL	NULL	YES
+slave_skip_errors	NONE	OFF	OFF	NULL	NULL	NULL	YES
+slave_sql_verify_checksum	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+slave_transaction_retries	GLOBAL	10	10	NULL	NULL	NULL	YES
+slow_launch_time	GLOBAL	2	2	NULL	NULL	NULL	YES
+slow_query_log	GLOBAL	0	0	NULL	NULL	NULL	YES
+slow_query_log_file	GLOBAL	/usr/local/mysql/data/${LOCALHOST_NAME}-slow.log	/usr/local/mysql/data/${LOCALHOST_NAME}-slow.log	NULL	NULL	NULL	YES
+socket	NONE	/tmp/tidb-4000.sock	/tmp/tidb-4000.sock	NULL	NULL	NULL	NO
+sort_buffer_size	SESSION,GLOBAL	262144	262144	NULL	NULL	NULL	YES
+sql_auto_is_null	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+sql_big_selects	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	YES
+sql_buffer_result	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+sql_log_off	SESSION,GLOBAL	0	0	NULL	NULL	NULL	YES
+sql_mode	SESSION,GLOBAL	ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION	ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION	NULL	NULL	NULL	NO
+sql_notes	SESSION,GLOBAL	1	1	NULL	NULL	NULL	YES
+sql_quote_show_create	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	YES
+sql_require_primary_key	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+sql_safe_updates	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+sql_select_limit	SESSION,GLOBAL	18446744073709551615	18446744073709551615	0	18446744073709551615	NULL	NO
+sql_slave_skip_counter	GLOBAL	0	0	NULL	NULL	NULL	YES
+sql_warnings	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+ssl_ca	NONE			NULL	NULL	NULL	NO
+ssl_cert	NONE			NULL	NULL	NULL	NO
+ssl_cipher	NONE			NULL	NULL	NULL	YES
+ssl_key	NONE			NULL	NULL	NULL	NO
+storage_engine	SESSION,GLOBAL	InnoDB	InnoDB	NULL	NULL	NULL	YES
+stored_program_cache	GLOBAL	256	256	NULL	NULL	NULL	YES
+super_read_only	GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+sync_binlog	GLOBAL	0	0	0	4294967295	NULL	YES
+sync_frm	GLOBAL	ON	ON	NULL	NULL	NULL	YES
+sync_master_info	GLOBAL	10000	10000	NULL	NULL	NULL	YES
+sync_relay_log	GLOBAL	10000	10000	NULL	NULL	NULL	YES
+sync_relay_log_info	GLOBAL	10000	10000	NULL	NULL	NULL	YES
+system_time_zone	NONE	Asia/Shanghai	Asia/Shanghai	NULL	NULL	NULL	NO
+table_definition_cache	GLOBAL	2000	2000	400	524288	NULL	YES
+table_open_cache	GLOBAL	2000	2000	NULL	NULL	NULL	YES
+table_open_cache_instances	NONE	1	1	NULL	NULL	NULL	YES
+thread_cache_size	GLOBAL	9	9	NULL	NULL	NULL	YES
+thread_concurrency	NONE	10	10	NULL	NULL	NULL	YES
+thread_handling	NONE	one-thread-per-connection	one-thread-per-connection	NULL	NULL	NULL	YES
+thread_pool_size	GLOBAL	16	16	1	64	NULL	YES
+thread_stack	NONE	262144	262144	NULL	NULL	NULL	YES
+tidb_accelerate_user_creation_update	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_adaptive_closest_read_threshold	SESSION,GLOBAL	4096	4096	0	9223372036854775807	NULL	NO
+tidb_advancer_check_point_lag_limit	GLOBAL	48h0m0s	48h0m0s	NULL	NULL	NULL	NO
+tidb_allow_batch_cop	SESSION,GLOBAL	1	1	0	2	NULL	NO
+tidb_allow_fallback_to_tikv	SESSION,GLOBAL			NULL	NULL	NULL	NO
+tidb_allow_function_for_expression_index	NONE	json_array, json_array_append, json_array_insert, json_contains, json_contains_path, json_depth, json_extract, json_insert, json_keys, json_length, json_merge_patch, json_merge_preserve, json_object, json_pretty, json_quote, json_remove, json_replace, json_schema_valid, json_search, json_set, json_storage_size, json_type, json_unquote, json_valid, lower, md5, reverse, tidb_shard, upper, vitess_hash	json_array, json_array_append, json_array_insert, json_contains, json_contains_path, json_depth, json_extract, json_insert, json_keys, json_length, json_merge_patch, json_merge_preserve, json_object, json_pretty, json_quote, json_remove, json_replace, json_schema_valid, json_search, json_set, json_storage_size, json_type, json_unquote, json_valid, lower, md5, reverse, tidb_shard, upper, vitess_hash	NULL	NULL	NULL	NO
+tidb_allow_mpp	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_allow_remove_auto_inc	SESSION	OFF	OFF	NULL	NULL	NULL	NO
+tidb_allow_tiflash_cop	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_analyze_column_options	GLOBAL	ALL	ALL	NULL	NULL	NULL	NO
+tidb_analyze_distsql_scan_concurrency	SESSION,GLOBAL	4	4	0	2147483647	NULL	NO
+tidb_analyze_partition_concurrency	SESSION,GLOBAL	2	2	1	128	NULL	NO
+tidb_analyze_skip_column_types	SESSION,GLOBAL	json,blob,mediumblob,longblob,mediumtext,longtext	json,blob,mediumblob,longblob,mediumtext,longtext	NULL	NULL	NULL	NO
+tidb_analyze_version	SESSION,GLOBAL	2	2	1	2	NULL	NO
+tidb_auto_analyze_concurrency	GLOBAL	1	1	0	2147483647	NULL	NO
+tidb_auto_analyze_end_time	GLOBAL	23:59 +0000	23:59 +0000	NULL	NULL	NULL	NO
+tidb_auto_analyze_partition_batch_size	GLOBAL	8192	8192	1	8192	NULL	NO
+tidb_auto_analyze_ratio	GLOBAL	0.5	0.5	0	18446744073709551615	NULL	NO
+tidb_auto_analyze_start_time	GLOBAL	00:00 +0000	00:00 +0000	NULL	NULL	NULL	NO
+tidb_auto_build_stats_concurrency	GLOBAL	1	1	1	256	NULL	NO
+tidb_backoff_lock_fast	SESSION,GLOBAL	10	10	1	2147483647	NULL	NO
+tidb_backoff_weight	SESSION,GLOBAL	2	2	0	2147483647	NULL	NO
+tidb_batch_commit	SESSION	OFF	OFF	NULL	NULL	NULL	NO
+tidb_batch_delete	SESSION	OFF	OFF	NULL	NULL	NULL	NO
+tidb_batch_insert	SESSION	OFF	OFF	NULL	NULL	NULL	NO
+tidb_batch_pending_tiflash_count	SESSION,GLOBAL	4000	4000	0	4294967295	NULL	NO
+tidb_broadcast_join_threshold_count	SESSION,GLOBAL	10240	10240	0	9223372036854775807	NULL	NO
+tidb_broadcast_join_threshold_size	SESSION,GLOBAL	104857600	104857600	0	9223372036854775807	NULL	NO
+tidb_build_sampling_stats_concurrency	SESSION,GLOBAL	2	2	1	256	NULL	NO
+tidb_build_stats_concurrency	SESSION,GLOBAL	2	2	1	256	NULL	NO
+tidb_capture_plan_baselines	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_cb_pd_metadata_error_rate_threshold_ratio	GLOBAL	0	0	0	1	NULL	NO
+tidb_cdc_write_source	SESSION	0	0	0	15	NULL	NO
+tidb_check_mb4_value_in_utf8	INSTANCE	ON	ON	NULL	NULL	NULL	NO
+tidb_checksum_table_concurrency	SESSION	4	4	1	256	NULL	NO
+tidb_cloud_storage_uri	GLOBAL			NULL	NULL	NULL	NO
+tidb_committer_concurrency	GLOBAL	128	128	1	10000	NULL	NO
+tidb_config	INSTANCE		{
+	"advertise-address": "${LOCALHOST}",
+	"alter-primary-key": false,
+	"autoscaler-addr": "tiflash-autoscale-lb.tiflash-autoscale.svc.cluster.local:8081",
+	"autoscaler-cluster-id": "",
+	"autoscaler-type": "aws",
+	"ballast-object-size": 0,
+	"compatible-kill-query": false,
+	"cors": "",
+	"delay-clean-table-lock": 0,
+	"deprecate-integer-display-length": true,
+	"disaggregated-tiflash": false,
+	"enable-32bits-connection-id": true,
+	"enable-enum-length-limit": true,
+	"enable-forwarding": false,
+	"enable-global-kill": true,
+	"enable-table-lock": false,
+	"enable-tcp4-only": false,
+	"enable-telemetry": false,
+	"experimental": {
+		"allow-expression-index": false
+	},
+	"graceful-wait-before-shutdown": 0,
+	"host": "${LOCALHOST}",
+	"in-mem-slow-query-recent-num": 500,
+	"in-mem-slow-query-topn-num": 30,
+	"index-limit": 64,
+	"initialize-sql-file": "",
+	"instance": {
+		"ddl_slow_threshold": 300,
+		"max_connections": 0,
+		"plugin_audit_log_buffer_size": 0,
+		"plugin_audit_log_flush_interval": 30,
+		"plugin_dir": "/data/deploy/plugin",
+		"plugin_load": "",
+		"tidb_check_mb4_value_in_utf8": true,
+		"tidb_enable_collect_execution_info": true,
+		"tidb_enable_ddl": true,
+		"tidb_enable_slow_log": true,
+		"tidb_enable_stats_owner": true,
+		"tidb_expensive_query_time_threshold": 60,
+		"tidb_expensive_txn_time_threshold": 600,
+		"tidb_force_priority": "NO_PRIORITY",
+		"tidb_general_log": false,
+		"tidb_pprof_sql_cpu": false,
+		"tidb_rc_read_check_ts": false,
+		"tidb_record_plan_in_slow_log": 1,
+		"tidb_service_scope": "",
+		"tidb_slow_log_threshold": 300,
+		"tidb_stmt_summary_enable_persistent": false,
+		"tidb_stmt_summary_file_max_backups": 0,
+		"tidb_stmt_summary_file_max_days": 3,
+		"tidb_stmt_summary_file_max_size": 64,
+		"tidb_stmt_summary_filename": "tidb-statements.log"
+	},
+	"is-tiflashcompute-fixed-pool": false,
+	"isolation-read": {
+		"engines": [
+			"tikv",
+			"tiflash",
+			"tidb"
+		]
+	},
+	"keyspace-name": "",
+	"labels": {},
+	"lease": "45s",
+	"log": {
+		"disable-error-stack": null,
+		"disable-timestamp": null,
+		"enable-error-stack": null,
+		"enable-timestamp": null,
+		"file": {
+			"buffer-flush-interval": 0,
+			"buffer-size": 0,
+			"compression": "",
+			"filename": "${TIUP_DATA_DIR}/tidb-0/tidb.log",
+			"is-buffered": false,
+			"max-backups": 0,
+			"max-days": 0,
+			"max-size": 300
+		},
+		"format": "text",
+		"general-log-file": "",
+		"level": "info",
+		"slow-query-file": "tidb-slow.log",
+		"timeout": 0
+	},
+	"max-ballast-object-size": 0,
+	"max-index-length": 3072,
+	"new_collations_enabled_on_first_bootstrap": true,
+	"opentracing": {
+		"enable": false,
+		"reporter": {
+			"buffer-flush-interval": 0,
+			"local-agent-host-port": "",
+			"log-spans": false,
+			"queue-size": 0
+		},
+		"rpc-metrics": false,
+		"sampler": {
+			"max-operations": 0,
+			"param": 1,
+			"sampling-refresh-interval": 0,
+			"sampling-server-url": "",
+			"type": "const"
+		}
+	},
+	"path": "${LOCALHOST}:2379",
+	"pd-client": {
+		"pd-server-timeout": 3
+	},
+	"performance": {
+		"analyze-partition-concurrency-quota": 16,
+		"bind-info-lease": "3s",
+		"concurrently-init-stats": true,
+		"cross-join": true,
+		"distinct-agg-push-down": false,
+		"enable-async-batch-get": false,
+		"enable-load-fmsketch": false,
+		"enable-stats-cache-mem-quota": true,
+		"enforce-mpp": false,
+		"force-init-stats": true,
+		"gogc": 100,
+		"lite-init-stats": true,
+		"max-procs": 0,
+		"max-txn-ttl": 3600000,
+		"plan-replayer-dump-worker-concurrency": 1,
+		"plan-replayer-gc-lease": "10m",
+		"projection-push-down": true,
+		"pseudo-estimate-ratio": 0.8,
+		"server-memory-quota": 0,
+		"stats-lease": "3s",
+		"stats-load-concurrency": 0,
+		"stats-load-queue-size": 1000,
+		"stmt-count-limit": 5000,
+		"tcp-keep-alive": true,
+		"tcp-no-delay": true,
+		"txn-entry-size-limit": 6291456,
+		"txn-total-size-limit": 104857600
+	},
+	"pessimistic-txn": {
+		"constraint-check-in-place-pessimistic": true,
+		"deadlock-history-capacity": 10,
+		"deadlock-history-collect-retryable": false,
+		"max-retry-count": 256,
+		"pessimistic-auto-commit": false
+	},
+	"plugin": {},
+	"port": 4000,
+	"prepared-plan-cache": {},
+	"proxy-protocol": {
+		"fallbackable": false,
+		"header-timeout": 5,
+		"networks": ""
+	},
+	"repair-mode": false,
+	"repair-table-list": [],
+	"security": {
+		"auth-token-jwks": "",
+		"auth-token-refresh-interval": "1h0m0s",
+		"auto-tls": true,
+		"cluster-ssl-ca": "",
+		"cluster-ssl-cert": "",
+		"cluster-ssl-key": "",
+		"cluster-verify-cn": null,
+		"disconnect-on-expired-password": true,
+		"enable-sem": false,
+		"rsa-key-size": 4096,
+		"secure-bootstrap": false,
+		"session-token-signing-cert": "",
+		"session-token-signing-key": "",
+		"skip-grant-table": false,
+		"spilled-file-encryption-method": "plaintext",
+		"ssl-ca": "",
+		"ssl-cert": "",
+		"ssl-key": "",
+		"tls-version": ""
+	},
+	"server-version": "",
+	"skip-register-to-dashboard": false,
+	"socket": "/tmp/tidb-4000.sock",
+	"split-region-max-num": 1000,
+	"split-table": true,
+	"status": {
+		"grpc-concurrent-streams": 1024,
+		"grpc-initial-window-size": 2097152,
+		"grpc-keepalive-time": 10,
+		"grpc-keepalive-timeout": 3,
+		"grpc-max-send-msg-size": 2147483647,
+		"metrics-addr": "",
+		"metrics-interval": 15,
+		"record-db-label": false,
+		"record-db-qps": false,
+		"report-status": true,
+		"status-host": "0.0.0.0",
+		"status-port": 10080
+	},
+	"store": "tikv",
+	"stores-refresh-interval": 60,
+	"table-column-count-limit": 1017,
+	"temp-dir": "/tmp/tidb",
+	"tidb-edition": "",
+	"tidb-enable-exit-check": false,
+	"tidb-max-reuse-chunk": 64,
+	"tidb-max-reuse-column": 256,
+	"tidb-release-version": "",
+	"tikv-client": {
+		"async-commit": {
+			"allowed-clock-drift": 500000000,
+			"keys-limit": 256,
+			"safe-window": 2000000000,
+			"total-key-size-limit": 4096
+		},
+		"batch-policy": "standard",
+		"batch-wait-size": 8,
+		"commit-timeout": "41s",
+		"copr-cache": {
+			"capacity-mb": 1000
+		},
+		"copr-req-timeout": 60000000000,
+		"enable-chunk-rpc": true,
+		"enable-replica-selector-v2": true,
+		"grpc-compression-type": "none",
+		"grpc-connection-count": 4,
+		"grpc-initial-conn-window-size": 134217728,
+		"grpc-initial-window-size": 134217728,
+		"grpc-keepalive-time": 10,
+		"grpc-keepalive-timeout": 3,
+		"grpc-shared-buffer-pool": false,
+		"max-batch-size": 128,
+		"max-batch-wait-time": 0,
+		"max-concurrency-request-limit": 9223372036854776000,
+		"overload-threshold": 200,
+		"region-cache-ttl": 600,
+		"resolve-lock-lite-threshold": 16,
+		"store-limit": 0,
+		"store-liveness-timeout": "1s",
+		"ttl-refreshed-txn-size": 33554432
+	},
+	"tmp-storage-path": "/var/folders/14/1k29ygbn5cxd6ydccy7djh800000gn/T/501_tidb/MTI3LjAuMC4xOjQwMDAvMC4wLjAuMDoxMDA4MA==/tmp-storage",
+	"tmp-storage-quota": -1,
+	"token-limit": 1000,
+	"top-sql": {
+		"receiver-address": ""
+	},
+	"transaction-summary": {
+		"transaction-id-digest-min-duration": 2147483647,
+		"transaction-summary-capacity": 500
+	},
+	"treat-old-version-utf8-as-utf8mb4": true,
+	"use-autoscaler": false,
+	"version-comment": ""
+}	NULL	NULL	NULL	NO
+tidb_constraint_check_in_place	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_constraint_check_in_place_pessimistic	SESSION	ON	ON	NULL	NULL	NULL	NO
+tidb_cost_model_version	SESSION,GLOBAL	2	2	1	2	NULL	NO
+tidb_current_ts	SESSION	0	0	0	9223372036854775807	NULL	NO
+tidb_ddl_disk_quota	GLOBAL	107374182400	107374182400	107374182400	1125899906842624	NULL	NO
+tidb_ddl_enable_fast_reorg	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_ddl_error_count_limit	GLOBAL	512	512	0	9223372036854775807	NULL	NO
+tidb_ddl_flashback_concurrency	GLOBAL	64	64	1	256	NULL	NO
+tidb_ddl_reorg_batch_size	SESSION,GLOBAL	256	256	32	10240	NULL	NO
+tidb_ddl_reorg_max_write_speed	GLOBAL	0	0	NULL	NULL	NULL	NO
+tidb_ddl_reorg_priority	SESSION	PRIORITY_LOW	PRIORITY_LOW	NULL	NULL	PRIORITY_LOW,PRIORITY_NORMAL,PRIORITY_HIGH	NO
+tidb_ddl_reorg_worker_cnt	SESSION,GLOBAL	4	4	1	256	NULL	NO
+tidb_default_string_match_selectivity	SESSION,GLOBAL	0.8	0.8	0	1	NULL	NO
+tidb_disable_txn_auto_retry	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_distsql_scan_concurrency	SESSION,GLOBAL	15	15	1	256	NULL	NO
+tidb_dml_batch_size	SESSION,GLOBAL	0	0	0	2147483647	NULL	NO
+tidb_dml_type	SESSION	STANDARD	STANDARD	NULL	NULL	NULL	NO
+tidb_enable_1pc	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_analyze_snapshot	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_async_commit	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_async_merge_global_stats	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_auto_analyze	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_auto_analyze_priority_queue	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_auto_increment_in_generated	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_batch_dml	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_cascades_planner	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_check_constraint	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_chunk_rpc	SESSION	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_clustered_index	SESSION,GLOBAL	ON	ON	NULL	NULL	OFF,ON,INT_ONLY	NO
+tidb_enable_collect_execution_info	INSTANCE	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_column_tracking	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_ddl	INSTANCE	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_dist_task	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_enhanced_security	NONE	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_exchange_partition	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_extended_stats	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_external_ts_read	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_fast_analyze	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_fast_create_table	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_fast_table_check	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_foreign_key	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_gc_aware_memory_track	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_global_index	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_gogc_tuner	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_historical_stats	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_historical_stats_for_capture	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_index_merge	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_index_merge_join	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_inl_join_inner_multi_pattern	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_instance_plan_cache	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_lazy_cursor_fetch	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_legacy_instance_scope	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_list_partition	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_local_txn	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_metadata_lock	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_mutation_checker	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_new_cost_interface	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_new_only_full_group_by_check	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_non_prepared_plan_cache	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_non_prepared_plan_cache_for_dml	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_noop_functions	SESSION,GLOBAL	OFF	OFF	NULL	NULL	OFF,ON,WARN	NO
+tidb_enable_noop_variables	GLOBAL	ON	ON	NULL	NULL	OFF,ON	NO
+tidb_enable_null_aware_anti_join	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_ordered_result_mode	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_outer_join_reorder	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_paging	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_parallel_apply	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_parallel_hashagg_spill	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_pipelined_window_function	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_plan_cache_for_param_limit	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_plan_cache_for_subquery	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_plan_replayer_capture	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_plan_replayer_continuous_capture	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_prepared_plan_cache	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_prepared_plan_cache_memory_monitor	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_pseudo_for_outdated_stats	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_rate_limit_action	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_resource_control	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_reuse_chunk	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_row_level_checksum	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_shared_lock_promotion	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_slow_log	INSTANCE	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_stats_owner	INSTANCE	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_stmt_summary	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_strict_double_type_check	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_table_partition	SESSION,GLOBAL	ON	ON	NULL	NULL	OFF,ON,AUTO	NO
+tidb_enable_telemetry	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_tiflash_pipeline_model	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_tiflash_read_for_write_stmt	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_tmp_storage_on_oom	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_top_sql	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_tso_follower_proxy	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_unsafe_substitute	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_enable_vectorized_expression	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enable_window_function	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_enforce_mpp	SESSION	OFF	OFF	NULL	NULL	NULL	NO
+tidb_evolve_plan_baselines	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_evolve_plan_task_end_time	GLOBAL	23:59 +0000	23:59 +0000	NULL	NULL	NULL	NO
+tidb_evolve_plan_task_max_time	GLOBAL	600	600	-1	9223372036854775807	NULL	NO
+tidb_evolve_plan_task_start_time	GLOBAL	00:00 +0000	00:00 +0000	NULL	NULL	NULL	NO
+tidb_executor_concurrency	SESSION,GLOBAL	5	5	1	256	NULL	NO
+tidb_expensive_query_time_threshold	INSTANCE	60	60	10	2147483647	NULL	NO
+tidb_expensive_txn_time_threshold	INSTANCE	600	600	60	2147483647	NULL	NO
+tidb_external_ts	GLOBAL	0	0	NULL	NULL	NULL	NO
+tidb_force_priority	INSTANCE	NO_PRIORITY	NO_PRIORITY	NULL	NULL	NO_PRIORITY,LOW_PRIORITY,HIGH_PRIORITY,DELAYED	NO
+tidb_foreign_key_check_in_shared_lock	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_gc_concurrency	GLOBAL	-1	-1	1	256	NULL	NO
+tidb_gc_enable	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_gc_life_time	GLOBAL	10m0s	10m0s	NULL	NULL	NULL	NO
+tidb_gc_max_wait_time	GLOBAL	86400	86400	600	31536000	NULL	NO
+tidb_gc_run_interval	GLOBAL	10m0s	10m0s	NULL	NULL	NULL	NO
+tidb_gc_scan_lock_mode	GLOBAL	LEGACY	LEGACY	NULL	NULL	PHYSICAL,LEGACY	NO
+tidb_general_log	INSTANCE	OFF	OFF	NULL	NULL	NULL	NO
+tidb_generate_binary_plan	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_gogc_tuner_max_value	GLOBAL	500	500	10	2147483647	NULL	NO
+tidb_gogc_tuner_min_value	GLOBAL	100	100	10	2147483647	NULL	NO
+tidb_gogc_tuner_threshold	GLOBAL	0.6	0.6	0	18446744073709551615	NULL	NO
+tidb_guarantee_linearizability	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_hash_exchange_with_new_collation	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_hash_join_concurrency	SESSION,GLOBAL	-1	-1	1	256	NULL	NO
+tidb_hash_join_version	SESSION,GLOBAL	legacy	legacy	NULL	NULL	NULL	NO
+tidb_hashagg_final_concurrency	SESSION,GLOBAL	-1	-1	1	256	NULL	NO
+tidb_hashagg_partial_concurrency	SESSION,GLOBAL	-1	-1	1	256	NULL	NO
+tidb_historical_stats_duration	GLOBAL	168h0m0s	168h0m0s	NULL	NULL	NULL	NO
+tidb_idle_transaction_timeout	SESSION,GLOBAL	0	0	0	31536000	NULL	NO
+tidb_ignore_inlist_plan_digest	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_ignore_prepared_cache_close_stmt	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_index_join_batch_size	SESSION,GLOBAL	25000	25000	1	2147483647	NULL	NO
+tidb_index_join_double_read_penalty_cost_rate	SESSION,GLOBAL	0	0	0	18446744073709551615	NULL	NO
+tidb_index_lookup_concurrency	SESSION,GLOBAL	-1	-1	1	256	NULL	NO
+tidb_index_lookup_join_concurrency	SESSION,GLOBAL	-1	-1	1	256	NULL	NO
+tidb_index_lookup_pushdown_policy	SESSION,GLOBAL	hint-only	hint-only	NULL	NULL	hint-only,affinity-force,force	NO
+tidb_index_lookup_size	SESSION,GLOBAL	20000	20000	1	2147483647	NULL	NO
+tidb_index_merge_intersection_concurrency	SESSION,GLOBAL	-1	-1	1	256	NULL	NO
+tidb_index_serial_scan_concurrency	SESSION,GLOBAL	1	1	1	256	NULL	NO
+tidb_init_chunk_size	SESSION,GLOBAL	32	32	1	32	NULL	NO
+tidb_instance_plan_cache_max_size	GLOBAL	104857600	104857600	NULL	NULL	NULL	NO
+tidb_instance_plan_cache_reserved_percentage	GLOBAL	0.1	0.1	0	1	NULL	NO
+tidb_isolation_read_engines	SESSION	tikv,tiflash,tidb	tikv,tiflash,tidb	NULL	NULL	NULL	NO
+tidb_last_ddl_info	SESSION		{"query":"","seq_num":0}	NULL	NULL	NULL	NO
+tidb_last_plan_replayer_token	SESSION			NULL	NULL	NULL	NO
+tidb_last_query_info	SESSION		{"txn_scope":"global","start_ts":0,"for_update_ts":0,"ru_consumption":0}	NULL	NULL	NULL	NO
+tidb_last_txn_info	SESSION			NULL	NULL	NULL	NO
+tidb_load_based_replica_read_threshold	SESSION,GLOBAL	1s	1s	NULL	NULL	NULL	NO
+tidb_load_binding_timeout	GLOBAL	200	200	0	2147483647	NULL	NO
+tidb_lock_unchanged_keys	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_log_file_max_days	INSTANCE	0	0	0	2147483647	NULL	NO
+tidb_low_resolution_tso	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_low_resolution_tso_update_interval	GLOBAL	2000	2000	10	60000	NULL	NO
+tidb_max_auto_analyze_time	GLOBAL	43200	43200	0	2147483647	NULL	NO
+tidb_max_bytes_before_tiflash_external_group_by	SESSION,GLOBAL	-1	-1	-1	9223372036854775807	NULL	NO
+tidb_max_bytes_before_tiflash_external_join	SESSION,GLOBAL	-1	-1	-1	9223372036854775807	NULL	NO
+tidb_max_bytes_before_tiflash_external_sort	SESSION,GLOBAL	-1	-1	-1	9223372036854775807	NULL	NO
+tidb_max_chunk_size	SESSION,GLOBAL	1024	1024	32	2147483647	NULL	NO
+tidb_max_delta_schema_count	GLOBAL	1024	1024	100	16384	NULL	NO
+tidb_max_dist_task_nodes	SESSION,GLOBAL	-1	-1	-1	128	NULL	NO
+tidb_max_paging_size	SESSION,GLOBAL	50000	50000	1	9223372036854775807	NULL	NO
+tidb_max_tiflash_threads	SESSION,GLOBAL	-1	-1	-1	256	NULL	NO
+tidb_mem_oom_action	GLOBAL	CANCEL	CANCEL	NULL	NULL	CANCEL,LOG	NO
+tidb_mem_quota_analyze	GLOBAL	-1	-1	-1	9223372036854775807	NULL	NO
+tidb_mem_quota_apply_cache	SESSION,GLOBAL	33554432	33554432	0	9223372036854775807	NULL	NO
+tidb_mem_quota_binding_cache	GLOBAL	67108864	67108864	0	2147483647	NULL	NO
+tidb_mem_quota_query	SESSION,GLOBAL	1073741824	1073741824	-1	9223372036854775807	NULL	NO
+tidb_memory_debug_mode_alarm_ratio	SESSION	0	0	0	9223372036854775807	NULL	NO
+tidb_memory_debug_mode_min_heap_inuse	SESSION	0	0	-9223372036854775808	9223372036854775807	NULL	NO
+tidb_memory_usage_alarm_keep_record_num	GLOBAL	5	5	1	10000	NULL	NO
+tidb_memory_usage_alarm_ratio	GLOBAL	0.7	0.7	0	1	NULL	NO
+tidb_merge_join_concurrency	SESSION,GLOBAL	1	1	1	256	NULL	NO
+tidb_merge_partition_stats_concurrency	SESSION,GLOBAL	1	1	1	256	NULL	NO
+tidb_metric_query_range_duration	SESSION	60	60	10	216000	NULL	NO
+tidb_metric_query_step	SESSION	60	60	10	216000	NULL	NO
+tidb_min_paging_size	SESSION,GLOBAL	128	128	1	9223372036854775807	NULL	NO
+tidb_mpp_store_fail_ttl	SESSION,GLOBAL	0s	0s	NULL	NULL	NULL	NO
+tidb_multi_statement_mode	SESSION,GLOBAL	OFF	OFF	NULL	NULL	OFF,ON,WARN	NO
+tidb_non_prepared_plan_cache_size	SESSION,GLOBAL	100	100	1	100000	NULL	NO
+tidb_nontransactional_ignore_error	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_advanced_join_hint	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_opt_agg_push_down	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_broadcast_cartesian_join	SESSION,GLOBAL	1	1	0	2	NULL	NO
+tidb_opt_concurrency_factor	SESSION,GLOBAL	3	3	0	18446744073709551615	NULL	NO
+tidb_opt_copcpu_factor	SESSION,GLOBAL	3	3	0	18446744073709551615	NULL	NO
+tidb_opt_correlation_exp_factor	SESSION,GLOBAL	1	1	0	2147483647	NULL	NO
+tidb_opt_correlation_threshold	SESSION,GLOBAL	0.9	0.9	0	1	NULL	NO
+tidb_opt_cpu_factor	SESSION,GLOBAL	3	3	0	18446744073709551615	NULL	NO
+tidb_opt_derive_topn	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_desc_factor	SESSION,GLOBAL	3	3	0	18446744073709551615	NULL	NO
+tidb_opt_disk_factor	SESSION,GLOBAL	1.5	1.5	0	18446744073709551615	NULL	NO
+tidb_opt_distinct_agg_push_down	SESSION	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_enable_correlation_adjustment	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_opt_enable_fuzzy_binding	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_enable_hash_join	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_opt_enable_late_materialization	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_opt_enable_mpp_shared_cte_execution	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_enable_no_decorrelate_in_select	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_enable_non_eval_scalar_subquery	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_enable_semi_join_rewrite	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_enable_three_stage_multi_distinct_agg	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_fix_control	SESSION,GLOBAL			NULL	NULL	NULL	NO
+tidb_opt_force_inline_cte	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_hash_agg_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_hash_join_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_index_join_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_index_lookup_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_index_merge_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_index_reader_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_index_scan_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_insubq_to_join_and_agg	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_opt_join_reorder_threshold	SESSION,GLOBAL	0	0	0	63	NULL	NO
+tidb_opt_join_reorder_through_sel	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_limit_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_limit_push_down_threshold	SESSION,GLOBAL	100	100	0	2147483647	NULL	NO
+tidb_opt_memory_factor	SESSION,GLOBAL	0.001	0.001	0	18446744073709551615	NULL	NO
+tidb_opt_merge_join_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_mpp_outer_join_fixed_build_side	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_network_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_objective	SESSION,GLOBAL	moderate	moderate	NULL	NULL	moderate,determinate	NO
+tidb_opt_ordering_index_selectivity_ratio	SESSION,GLOBAL	-1	-1	-1	1	NULL	NO
+tidb_opt_ordering_index_selectivity_threshold	SESSION,GLOBAL	0	0	0	1	NULL	NO
+tidb_opt_prefer_range_scan	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_opt_prefix_index_single_scan	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_opt_projection_push_down	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_opt_range_max_size	SESSION,GLOBAL	67108864	67108864	0	9223372036854775807	NULL	NO
+tidb_opt_scan_factor	SESSION,GLOBAL	1.5	1.5	0	18446744073709551615	NULL	NO
+tidb_opt_seek_factor	SESSION,GLOBAL	20	20	0	18446744073709551615	NULL	NO
+tidb_opt_skew_distinct_agg	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_sort_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_stream_agg_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_table_full_scan_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_table_range_scan_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_table_reader_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_table_rowid_scan_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_table_tiflash_scan_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_three_stage_distinct_agg	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_opt_tiflash_concurrency_factor	SESSION,GLOBAL	24	24	1	18446744073709551615	NULL	NO
+tidb_opt_topn_cost_factor	SESSION,GLOBAL	1	1	0	18446744073709551615	NULL	NO
+tidb_opt_use_invisible_indexes	SESSION	OFF	OFF	NULL	NULL	NULL	NO
+tidb_opt_write_row_id	SESSION	OFF	OFF	NULL	NULL	NULL	NO
+tidb_optimizer_selectivity_level	SESSION	0	0	0	2147483647	NULL	NO
+tidb_partition_prune_mode	SESSION,GLOBAL	dynamic	dynamic	NULL	NULL	static,dynamic,static-only,dynamic-only	NO
+tidb_persist_analyze_options	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_pessimistic_txn_fair_locking	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_placement_mode	SESSION,GLOBAL	STRICT	STRICT	NULL	NULL	STRICT,IGNORE	NO
+tidb_plan_cache_invalidation_on_fresh_stats	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_plan_cache_max_plan_size	SESSION,GLOBAL	2097152	2097152	0	18446744073709551615	NULL	NO
+tidb_pprof_sql_cpu	INSTANCE	0	0	0	1	NULL	NO
+tidb_pre_split_regions	SESSION,GLOBAL	0	0	0	15	NULL	NO
+tidb_prefer_broadcast_join_by_exchange_data_size	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_prepared_plan_cache_memory_guard_ratio	GLOBAL	0.1	0.1	0	1	NULL	NO
+tidb_prepared_plan_cache_size	SESSION,GLOBAL	100	100	1	100000	NULL	NO
+tidb_projection_concurrency	SESSION,GLOBAL	-1	-1	-1	256	NULL	NO
+tidb_query_log_max_len	GLOBAL	4096	4096	0	1073741824	NULL	NO
+tidb_rc_read_check_ts	INSTANCE	OFF	OFF	NULL	NULL	NULL	NO
+tidb_rc_write_check_ts	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_read_consistency	SESSION	strict	strict	NULL	NULL	NULL	NO
+tidb_read_staleness	SESSION	0	0	-2147483648	0	NULL	NO
+tidb_record_plan_in_slow_log	INSTANCE	ON	ON	NULL	NULL	NULL	NO
+tidb_redact_log	SESSION,GLOBAL	OFF	OFF	NULL	NULL	OFF,ON,MARKER	NO
+tidb_regard_null_as_point	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_remove_orderby_in_subquery	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_replica_read	SESSION,GLOBAL	leader	leader	NULL	NULL	leader,prefer-leader,follower,leader-and-follower,closest-replicas,closest-adaptive,learner	NO
+tidb_request_source_type	SESSION			NULL	NULL	,lightning,br,dumpling,background,ddl,stats,import	NO
+tidb_resource_control_strict_mode	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_restricted_read_only	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_retry_limit	SESSION,GLOBAL	10	10	-1	9223372036854775807	NULL	NO
+tidb_row_format_version	SESSION,GLOBAL	2	2	1	2	NULL	NO
+tidb_runtime_filter_mode	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_runtime_filter_type	SESSION,GLOBAL	IN	IN	NULL	NULL	NULL	NO
+tidb_scatter_region	SESSION,GLOBAL			NULL	NULL	NULL	NO
+tidb_schema_cache_size	GLOBAL	536870912	536870912	NULL	NULL	NULL	NO
+tidb_schema_version_cache_limit	GLOBAL	16	16	2	255	NULL	NO
+tidb_server_memory_limit	GLOBAL	80%	80%	NULL	NULL	NULL	NO
+tidb_server_memory_limit_gc_trigger	GLOBAL	0.7	0.7	NULL	NULL	NULL	NO
+tidb_server_memory_limit_sess_min_size	GLOBAL	134217728	134217728	NULL	NULL	NULL	NO
+tidb_service_scope	INSTANCE			NULL	NULL	NULL	NO
+tidb_session_alias	SESSION			NULL	NULL	NULL	NO
+tidb_session_plan_cache_size	SESSION,GLOBAL	100	100	1	100000	NULL	NO
+tidb_shard_allocate_step	SESSION,GLOBAL	9223372036854775807	9223372036854775807	1	9223372036854775807	NULL	NO
+tidb_shard_row_id_bits	SESSION,GLOBAL	0	0	0	15	NULL	NO
+tidb_simplified_metrics	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_skip_ascii_check	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_skip_isolation_level_check	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_skip_missing_partition_stats	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_skip_utf8_check	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_slow_log_max_per_sec	GLOBAL	0	1000000	0	1000000	NULL	NO
+tidb_slow_log_rules	SESSION,GLOBAL			NULL	NULL	NULL	NO
+tidb_slow_log_threshold	INSTANCE	300	300	-1	9223372036854775807	NULL	NO
+tidb_slow_query_file	SESSION	tidb-slow.log	tidb-slow.log	NULL	NULL	NULL	NO
+tidb_slow_txn_log_threshold	SESSION	0	0	0	9223372036854775807	NULL	NO
+tidb_snapshot	SESSION			NULL	NULL	NULL	NO
+tidb_source_id	GLOBAL	1	1	1	15	NULL	NO
+tidb_stats_cache_mem_quota	GLOBAL	0	0	0	1099511627776	NULL	NO
+tidb_stats_load_pseudo_timeout	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_stats_load_sync_wait	SESSION,GLOBAL	100	100	0	2147483647	NULL	NO
+tidb_stats_update_during_ddl	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_stmt_summary_enable_persistent	INSTANCE		OFF	NULL	NULL	NULL	NO
+tidb_stmt_summary_file_max_backups	INSTANCE		0	NULL	NULL	NULL	NO
+tidb_stmt_summary_file_max_days	INSTANCE		3	NULL	NULL	NULL	NO
+tidb_stmt_summary_file_max_size	INSTANCE		64	NULL	NULL	NULL	NO
+tidb_stmt_summary_filename	INSTANCE		tidb-statements.log	NULL	NULL	NULL	NO
+tidb_stmt_summary_history_size	GLOBAL	24	24	0	255	NULL	NO
+tidb_stmt_summary_internal_query	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_stmt_summary_max_sql_length	GLOBAL	4096	4096	0	2147483647	NULL	NO
+tidb_stmt_summary_max_stmt_count	GLOBAL	3000	3000	1	32767	NULL	NO
+tidb_stmt_summary_refresh_interval	GLOBAL	1800	1800	1	2147483647	NULL	NO
+tidb_store_batch_size	SESSION,GLOBAL	4	4	0	25000	NULL	NO
+tidb_store_limit	GLOBAL	0	0	0	9223372036854775807	NULL	NO
+tidb_streamagg_concurrency	SESSION,GLOBAL	1	1	1	256	NULL	NO
+tidb_super_read_only	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_sysdate_is_now	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tidb_sysproc_scan_concurrency	GLOBAL	1	1	0	2147483647	NULL	NO
+tidb_table_cache_lease	GLOBAL	3	3	1	10	NULL	NO
+tidb_tmp_table_max_size	SESSION,GLOBAL	67108864	67108864	1048576	137438953472	NULL	NO
+tidb_top_sql_max_meta_count	GLOBAL	5000	5000	1	10000	NULL	NO
+tidb_top_sql_max_time_series_count	GLOBAL	100	100	1	5000	NULL	NO
+tidb_track_aggregate_memory_usage	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_tso_client_batch_max_wait_time	GLOBAL	0	0	0	10	NULL	NO
+tidb_tso_client_rpc_mode	GLOBAL	DEFAULT	DEFAULT	NULL	NULL	DEFAULT,PARALLEL,PARALLEL-FAST	NO
+tidb_ttl_delete_batch_size	GLOBAL	100	100	1	10240	NULL	NO
+tidb_ttl_delete_rate_limit	GLOBAL	0	0	0	9223372036854775807	NULL	NO
+tidb_ttl_delete_worker_count	GLOBAL	4	4	1	256	NULL	NO
+tidb_ttl_job_enable	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_ttl_job_schedule_window_end_time	GLOBAL	23:59 +0000	23:59 +0000	NULL	NULL	NULL	NO
+tidb_ttl_job_schedule_window_start_time	GLOBAL	00:00 +0000	00:00 +0000	NULL	NULL	NULL	NO
+tidb_ttl_running_tasks	GLOBAL	-1	-1	1	256	NULL	NO
+tidb_ttl_scan_batch_size	GLOBAL	500	500	1	10240	NULL	NO
+tidb_ttl_scan_worker_count	GLOBAL	4	4	1	256	NULL	NO
+tidb_txn_assertion_level	SESSION,GLOBAL	FAST	FAST	NULL	NULL	OFF,FAST,STRICT	NO
+tidb_txn_commit_batch_size	GLOBAL	16384	16384	1	1073741824	NULL	NO
+tidb_txn_entry_size_limit	SESSION,GLOBAL	0	0	0	125829120	NULL	NO
+tidb_txn_mode	SESSION,GLOBAL	pessimistic	pessimistic	NULL	NULL	pessimistic,optimistic	NO
+tidb_use_plan_baselines	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO
+tidb_wait_split_region_finish	SESSION	ON	ON	NULL	NULL	NULL	NO
+tidb_wait_split_region_timeout	SESSION	300	300	1	2147483647	NULL	NO
+tidb_window_concurrency	SESSION,GLOBAL	-1	-1	1	256	NULL	NO
+tiflash_compute_dispatch_policy	SESSION,GLOBAL	consistent_hash	consistent_hash	NULL	NULL	NULL	NO
+tiflash_fastscan	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+tiflash_fine_grained_shuffle_batch_size	SESSION,GLOBAL	8192	8192	1	18446744073709551615	NULL	NO
+tiflash_fine_grained_shuffle_stream_count	SESSION,GLOBAL	0	0	-1	1024	NULL	NO
+tiflash_hashagg_preaggregation_mode	SESSION,GLOBAL	force_preagg	force_preagg	NULL	NULL	NULL	NO
+tiflash_mem_quota_query_per_node	SESSION,GLOBAL	0	0	-1	9223372036854775807	NULL	NO
+tiflash_query_spill_ratio	SESSION,GLOBAL	0.7	0.7	0	1	NULL	NO
+tiflash_replica_read	SESSION,GLOBAL	all_replicas	all_replicas	NULL	NULL	all_replicas,closest_adaptive,closest_replicas	NO
+tikv_client_read_timeout	SESSION,GLOBAL	0	0	0	2147483647	NULL	NO
+time_format	NONE	%H:%i:%s	%H:%i:%s	NULL	NULL	NULL	YES
+time_zone	SESSION,GLOBAL	SYSTEM	SYSTEM	NULL	NULL	NULL	NO
+timestamp	SESSION	0	1777720601.921324	0	2147483647	NULL	NO
+tls_version	NONE	TLSv1,TLSv1.1,TLSv1.2	TLSv1,TLSv1.1,TLSv1.2	NULL	NULL	NULL	YES
+tmp_table_size	SESSION,GLOBAL	16777216	16777216	1024	18446744073709551615	NULL	YES
+tmpdir	NONE	/var/tmp/	/var/tmp/	NULL	NULL	NULL	YES
+transaction_alloc_block_size	SESSION,GLOBAL	8192	8192	NULL	NULL	NULL	YES
+transaction_allow_batching	SESSION			NULL	NULL	NULL	YES
+transaction_isolation	SESSION,GLOBAL	REPEATABLE-READ	REPEATABLE-READ	NULL	NULL	READ-UNCOMMITTED,READ-COMMITTED,REPEATABLE-READ,SERIALIZABLE	NO
+transaction_prealloc_size	SESSION,GLOBAL	4096	4096	NULL	NULL	NULL	YES
+transaction_read_only	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+transaction_write_set_extraction	SESSION,GLOBAL			NULL	NULL	NULL	YES
+tx_isolation	SESSION,GLOBAL	REPEATABLE-READ	REPEATABLE-READ	NULL	NULL	READ-UNCOMMITTED,READ-COMMITTED,REPEATABLE-READ,SERIALIZABLE	NO
+tx_isolation_one_shot	SESSION			NULL	NULL	NULL	NO
+tx_read_only	SESSION,GLOBAL	OFF	OFF	NULL	NULL	NULL	YES
+tx_read_ts	SESSION			NULL	NULL	NULL	NO
+txn_scope	SESSION	global	global	NULL	NULL	NULL	NO
+unique_checks	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	YES
+updatable_views_with_limit	SESSION,GLOBAL	YES	YES	NULL	NULL	NULL	YES
+validate_password.check_user_name	GLOBAL	ON	ON	NULL	NULL	NULL	NO
+validate_password.dictionary	GLOBAL			NULL	NULL	NULL	NO
+validate_password.enable	GLOBAL	OFF	OFF	NULL	NULL	NULL	NO
+validate_password.length	GLOBAL	8	8	0	2147483647	NULL	NO
+validate_password.mixed_case_count	GLOBAL	1	1	0	2147483647	NULL	NO
+validate_password.number_count	GLOBAL	1	1	0	2147483647	NULL	NO
+validate_password.policy	GLOBAL	MEDIUM	MEDIUM	NULL	NULL	LOW,MEDIUM,STRONG	NO
+validate_password.special_char_count	GLOBAL	1	1	0	2147483647	NULL	NO
+version	NONE	8.0.11-TiDB-v8.5.6	8.0.11-TiDB-v8.5.6	NULL	NULL	NULL	NO
+version_comment	NONE	TiDB Server (Apache License 2.0) Community Edition, MySQL 8.0 compatible	TiDB Server (Apache License 2.0) Community Edition, MySQL 8.0 compatible	NULL	NULL	NULL	NO
+version_compile_machine	NONE	arm64	arm64	NULL	NULL	NULL	NO
+version_compile_os	NONE	darwin	darwin	NULL	NULL	NULL	NO
+wait_timeout	SESSION,GLOBAL	28800	28800	0	31536000	NULL	NO
+warning_count	SESSION	0	0	NULL	NULL	NULL	NO
+windowing_use_high_precision	SESSION,GLOBAL	ON	ON	NULL	NULL	NULL	NO

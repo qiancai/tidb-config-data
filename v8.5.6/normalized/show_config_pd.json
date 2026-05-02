@@ -1,0 +1,950 @@
+[
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "advertise-client-urls",
+    "Value": "http://${LOCALHOST}:2379"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "advertise-peer-urls",
+    "Value": "http://${LOCALHOST}:2380"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "auto-compaction-mode",
+    "Value": "periodic"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "auto-compaction-retention-v2",
+    "Value": "1h"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "client-urls",
+    "Value": "http://${LOCALHOST}:2379"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "cluster-version",
+    "Value": "8.5.6"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "controller.degraded-mode-wait-duration",
+    "Value": "0s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "controller.enable-controller-trace-log",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "controller.ltb-max-wait-duration",
+    "Value": "30s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "controller.ltb-token-rpc-max-delay",
+    "Value": "1s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "controller.request-unit.read-base-cost",
+    "Value": "0.125"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "controller.request-unit.read-cost-per-byte",
+    "Value": "0.0000152587890625"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "controller.request-unit.read-cpu-ms-cost",
+    "Value": "0.3333333333333333"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "controller.request-unit.read-per-batch-base-cost",
+    "Value": "0.5"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "controller.request-unit.write-base-cost",
+    "Value": "1"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "controller.request-unit.write-cost-per-byte",
+    "Value": "0.0009765625"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "controller.request-unit.write-per-batch-base-cost",
+    "Value": "1"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "dashboard.disable-custom-prom-addr",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "dashboard.enable-experimental",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "dashboard.enable-telemetry",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "dashboard.internal-proxy",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "dashboard.public-path-prefix",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "dashboard.tidb-cacert-path",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "dashboard.tidb-cert-path",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "dashboard.tidb-key-path",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "data-dir",
+    "Value": "${TIUP_DATA_DIR}/pd-0/data"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "election-interval",
+    "Value": "3s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "enable-grpc-gateway",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "enable-local-tso",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "enable-prevote",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "force-new-cluster",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "initial-cluster",
+    "Value": "pd-0=http://${LOCALHOST}:2380"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "initial-cluster-state",
+    "Value": "new"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "initial-cluster-token",
+    "Value": "pd-cluster"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "join",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "keyspace.check-region-split-interval",
+    "Value": "50ms"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "keyspace.pre-alloc",
+    "Value": "null"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "keyspace.wait-region-split",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "keyspace.wait-region-split-timeout",
+    "Value": "30s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "lease",
+    "Value": "5"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.development",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.disable-caller",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.disable-error-verbose",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.disable-stacktrace",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.disable-timestamp",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.error-output-path",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.file.filename",
+    "Value": "${TIUP_DATA_DIR}/pd-0/pd.log"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.file.max-backups",
+    "Value": "0"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.file.max-days",
+    "Value": "0"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.file.max-size",
+    "Value": "300"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.format",
+    "Value": "text"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.level",
+    "Value": "info"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "log.sampling",
+    "Value": "null"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "max-concurrent-tso-proxy-streamings",
+    "Value": "5000"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "max-request-bytes",
+    "Value": "157286400"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "metric.address",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "metric.interval",
+    "Value": "15s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "metric.job",
+    "Value": "pd-0"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "micro-service.enable-scheduling-fallback",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "name",
+    "Value": "pd-0"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.block-safe-point-v1",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.dashboard-address",
+    "Value": "http://${LOCALHOST}:2379"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.enable-gogc-tuner",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.flow-round-by-digit",
+    "Value": "3"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.gc-tuner-threshold",
+    "Value": "0.6"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.key-type",
+    "Value": "table"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.max-gap-reset-ts",
+    "Value": "24h0m0s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.metric-storage",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.min-resolved-ts-persistence-interval",
+    "Value": "1s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.runtime-services",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.server-memory-limit",
+    "Value": "0"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.server-memory-limit-gc-trigger",
+    "Value": "0.7"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "pd-server.use-region-storage",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "peer-urls",
+    "Value": "http://${LOCALHOST}:2380"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "quota-backend-bytes",
+    "Value": "8GiB"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication-mode.dr-auto-sync.dr",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication-mode.dr-auto-sync.dr-replicas",
+    "Value": "0"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication-mode.dr-auto-sync.label-key",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication-mode.dr-auto-sync.pause-region-split",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication-mode.dr-auto-sync.primary",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication-mode.dr-auto-sync.primary-replicas",
+    "Value": "0"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication-mode.dr-auto-sync.wait-recover-timeout",
+    "Value": "0s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication-mode.dr-auto-sync.wait-store-timeout",
+    "Value": "1m0s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication-mode.replication-mode",
+    "Value": "majority"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication.enable-placement-rules",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication.enable-placement-rules-cache",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication.isolation-level",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication.location-labels",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication.max-replicas",
+    "Value": "3"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "replication.strictly-match-label",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.affinity-schedule-limit",
+    "Value": "0"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-cross-table-merge",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-debug-metrics",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-diagnostic",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-heartbeat-breakdown-metrics",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-heartbeat-concurrent-runner",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-joint-consensus",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-location-replacement",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-make-up-replica",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-one-way-merge",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-remove-down-replica",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-remove-extra-replica",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-replace-offline-replica",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-tikv-split-region",
+    "Value": "true"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.enable-witness",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.high-space-ratio",
+    "Value": "0.7"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.hot-region-cache-hits-threshold",
+    "Value": "3"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.hot-region-schedule-limit",
+    "Value": "4"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.hot-regions-reserved-days",
+    "Value": "7"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.hot-regions-write-interval",
+    "Value": "10m0s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.leader-schedule-limit",
+    "Value": "4"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.leader-schedule-policy",
+    "Value": "count"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.low-space-ratio",
+    "Value": "0.8"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.max-affinity-merge-region-size",
+    "Value": "256"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.max-merge-region-keys",
+    "Value": "540000"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.max-merge-region-size",
+    "Value": "54"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.max-movable-hot-peer-size",
+    "Value": "512"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.max-pending-peer-count",
+    "Value": "64"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.max-snapshot-count",
+    "Value": "64"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.max-store-down-time",
+    "Value": "30m0s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.max-store-preparing-time",
+    "Value": "48h0m0s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.merge-schedule-limit",
+    "Value": "8"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.patrol-region-interval",
+    "Value": "100ms"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.patrol-region-worker-count",
+    "Value": "1"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.region-schedule-limit",
+    "Value": "2048"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.region-score-formula-version",
+    "Value": "v2"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.replica-schedule-limit",
+    "Value": "64"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.scheduler-max-waiting-operator",
+    "Value": "5"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.schedulers-v2",
+    "Value": "[{\"args\":null,\"args-payload\":\"\",\"disable\":false,\"type\":\"balance-region\"},{\"args\":null,\"args-payload\":\"\",\"disable\":false,\"type\":\"balance-leader\"},{\"args\":null,\"args-payload\":\"\",\"disable\":false,\"type\":\"hot-region\"},{\"args\":null,\"args-payload\":\"\",\"disable\":false,\"type\":\"evict-slow-store\"},{\"args\":null,\"args-payload\":\"\",\"disable\":false,\"type\":\"evict-stopping-store\"}]"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.slow-store-evicting-affected-store-ratio-threshold",
+    "Value": "0.3"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.split-merge-interval",
+    "Value": "1h0m0s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.store-limit-version",
+    "Value": "v1"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.store-limit.1.add-peer",
+    "Value": "15"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.store-limit.1.remove-peer",
+    "Value": "15"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.store-limit.134.add-peer",
+    "Value": "30"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.store-limit.134.remove-peer",
+    "Value": "30"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.switch-witness-interval",
+    "Value": "1h0m0s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.tolerant-size-ratio",
+    "Value": "0"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "schedule.witness-schedule-limit",
+    "Value": "4"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.SSLCABytes",
+    "Value": "null"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.SSLCertBytes",
+    "Value": "null"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.SSLKEYBytes",
+    "Value": "null"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.cacert-path",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.cert-allowed-cn",
+    "Value": "null"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.cert-path",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.encryption.data-encryption-method",
+    "Value": "plaintext"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.encryption.data-key-rotation-period",
+    "Value": "168h0m0s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.encryption.master-key.endpoint",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.encryption.master-key.key-id",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.encryption.master-key.path",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.encryption.master-key.region",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.encryption.master-key.type",
+    "Value": "plaintext"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.key-path",
+    "Value": ""
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "security.redact-info-log",
+    "Value": "false"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "tick-interval",
+    "Value": "500ms"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "tso-proxy-recv-from-client-timeout",
+    "Value": "1h0m0s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "tso-save-interval",
+    "Value": "5s"
+  },
+  {
+    "Type": "pd",
+    "Instance": "${LOCALHOST}:2379",
+    "Name": "tso-update-physical-interval",
+    "Value": "50ms"
+  }
+]

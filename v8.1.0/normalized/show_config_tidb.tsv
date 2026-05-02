@@ -1,0 +1,204 @@
+Type	Instance	Name	Value
+tidb	${LOCALHOST}:4000	advertise-address	${LOCALHOST}
+tidb	${LOCALHOST}:4000	alter-primary-key	false
+tidb	${LOCALHOST}:4000	autoscaler-addr	tiflash-autoscale-lb.tiflash-autoscale.svc.cluster.local:8081
+tidb	${LOCALHOST}:4000	autoscaler-cluster-id	
+tidb	${LOCALHOST}:4000	autoscaler-type	aws
+tidb	${LOCALHOST}:4000	ballast-object-size	0
+tidb	${LOCALHOST}:4000	binlog.binlog-socket	
+tidb	${LOCALHOST}:4000	binlog.enable	false
+tidb	${LOCALHOST}:4000	binlog.ignore-error	false
+tidb	${LOCALHOST}:4000	binlog.strategy	range
+tidb	${LOCALHOST}:4000	binlog.write-timeout	15s
+tidb	${LOCALHOST}:4000	compatible-kill-query	false
+tidb	${LOCALHOST}:4000	cors	
+tidb	${LOCALHOST}:4000	delay-clean-table-lock	0
+tidb	${LOCALHOST}:4000	deprecate-integer-display-length	false
+tidb	${LOCALHOST}:4000	disaggregated-tiflash	false
+tidb	${LOCALHOST}:4000	enable-32bits-connection-id	true
+tidb	${LOCALHOST}:4000	enable-enum-length-limit	true
+tidb	${LOCALHOST}:4000	enable-forwarding	false
+tidb	${LOCALHOST}:4000	enable-global-kill	true
+tidb	${LOCALHOST}:4000	enable-table-lock	false
+tidb	${LOCALHOST}:4000	enable-tcp4-only	false
+tidb	${LOCALHOST}:4000	enable-telemetry	false
+tidb	${LOCALHOST}:4000	experimental.allow-expression-index	false
+tidb	${LOCALHOST}:4000	graceful-wait-before-shutdown	0
+tidb	${LOCALHOST}:4000	host	${LOCALHOST}
+tidb	${LOCALHOST}:4000	in-mem-slow-query-recent-num	500
+tidb	${LOCALHOST}:4000	in-mem-slow-query-topn-num	30
+tidb	${LOCALHOST}:4000	index-limit	64
+tidb	${LOCALHOST}:4000	initialize-sql-file	
+tidb	${LOCALHOST}:4000	instance.ddl_slow_threshold	300
+tidb	${LOCALHOST}:4000	instance.max_connections	0
+tidb	${LOCALHOST}:4000	instance.plugin_dir	/data/deploy/plugin
+tidb	${LOCALHOST}:4000	instance.plugin_load	
+tidb	${LOCALHOST}:4000	instance.tidb_check_mb4_value_in_utf8	true
+tidb	${LOCALHOST}:4000	instance.tidb_enable_collect_execution_info	true
+tidb	${LOCALHOST}:4000	instance.tidb_enable_ddl	true
+tidb	${LOCALHOST}:4000	instance.tidb_enable_slow_log	true
+tidb	${LOCALHOST}:4000	instance.tidb_expensive_query_time_threshold	60
+tidb	${LOCALHOST}:4000	instance.tidb_expensive_txn_time_threshold	600
+tidb	${LOCALHOST}:4000	instance.tidb_force_priority	NO_PRIORITY
+tidb	${LOCALHOST}:4000	instance.tidb_general_log	false
+tidb	${LOCALHOST}:4000	instance.tidb_pprof_sql_cpu	false
+tidb	${LOCALHOST}:4000	instance.tidb_rc_read_check_ts	false
+tidb	${LOCALHOST}:4000	instance.tidb_record_plan_in_slow_log	1
+tidb	${LOCALHOST}:4000	instance.tidb_service_scope	
+tidb	${LOCALHOST}:4000	instance.tidb_slow_log_threshold	300
+tidb	${LOCALHOST}:4000	instance.tidb_stmt_summary_enable_persistent	false
+tidb	${LOCALHOST}:4000	instance.tidb_stmt_summary_file_max_backups	0
+tidb	${LOCALHOST}:4000	instance.tidb_stmt_summary_file_max_days	3
+tidb	${LOCALHOST}:4000	instance.tidb_stmt_summary_file_max_size	64
+tidb	${LOCALHOST}:4000	instance.tidb_stmt_summary_filename	tidb-statements.log
+tidb	${LOCALHOST}:4000	is-tiflashcompute-fixed-pool	false
+tidb	${LOCALHOST}:4000	isolation-read.engines	["tikv","tiflash","tidb"]
+tidb	${LOCALHOST}:4000	keyspace-name	
+tidb	${LOCALHOST}:4000	lease	45s
+tidb	${LOCALHOST}:4000	log.disable-error-stack	null
+tidb	${LOCALHOST}:4000	log.disable-timestamp	null
+tidb	${LOCALHOST}:4000	log.enable-error-stack	null
+tidb	${LOCALHOST}:4000	log.enable-timestamp	null
+tidb	${LOCALHOST}:4000	log.file.compression	
+tidb	${LOCALHOST}:4000	log.file.filename	${TIUP_DATA_DIR}/tidb-0/tidb.log
+tidb	${LOCALHOST}:4000	log.file.max-backups	0
+tidb	${LOCALHOST}:4000	log.file.max-days	0
+tidb	${LOCALHOST}:4000	log.file.max-size	300
+tidb	${LOCALHOST}:4000	log.format	text
+tidb	${LOCALHOST}:4000	log.general-log-file	
+tidb	${LOCALHOST}:4000	log.level	info
+tidb	${LOCALHOST}:4000	log.slow-query-file	tidb-slow.log
+tidb	${LOCALHOST}:4000	log.timeout	0
+tidb	${LOCALHOST}:4000	max-ballast-object-size	0
+tidb	${LOCALHOST}:4000	max-index-length	3072
+tidb	${LOCALHOST}:4000	new_collations_enabled_on_first_bootstrap	true
+tidb	${LOCALHOST}:4000	opentracing.enable	false
+tidb	${LOCALHOST}:4000	opentracing.reporter.buffer-flush-interval	0
+tidb	${LOCALHOST}:4000	opentracing.reporter.local-agent-host-port	
+tidb	${LOCALHOST}:4000	opentracing.reporter.log-spans	false
+tidb	${LOCALHOST}:4000	opentracing.reporter.queue-size	0
+tidb	${LOCALHOST}:4000	opentracing.rpc-metrics	false
+tidb	${LOCALHOST}:4000	opentracing.sampler.max-operations	0
+tidb	${LOCALHOST}:4000	opentracing.sampler.param	1
+tidb	${LOCALHOST}:4000	opentracing.sampler.sampling-refresh-interval	0
+tidb	${LOCALHOST}:4000	opentracing.sampler.sampling-server-url	
+tidb	${LOCALHOST}:4000	opentracing.sampler.type	const
+tidb	${LOCALHOST}:4000	path	${LOCALHOST}:2379
+tidb	${LOCALHOST}:4000	pd-client.pd-server-timeout	3
+tidb	${LOCALHOST}:4000	performance.analyze-partition-concurrency-quota	16
+tidb	${LOCALHOST}:4000	performance.bind-info-lease	3s
+tidb	${LOCALHOST}:4000	performance.concurrently-init-stats	false
+tidb	${LOCALHOST}:4000	performance.cross-join	true
+tidb	${LOCALHOST}:4000	performance.distinct-agg-push-down	false
+tidb	${LOCALHOST}:4000	performance.enable-load-fmsketch	false
+tidb	${LOCALHOST}:4000	performance.enable-stats-cache-mem-quota	true
+tidb	${LOCALHOST}:4000	performance.enforce-mpp	false
+tidb	${LOCALHOST}:4000	performance.force-init-stats	true
+tidb	${LOCALHOST}:4000	performance.gogc	100
+tidb	${LOCALHOST}:4000	performance.lite-init-stats	true
+tidb	${LOCALHOST}:4000	performance.max-procs	0
+tidb	${LOCALHOST}:4000	performance.max-txn-ttl	3600000
+tidb	${LOCALHOST}:4000	performance.plan-replayer-dump-worker-concurrency	1
+tidb	${LOCALHOST}:4000	performance.plan-replayer-gc-lease	10m
+tidb	${LOCALHOST}:4000	performance.projection-push-down	false
+tidb	${LOCALHOST}:4000	performance.pseudo-estimate-ratio	0.8
+tidb	${LOCALHOST}:4000	performance.server-memory-quota	0
+tidb	${LOCALHOST}:4000	performance.stats-lease	3s
+tidb	${LOCALHOST}:4000	performance.stats-load-concurrency	5
+tidb	${LOCALHOST}:4000	performance.stats-load-queue-size	1000
+tidb	${LOCALHOST}:4000	performance.stmt-count-limit	5000
+tidb	${LOCALHOST}:4000	performance.tcp-keep-alive	true
+tidb	${LOCALHOST}:4000	performance.tcp-no-delay	true
+tidb	${LOCALHOST}:4000	performance.txn-entry-size-limit	6291456
+tidb	${LOCALHOST}:4000	performance.txn-total-size-limit	104857600
+tidb	${LOCALHOST}:4000	pessimistic-txn.constraint-check-in-place-pessimistic	true
+tidb	${LOCALHOST}:4000	pessimistic-txn.deadlock-history-capacity	10
+tidb	${LOCALHOST}:4000	pessimistic-txn.deadlock-history-collect-retryable	false
+tidb	${LOCALHOST}:4000	pessimistic-txn.max-retry-count	256
+tidb	${LOCALHOST}:4000	pessimistic-txn.pessimistic-auto-commit	false
+tidb	${LOCALHOST}:4000	port	4000
+tidb	${LOCALHOST}:4000	proxy-protocol.fallbackable	false
+tidb	${LOCALHOST}:4000	proxy-protocol.header-timeout	5
+tidb	${LOCALHOST}:4000	proxy-protocol.networks	
+tidb	${LOCALHOST}:4000	repair-mode	false
+tidb	${LOCALHOST}:4000	repair-table-list	[]
+tidb	${LOCALHOST}:4000	security.auth-token-jwks	
+tidb	${LOCALHOST}:4000	security.auth-token-refresh-interval	1h0m0s
+tidb	${LOCALHOST}:4000	security.auto-tls	true
+tidb	${LOCALHOST}:4000	security.cluster-ssl-ca	
+tidb	${LOCALHOST}:4000	security.cluster-ssl-cert	
+tidb	${LOCALHOST}:4000	security.cluster-ssl-key	
+tidb	${LOCALHOST}:4000	security.cluster-verify-cn	null
+tidb	${LOCALHOST}:4000	security.disconnect-on-expired-password	true
+tidb	${LOCALHOST}:4000	security.enable-sem	false
+tidb	${LOCALHOST}:4000	security.rsa-key-size	4096
+tidb	${LOCALHOST}:4000	security.secure-bootstrap	false
+tidb	${LOCALHOST}:4000	security.session-token-signing-cert	
+tidb	${LOCALHOST}:4000	security.session-token-signing-key	
+tidb	${LOCALHOST}:4000	security.skip-grant-table	false
+tidb	${LOCALHOST}:4000	security.spilled-file-encryption-method	plaintext
+tidb	${LOCALHOST}:4000	security.ssl-ca	
+tidb	${LOCALHOST}:4000	security.ssl-cert	
+tidb	${LOCALHOST}:4000	security.ssl-key	
+tidb	${LOCALHOST}:4000	security.tls-version	
+tidb	${LOCALHOST}:4000	server-version	
+tidb	${LOCALHOST}:4000	skip-register-to-dashboard	false
+tidb	${LOCALHOST}:4000	socket	/tmp/tidb-4000.sock
+tidb	${LOCALHOST}:4000	split-region-max-num	1000
+tidb	${LOCALHOST}:4000	split-table	true
+tidb	${LOCALHOST}:4000	status.grpc-concurrent-streams	1024
+tidb	${LOCALHOST}:4000	status.grpc-initial-window-size	2097152
+tidb	${LOCALHOST}:4000	status.grpc-keepalive-time	10
+tidb	${LOCALHOST}:4000	status.grpc-keepalive-timeout	3
+tidb	${LOCALHOST}:4000	status.grpc-max-send-msg-size	2147483647
+tidb	${LOCALHOST}:4000	status.metrics-addr	
+tidb	${LOCALHOST}:4000	status.metrics-interval	15
+tidb	${LOCALHOST}:4000	status.record-db-label	false
+tidb	${LOCALHOST}:4000	status.record-db-qps	false
+tidb	${LOCALHOST}:4000	status.report-status	true
+tidb	${LOCALHOST}:4000	status.status-host	0.0.0.0
+tidb	${LOCALHOST}:4000	status.status-port	10080
+tidb	${LOCALHOST}:4000	store	tikv
+tidb	${LOCALHOST}:4000	stores-refresh-interval	60
+tidb	${LOCALHOST}:4000	table-column-count-limit	1017
+tidb	${LOCALHOST}:4000	temp-dir	/tmp/tidb
+tidb	${LOCALHOST}:4000	tidb-edition	
+tidb	${LOCALHOST}:4000	tidb-enable-exit-check	false
+tidb	${LOCALHOST}:4000	tidb-max-reuse-chunk	64
+tidb	${LOCALHOST}:4000	tidb-max-reuse-column	256
+tidb	${LOCALHOST}:4000	tidb-release-version	
+tidb	${LOCALHOST}:4000	tikv-client.async-commit.allowed-clock-drift	500000000
+tidb	${LOCALHOST}:4000	tikv-client.async-commit.keys-limit	256
+tidb	${LOCALHOST}:4000	tikv-client.async-commit.safe-window	2000000000
+tidb	${LOCALHOST}:4000	tikv-client.async-commit.total-key-size-limit	4096
+tidb	${LOCALHOST}:4000	tikv-client.batch-wait-size	8
+tidb	${LOCALHOST}:4000	tikv-client.commit-timeout	41s
+tidb	${LOCALHOST}:4000	tikv-client.copr-cache.capacity-mb	1000
+tidb	${LOCALHOST}:4000	tikv-client.copr-req-timeout	60000000000
+tidb	${LOCALHOST}:4000	tikv-client.enable-chunk-rpc	true
+tidb	${LOCALHOST}:4000	tikv-client.enable-replica-selector-v2	true
+tidb	${LOCALHOST}:4000	tikv-client.grpc-compression-type	none
+tidb	${LOCALHOST}:4000	tikv-client.grpc-connection-count	4
+tidb	${LOCALHOST}:4000	tikv-client.grpc-initial-conn-window-size	134217728
+tidb	${LOCALHOST}:4000	tikv-client.grpc-initial-window-size	134217728
+tidb	${LOCALHOST}:4000	tikv-client.grpc-keepalive-time	10
+tidb	${LOCALHOST}:4000	tikv-client.grpc-keepalive-timeout	3
+tidb	${LOCALHOST}:4000	tikv-client.grpc-shared-buffer-pool	false
+tidb	${LOCALHOST}:4000	tikv-client.max-batch-size	128
+tidb	${LOCALHOST}:4000	tikv-client.max-batch-wait-time	0
+tidb	${LOCALHOST}:4000	tikv-client.max-concurrency-request-limit	9223372036854776000
+tidb	${LOCALHOST}:4000	tikv-client.overload-threshold	200
+tidb	${LOCALHOST}:4000	tikv-client.region-cache-ttl	600
+tidb	${LOCALHOST}:4000	tikv-client.resolve-lock-lite-threshold	16
+tidb	${LOCALHOST}:4000	tikv-client.store-limit	0
+tidb	${LOCALHOST}:4000	tikv-client.store-liveness-timeout	1s
+tidb	${LOCALHOST}:4000	tikv-client.ttl-refreshed-txn-size	33554432
+tidb	${LOCALHOST}:4000	tmp-storage-path	/var/folders/14/1k29ygbn5cxd6ydccy7djh800000gn/T/501_tidb/MTI3LjAuMC4xOjQwMDAvMC4wLjAuMDoxMDA4MA==/tmp-storage
+tidb	${LOCALHOST}:4000	tmp-storage-quota	-1
+tidb	${LOCALHOST}:4000	token-limit	1000
+tidb	${LOCALHOST}:4000	top-sql.receiver-address	
+tidb	${LOCALHOST}:4000	transaction-summary.transaction-id-digest-min-duration	2147483647
+tidb	${LOCALHOST}:4000	transaction-summary.transaction-summary-capacity	500
+tidb	${LOCALHOST}:4000	treat-old-version-utf8-as-utf8mb4	true
+tidb	${LOCALHOST}:4000	use-autoscaler	false
+tidb	${LOCALHOST}:4000	version-comment	

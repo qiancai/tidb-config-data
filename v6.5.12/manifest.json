@@ -1,0 +1,188 @@
+{
+  "version": "v6.5.12",
+  "cluster_tag": "${PLAYGROUND_TAG}",
+  "captured_at": "2026-05-02T19:10:04.902406+08:00",
+  "sanitized": true,
+  "raw_dir": "raw-sanitized",
+  "sql_endpoint": {
+    "host": "${LOCALHOST}",
+    "port": "4000",
+    "user": "root"
+  },
+  "component_endpoints": {
+    "tidb_status": "http://${LOCALHOST}:10080/config",
+    "tikv_status_full": "http://${LOCALHOST}:20180/config?full=true",
+    "pd_config": "http://${LOCALHOST}:2379/pd/api/v1/config",
+    "tiflash_status_full": "http://${LOCALHOST}:20292/config?full=true"
+  },
+  "normalized_counts": {
+    "version": 1,
+    "cluster_info": 4,
+    "system_variables": 1022,
+    "show_config": 1666,
+    "show_config_tidb": 175,
+    "show_config_tikv": 659,
+    "show_config_pd": 155,
+    "show_config_tiflash": 677
+  },
+  "tiflash_config_dir": "${TIUP_DATA_DIR}/tiflash-0",
+  "tiflash_config_files": [
+    "tiflash.toml"
+  ],
+  "sanitize_rules": [
+    {
+      "from": "${TIUP_DATA_DIR}",
+      "to": "${TIUP_DATA_DIR}"
+    },
+    {
+      "from": "${TIUP_HOME}",
+      "to": "${TIUP_HOME}"
+    },
+    {
+      "from": "${PLAYGROUND_WORKDIR}",
+      "to": "${PLAYGROUND_WORKDIR}"
+    },
+    {
+      "from": "${WORKSPACE}",
+      "to": "${WORKSPACE}"
+    },
+    {
+      "from": "${HOME}",
+      "to": "${HOME}"
+    },
+    {
+      "from": "${PLAYGROUND_TAG}",
+      "to": "${PLAYGROUND_TAG}"
+    },
+    {
+      "from": "${LOCALHOST}",
+      "to": "${LOCALHOST}"
+    },
+    {
+      "from": "${LOCALHOST_NAME}",
+      "to": "${LOCALHOST_NAME}"
+    },
+    {
+      "from": "${USER}",
+      "to": "${USER}"
+    }
+  ],
+  "notes": [
+    "system_variables comes from INFORMATION_SCHEMA.VARIABLES_INFO.",
+    "show_config*.tsv/json comes from SHOW CONFIG and component filters.",
+    "raw TiKV and TiFlash config endpoints were captured with full=true.",
+    "TiFlash engine-store config endpoint exposes the current config file content, not the full C++ default catalog."
+  ],
+  "files": [
+    {
+      "path": "SUMMARY.md",
+      "bytes": 773,
+      "sha256": "8614231e98100e37c00af1817422c9d68bcf86e709d7cd40290258a7802805df"
+    },
+    {
+      "path": "normalized/cluster_info.json",
+      "bytes": 1173,
+      "sha256": "4e2692f62beb201cf965c775d4f843b5ca199095f2e409969e12c4b0c5a66a4d"
+    },
+    {
+      "path": "normalized/cluster_info.tsv",
+      "bytes": 596,
+      "sha256": "468f086e5d87ba85ab6edc99e36d6656d9819ba111f9baec9578b515da352cb4"
+    },
+    {
+      "path": "normalized/show_config.json",
+      "bytes": 239263,
+      "sha256": "85a23362939a54376ae0cda73d18920baf459e5c4b15b827eb3619e1a44e25bc"
+    },
+    {
+      "path": "normalized/show_config.tsv",
+      "bytes": 117441,
+      "sha256": "aad9fb82386331d3282a86ef5f68b58664db10f8c88f59337098994411551682"
+    },
+    {
+      "path": "normalized/show_config_pd.json",
+      "bytes": 21235,
+      "sha256": "b9971bc656fadd5e9a40ec3db5f05f782122d68fb0a1f44be18433455ecb080c"
+    },
+    {
+      "path": "normalized/show_config_pd.tsv",
+      "bytes": 9866,
+      "sha256": "e292d58db3801ac964f001cc976e487bdedeb9a68e6d397744e2d3069a2732d4"
+    },
+    {
+      "path": "normalized/show_config_tidb.json",
+      "bytes": 22455,
+      "sha256": "ddc689e8dbd0b86124a631c14a51ca02e0636a8b656418c131267875df132d5b"
+    },
+    {
+      "path": "normalized/show_config_tidb.tsv",
+      "bytes": 9696,
+      "sha256": "4a0d0be34bb6f2727ef9976bbbcfa07b1e0781336255ac8f2b7917fd933537db"
+    },
+    {
+      "path": "normalized/show_config_tiflash.json",
+      "bytes": 105017,
+      "sha256": "219be2cd094d2eb6cc0a0267e5fb50eb75a01a7b877442b441495e8e448b2528"
+    },
+    {
+      "path": "normalized/show_config_tiflash.tsv",
+      "bytes": 55546,
+      "sha256": "5100422419c8ad1f0ccc9abbd11d65395137dd0c36bb160003a3b3e7ad9c89af"
+    },
+    {
+      "path": "normalized/show_config_tikv.json",
+      "bytes": 90565,
+      "sha256": "3998b712e1fb78ad40b21929690e2c56b64feb374dfb8cf5c63af062588a7861"
+    },
+    {
+      "path": "normalized/show_config_tikv.tsv",
+      "bytes": 42408,
+      "sha256": "2a203b9b4c1c12b1109966a5a48db1a03fd445084524e8fd142c0fa8a02291ac"
+    },
+    {
+      "path": "normalized/system_variables.json",
+      "bytes": 250412,
+      "sha256": "a2eaf9809c23a4a188fdaed1293f7c170ec7a5a69fdd340e4d50d69018e2ff8a"
+    },
+    {
+      "path": "normalized/system_variables.tsv",
+      "bytes": 58229,
+      "sha256": "1a7b05308b8e45a1221db316b64333aca43ae339ab0a2fe5bd99ddbdd4de5278"
+    },
+    {
+      "path": "normalized/version.json",
+      "bytes": 54,
+      "sha256": "47439b51111556b2433bceca07f29162a5f0bde74cdbe74c53025d93972484a2"
+    },
+    {
+      "path": "normalized/version.tsv",
+      "bytes": 33,
+      "sha256": "fbd6d9bcba9be47160b94127508300ea4da19fac656cf4a5417615503c929bef"
+    },
+    {
+      "path": "raw-sanitized/pd/pd_config.json",
+      "bytes": 6443,
+      "sha256": "cd86225eba1acc26ba204e05cb80adb5700dbe6d7482f90358fa271f93fae9e5"
+    },
+    {
+      "path": "raw-sanitized/tidb/tidb_config.json",
+      "bytes": 6897,
+      "sha256": "57197f8adc4d4ed04c934abf53ab2ec7d748b862ae7555290bfc53a2fa48f15e"
+    },
+    {
+      "path": "raw-sanitized/tiflash/files/tiflash.toml",
+      "bytes": 1335,
+      "sha256": "b50b8a244f9313d74e0ffa72fba359320cd862399dc9356a8f425318c0e4d32a"
+    },
+    {
+      "path": "raw-sanitized/tiflash/tiflash_config_full.json",
+      "bytes": 29208,
+      "sha256": "ce14cf349bc051117411111a29182edfac423ca535b9c49c05b9a194bcaf1a86"
+    },
+    {
+      "path": "raw-sanitized/tikv/tikv_config_full.json",
+      "bytes": 26431,
+      "sha256": "215a952009ff04dbe67d26b76e26ccec14787e1329af20b9febe355353adca4c"
+    }
+  ]
+}

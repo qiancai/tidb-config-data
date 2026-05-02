@@ -1,0 +1,200 @@
+{
+  "version": "v7.5.0",
+  "cluster_tag": "${PLAYGROUND_TAG}",
+  "captured_at": "2026-05-02T19:12:12.508326+08:00",
+  "sanitized": true,
+  "raw_dir": "raw-sanitized",
+  "sql_endpoint": {
+    "host": "${LOCALHOST}",
+    "port": "4000",
+    "user": "root"
+  },
+  "component_endpoints": {
+    "tidb_status": "http://${LOCALHOST}:10080/config",
+    "tikv_status_full": "http://${LOCALHOST}:20180/config?full=true",
+    "pd_config": "http://${LOCALHOST}:2379/pd/api/v1/config",
+    "tiflash_status_full": "http://${LOCALHOST}:20292/config?full=true"
+  },
+  "normalized_counts": {
+    "version": 1,
+    "cluster_info": 4,
+    "system_variables": 1119,
+    "show_config": 1741,
+    "show_config_tidb": 196,
+    "show_config_tikv": 685,
+    "show_config_pd": 181,
+    "show_config_tiflash": 679
+  },
+  "tiflash_config_dir": "${TIUP_DATA_DIR}/tiflash-0",
+  "tiflash_config_files": [
+    "tiflash.toml",
+    "tiflash_proxy.toml",
+    "proxy_data/last_tikv.toml"
+  ],
+  "sanitize_rules": [
+    {
+      "from": "${TIUP_DATA_DIR}",
+      "to": "${TIUP_DATA_DIR}"
+    },
+    {
+      "from": "${TIUP_HOME}",
+      "to": "${TIUP_HOME}"
+    },
+    {
+      "from": "${PLAYGROUND_WORKDIR}",
+      "to": "${PLAYGROUND_WORKDIR}"
+    },
+    {
+      "from": "${WORKSPACE}",
+      "to": "${WORKSPACE}"
+    },
+    {
+      "from": "${HOME}",
+      "to": "${HOME}"
+    },
+    {
+      "from": "${PLAYGROUND_TAG}",
+      "to": "${PLAYGROUND_TAG}"
+    },
+    {
+      "from": "${LOCALHOST}",
+      "to": "${LOCALHOST}"
+    },
+    {
+      "from": "${LOCALHOST_NAME}",
+      "to": "${LOCALHOST_NAME}"
+    },
+    {
+      "from": "${USER}",
+      "to": "${USER}"
+    }
+  ],
+  "notes": [
+    "system_variables comes from INFORMATION_SCHEMA.VARIABLES_INFO.",
+    "show_config*.tsv/json comes from SHOW CONFIG and component filters.",
+    "raw TiKV and TiFlash config endpoints were captured with full=true.",
+    "TiFlash engine-store config endpoint exposes the current config file content, not the full C++ default catalog."
+  ],
+  "files": [
+    {
+      "path": "SUMMARY.md",
+      "bytes": 772,
+      "sha256": "39e1a2466023b85cd61276fe2af9cc3f6df6f5f361288d19229ef49bd19e2763"
+    },
+    {
+      "path": "normalized/cluster_info.json",
+      "bytes": 1166,
+      "sha256": "08a682020cbb83255c4f5b8434609ff7a25a8ac574787ba16a519efa43ad53d3"
+    },
+    {
+      "path": "normalized/cluster_info.tsv",
+      "bytes": 589,
+      "sha256": "ff74cd7d8bf27aeb706e251a2dabea79b7aa85123ca6a813b56ddcb132d73e2a"
+    },
+    {
+      "path": "normalized/show_config.json",
+      "bytes": 250156,
+      "sha256": "d16bda839b4c7bb5efd8f861cb00868065d0c77a6b0600f40608e9d1b1deeee6"
+    },
+    {
+      "path": "normalized/show_config.tsv",
+      "bytes": 122839,
+      "sha256": "19f728c7682722b2c96f149ebe3ad97e841b3c19676357612a4a1bcf0b0bbe9b"
+    },
+    {
+      "path": "normalized/show_config_pd.json",
+      "bytes": 24989,
+      "sha256": "5f91255c24b26fd61dff176ece2198a3b9ca62e3e25906a9d1439fe046ee04e4"
+    },
+    {
+      "path": "normalized/show_config_pd.tsv",
+      "bytes": 11702,
+      "sha256": "5c3a9839b66ed11881da10321fd27d011d2e52b42e63b3af3951c3dcb8783430"
+    },
+    {
+      "path": "normalized/show_config_tidb.json",
+      "bytes": 25200,
+      "sha256": "58b46a5bfb4c113e62eeee24d7e8230e3797110599f4d4051fb705da6c2dccae"
+    },
+    {
+      "path": "normalized/show_config_tidb.tsv",
+      "bytes": 10908,
+      "sha256": "aa4a73e62548a8aac9a372cc394437dfd15d0eb4b20e0c768b22d8944eeaa736"
+    },
+    {
+      "path": "normalized/show_config_tiflash.json",
+      "bytes": 105658,
+      "sha256": "4d90b98e36718f6bb6d2b9799569616610586c42608ba0fd44144d8ccbec6412"
+    },
+    {
+      "path": "normalized/show_config_tiflash.tsv",
+      "bytes": 56041,
+      "sha256": "941296efd7bbedd8c3bcc70907cc847a6ae8a3adb53831bfb6ba8ba70e46d8d9"
+    },
+    {
+      "path": "normalized/show_config_tikv.json",
+      "bytes": 94318,
+      "sha256": "d6f27d98761127a9b4626cb89fac6f62cbbbeb8b4e43f2008d5c736f0cd5e1a9"
+    },
+    {
+      "path": "normalized/show_config_tikv.tsv",
+      "bytes": 44263,
+      "sha256": "460d2eacdedf28291146335f2d4fa0160907c028889f5e8af0dfbfbd653ebe9d"
+    },
+    {
+      "path": "normalized/system_variables.json",
+      "bytes": 275146,
+      "sha256": "524cd39133d83d2169e9285a410bacddad94f2954e1cfb90a28c91e665c1c92c"
+    },
+    {
+      "path": "normalized/system_variables.tsv",
+      "bytes": 64672,
+      "sha256": "ce1df947e92004c968b536dc039c1332e493501276fda8964d34818c96b25f15"
+    },
+    {
+      "path": "normalized/version.json",
+      "bytes": 53,
+      "sha256": "4771a56c21c650422fa2e9b7e3db04c0b22545a9a45a66b1dc8ce2c3a8567601"
+    },
+    {
+      "path": "normalized/version.tsv",
+      "bytes": 32,
+      "sha256": "08dc393acfb42b229373296a7c539ed5bf2059b6f9f69da3c999f428af524e1e"
+    },
+    {
+      "path": "raw-sanitized/pd/pd_config.json",
+      "bytes": 7753,
+      "sha256": "e7e2f78d56ac55c8d6b0b56efc191a68e25858d29f241c474ed147d1147c1d24"
+    },
+    {
+      "path": "raw-sanitized/tidb/tidb_config.json",
+      "bytes": 7698,
+      "sha256": "7bda314a6364e188ee49b004c5a1ae10b3a21afbeb4576efbd263991384d0f0c"
+    },
+    {
+      "path": "raw-sanitized/tiflash/files/last_tikv.toml",
+      "bytes": 20595,
+      "sha256": "d983958d066033d6b00cc4f169be0406caa6d846610f1a3a7aa586d4b9277021"
+    },
+    {
+      "path": "raw-sanitized/tiflash/files/tiflash.toml",
+      "bytes": 105,
+      "sha256": "a5242798c0100862d8036e349818cadc77d48aa05ce1bc8ab4bb69773b19b4b9"
+    },
+    {
+      "path": "raw-sanitized/tiflash/files/tiflash_proxy.toml",
+      "bytes": 114,
+      "sha256": "f1982b2aed25a936af9bb3fefce00328dbe5fd2301327f18d1d2a7d5631413ac"
+    },
+    {
+      "path": "raw-sanitized/tiflash/tiflash_config_full.json",
+      "bytes": 29151,
+      "sha256": "ecb8079b043f7578123d27cfc0bb72ae49c5af79dbf12ec6029a70483d704873"
+    },
+    {
+      "path": "raw-sanitized/tikv/tikv_config_full.json",
+      "bytes": 27586,
+      "sha256": "9ea7f545514fd7c20bf015e624466f7f44be52eccf378f1cbf4e33befe8cdd53"
+    }
+  ]
+}

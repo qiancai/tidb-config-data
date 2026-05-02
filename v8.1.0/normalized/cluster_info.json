@@ -1,0 +1,42 @@
+[
+  {
+    "TYPE": "pd",
+    "INSTANCE": "${LOCALHOST}:2379",
+    "STATUS_ADDRESS": "${LOCALHOST}:2379",
+    "VERSION": "8.1.0",
+    "GIT_HASH": "fca469ca33eb5d8b5e0891b507c87709a00b0e81",
+    "START_TIME": "2026-05-02 19:13:49",
+    "UPTIME": "17.619269s",
+    "SERVER_ID": "0"
+  },
+  {
+    "TYPE": "tidb",
+    "INSTANCE": "${LOCALHOST}:4000",
+    "STATUS_ADDRESS": "${LOCALHOST}:10080",
+    "VERSION": "8.1.0",
+    "GIT_HASH": "945d07c5d5c7a1ae212f6013adfb187f2de24b23",
+    "START_TIME": "2026-05-02 19:13:58",
+    "UPTIME": "8.619267s",
+    "SERVER_ID": "627"
+  },
+  {
+    "TYPE": "tiflash",
+    "INSTANCE": "${LOCALHOST}:3930",
+    "STATUS_ADDRESS": "${LOCALHOST}:20292",
+    "VERSION": "8.1.0",
+    "GIT_HASH": "c1838001167c8ba83af759085a71ad61e6c2a5af",
+    "START_TIME": "2026-05-02 19:14:06",
+    "UPTIME": "619.27ms",
+    "SERVER_ID": "0"
+  },
+  {
+    "TYPE": "tikv",
+    "INSTANCE": "${LOCALHOST}:20160",
+    "STATUS_ADDRESS": "${LOCALHOST}:20180",
+    "VERSION": "8.1.0",
+    "GIT_HASH": "ba73b0d92d94463d74543550d0efe61fa6a6f416",
+    "START_TIME": "2026-05-02 19:13:51",
+    "UPTIME": "15.619271s",
+    "SERVER_ID": "0"
+  }
+]

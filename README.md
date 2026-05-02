@@ -1,1 +1,79 @@
 # tidb-config-data
+
+This repository stores sanitized TiDB configuration capture data collected from local TiUP playground clusters.
+
+The data is intended for comparing TiDB system variables and component configuration across selected TiDB versions. It is not production cluster telemetry and should not be used as evidence of customer deployment settings.
+
+## Documentation Map
+
+- `README.md`: repository overview, dataset index, and data layout.
+- `COLLECTING.md`: reproducible capture workflow, scripts, endpoints, cleanup, and validation steps.
+- `v*/SUMMARY.md`: generated summary for one captured TiDB version.
+
+## Current MVP Dataset
+
+The first dataset covers representative modern LTS versions:
+
+| Version | System variables | SHOW CONFIG | TiDB | TiKV | PD | TiFlash |
+|---|---:|---:|---:|---:|---:|---:|
+| v6.5.12 | 1022 | 1666 | 175 | 659 | 155 | 677 |
+| v7.1.6 | 1090 | 1692 | 192 | 669 | 174 | 657 |
+| v7.5.0 | 1119 | 1741 | 196 | 685 | 181 | 679 |
+| v7.5.7 | 1124 | 1746 | 200 | 687 | 180 | 679 |
+| v8.1.0 | 1142 | 1797 | 203 | 709 | 185 | 700 |
+| v8.1.2 | 1142 | 1806 | 203 | 705 | 186 | 712 |
+| v8.5.0 | 1150 | 1784 | 200 | 710 | 156 | 718 |
+| v8.5.6 | 1187 | 1801 | 206 | 718 | 158 | 719 |
+
+The version scope is recorded in `mvp-versions.json`. The broader TiDB self-managed release list is recorded in `versions.json`.
+
+## Data Layout
+
+Each version directory follows this structure:
+
+```text
+v8.5.6/
+  SUMMARY.md
+  manifest.json
+  SHA256SUMS
+  normalized/
+    system_variables.json
+    show_config.json
+    show_config_tidb.json
+    show_config_tikv.json
+    show_config_pd.json
+    show_config_tiflash.json
+  raw-sanitized/
+    tidb/tidb_config.json
+    tikv/tikv_config_full.json
+    pd/pd_config.json
+    tiflash/tiflash_config_full.json
+    tiflash/files/
+      tiflash.toml
+      tiflash_proxy.toml
+      last_tikv.toml
+```
+
+Use `normalized/` for comparison, indexing, and database import. Use `raw-sanitized/` as the source snapshot fallback when normalized output misses details.
+
+## Data Sources
+
+- System variables: `INFORMATION_SCHEMA.VARIABLES_INFO`
+- Normalized component config: `SHOW CONFIG`
+- TiDB raw config: `http://127.0.0.1:10080/config`
+- TiKV raw config: `http://127.0.0.1:20180/config?full=true`
+- PD raw config: `http://127.0.0.1:2379/pd/api/v1/config`
+- TiFlash raw config: `http://127.0.0.1:20292/config?full=true`
+- TiFlash config files: playground-generated TiFlash TOML files
+
+## Privacy
+
+The committed captures are sanitized. Local paths, user names, playground tags, and localhost values are replaced with placeholders such as `${HOME}`, `${TIUP_DATA_DIR}`, `${PLAYGROUND_TAG}`, and `${LOCALHOST}`.
+
+## Validate
+
+```bash
+for d in v*/manifest.json; do
+  scripts/validate-capture.py "${d%/manifest.json}" --require-sanitized
+done
+```

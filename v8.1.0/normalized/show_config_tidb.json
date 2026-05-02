@@ -1,0 +1,1220 @@
+[
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "advertise-address",
+    "Value": "${LOCALHOST}"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "alter-primary-key",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "autoscaler-addr",
+    "Value": "tiflash-autoscale-lb.tiflash-autoscale.svc.cluster.local:8081"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "autoscaler-cluster-id",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "autoscaler-type",
+    "Value": "aws"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "ballast-object-size",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "binlog.binlog-socket",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "binlog.enable",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "binlog.ignore-error",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "binlog.strategy",
+    "Value": "range"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "binlog.write-timeout",
+    "Value": "15s"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "compatible-kill-query",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "cors",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "delay-clean-table-lock",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "deprecate-integer-display-length",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "disaggregated-tiflash",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "enable-32bits-connection-id",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "enable-enum-length-limit",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "enable-forwarding",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "enable-global-kill",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "enable-table-lock",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "enable-tcp4-only",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "enable-telemetry",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "experimental.allow-expression-index",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "graceful-wait-before-shutdown",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "host",
+    "Value": "${LOCALHOST}"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "in-mem-slow-query-recent-num",
+    "Value": "500"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "in-mem-slow-query-topn-num",
+    "Value": "30"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "index-limit",
+    "Value": "64"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "initialize-sql-file",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.ddl_slow_threshold",
+    "Value": "300"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.max_connections",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.plugin_dir",
+    "Value": "/data/deploy/plugin"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.plugin_load",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_check_mb4_value_in_utf8",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_enable_collect_execution_info",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_enable_ddl",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_enable_slow_log",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_expensive_query_time_threshold",
+    "Value": "60"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_expensive_txn_time_threshold",
+    "Value": "600"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_force_priority",
+    "Value": "NO_PRIORITY"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_general_log",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_pprof_sql_cpu",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_rc_read_check_ts",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_record_plan_in_slow_log",
+    "Value": "1"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_service_scope",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_slow_log_threshold",
+    "Value": "300"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_stmt_summary_enable_persistent",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_stmt_summary_file_max_backups",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_stmt_summary_file_max_days",
+    "Value": "3"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_stmt_summary_file_max_size",
+    "Value": "64"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "instance.tidb_stmt_summary_filename",
+    "Value": "tidb-statements.log"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "is-tiflashcompute-fixed-pool",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "isolation-read.engines",
+    "Value": "[\"tikv\",\"tiflash\",\"tidb\"]"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "keyspace-name",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "lease",
+    "Value": "45s"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.disable-error-stack",
+    "Value": "null"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.disable-timestamp",
+    "Value": "null"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.enable-error-stack",
+    "Value": "null"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.enable-timestamp",
+    "Value": "null"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.file.compression",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.file.filename",
+    "Value": "${TIUP_DATA_DIR}/tidb-0/tidb.log"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.file.max-backups",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.file.max-days",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.file.max-size",
+    "Value": "300"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.format",
+    "Value": "text"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.general-log-file",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.level",
+    "Value": "info"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.slow-query-file",
+    "Value": "tidb-slow.log"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "log.timeout",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "max-ballast-object-size",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "max-index-length",
+    "Value": "3072"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "new_collations_enabled_on_first_bootstrap",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "opentracing.enable",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "opentracing.reporter.buffer-flush-interval",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "opentracing.reporter.local-agent-host-port",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "opentracing.reporter.log-spans",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "opentracing.reporter.queue-size",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "opentracing.rpc-metrics",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "opentracing.sampler.max-operations",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "opentracing.sampler.param",
+    "Value": "1"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "opentracing.sampler.sampling-refresh-interval",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "opentracing.sampler.sampling-server-url",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "opentracing.sampler.type",
+    "Value": "const"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "path",
+    "Value": "${LOCALHOST}:2379"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "pd-client.pd-server-timeout",
+    "Value": "3"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.analyze-partition-concurrency-quota",
+    "Value": "16"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.bind-info-lease",
+    "Value": "3s"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.concurrently-init-stats",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.cross-join",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.distinct-agg-push-down",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.enable-load-fmsketch",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.enable-stats-cache-mem-quota",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.enforce-mpp",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.force-init-stats",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.gogc",
+    "Value": "100"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.lite-init-stats",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.max-procs",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.max-txn-ttl",
+    "Value": "3600000"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.plan-replayer-dump-worker-concurrency",
+    "Value": "1"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.plan-replayer-gc-lease",
+    "Value": "10m"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.projection-push-down",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.pseudo-estimate-ratio",
+    "Value": "0.8"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.server-memory-quota",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.stats-lease",
+    "Value": "3s"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.stats-load-concurrency",
+    "Value": "5"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.stats-load-queue-size",
+    "Value": "1000"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.stmt-count-limit",
+    "Value": "5000"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.tcp-keep-alive",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.tcp-no-delay",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.txn-entry-size-limit",
+    "Value": "6291456"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "performance.txn-total-size-limit",
+    "Value": "104857600"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "pessimistic-txn.constraint-check-in-place-pessimistic",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "pessimistic-txn.deadlock-history-capacity",
+    "Value": "10"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "pessimistic-txn.deadlock-history-collect-retryable",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "pessimistic-txn.max-retry-count",
+    "Value": "256"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "pessimistic-txn.pessimistic-auto-commit",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "port",
+    "Value": "4000"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "proxy-protocol.fallbackable",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "proxy-protocol.header-timeout",
+    "Value": "5"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "proxy-protocol.networks",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "repair-mode",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "repair-table-list",
+    "Value": "[]"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.auth-token-jwks",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.auth-token-refresh-interval",
+    "Value": "1h0m0s"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.auto-tls",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.cluster-ssl-ca",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.cluster-ssl-cert",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.cluster-ssl-key",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.cluster-verify-cn",
+    "Value": "null"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.disconnect-on-expired-password",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.enable-sem",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.rsa-key-size",
+    "Value": "4096"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.secure-bootstrap",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.session-token-signing-cert",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.session-token-signing-key",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.skip-grant-table",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.spilled-file-encryption-method",
+    "Value": "plaintext"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.ssl-ca",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.ssl-cert",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.ssl-key",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "security.tls-version",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "server-version",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "skip-register-to-dashboard",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "socket",
+    "Value": "/tmp/tidb-4000.sock"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "split-region-max-num",
+    "Value": "1000"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "split-table",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "status.grpc-concurrent-streams",
+    "Value": "1024"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "status.grpc-initial-window-size",
+    "Value": "2097152"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "status.grpc-keepalive-time",
+    "Value": "10"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "status.grpc-keepalive-timeout",
+    "Value": "3"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "status.grpc-max-send-msg-size",
+    "Value": "2147483647"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "status.metrics-addr",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "status.metrics-interval",
+    "Value": "15"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "status.record-db-label",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "status.record-db-qps",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "status.report-status",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "status.status-host",
+    "Value": "0.0.0.0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "status.status-port",
+    "Value": "10080"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "store",
+    "Value": "tikv"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "stores-refresh-interval",
+    "Value": "60"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "table-column-count-limit",
+    "Value": "1017"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "temp-dir",
+    "Value": "/tmp/tidb"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tidb-edition",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tidb-enable-exit-check",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tidb-max-reuse-chunk",
+    "Value": "64"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tidb-max-reuse-column",
+    "Value": "256"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tidb-release-version",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.async-commit.allowed-clock-drift",
+    "Value": "500000000"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.async-commit.keys-limit",
+    "Value": "256"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.async-commit.safe-window",
+    "Value": "2000000000"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.async-commit.total-key-size-limit",
+    "Value": "4096"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.batch-wait-size",
+    "Value": "8"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.commit-timeout",
+    "Value": "41s"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.copr-cache.capacity-mb",
+    "Value": "1000"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.copr-req-timeout",
+    "Value": "60000000000"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.enable-chunk-rpc",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.enable-replica-selector-v2",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.grpc-compression-type",
+    "Value": "none"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.grpc-connection-count",
+    "Value": "4"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.grpc-initial-conn-window-size",
+    "Value": "134217728"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.grpc-initial-window-size",
+    "Value": "134217728"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.grpc-keepalive-time",
+    "Value": "10"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.grpc-keepalive-timeout",
+    "Value": "3"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.grpc-shared-buffer-pool",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.max-batch-size",
+    "Value": "128"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.max-batch-wait-time",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.max-concurrency-request-limit",
+    "Value": "9223372036854776000"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.overload-threshold",
+    "Value": "200"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.region-cache-ttl",
+    "Value": "600"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.resolve-lock-lite-threshold",
+    "Value": "16"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.store-limit",
+    "Value": "0"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.store-liveness-timeout",
+    "Value": "1s"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tikv-client.ttl-refreshed-txn-size",
+    "Value": "33554432"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tmp-storage-path",
+    "Value": "/var/folders/14/1k29ygbn5cxd6ydccy7djh800000gn/T/501_tidb/MTI3LjAuMC4xOjQwMDAvMC4wLjAuMDoxMDA4MA==/tmp-storage"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "tmp-storage-quota",
+    "Value": "-1"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "token-limit",
+    "Value": "1000"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "top-sql.receiver-address",
+    "Value": ""
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "transaction-summary.transaction-id-digest-min-duration",
+    "Value": "2147483647"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "transaction-summary.transaction-summary-capacity",
+    "Value": "500"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "treat-old-version-utf8-as-utf8mb4",
+    "Value": "true"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "use-autoscaler",
+    "Value": "false"
+  },
+  {
+    "Type": "tidb",
+    "Instance": "${LOCALHOST}:4000",
+    "Name": "version-comment",
+    "Value": ""
+  }
+]
