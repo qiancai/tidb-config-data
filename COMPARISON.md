@@ -5,8 +5,10 @@ The Config Comparison UI should be backed by a stable read model before adding a
 - select a source version and target version
 - select one content type
 - compute `new`, `removed`, `modified`, and `unchanged`
-- expose `deprecated` as an independent flag
+- expose `deprecated` as an independent docs-derived flag
 - render a searchable/filterable table
+
+See `MVP_DATA_CONTRACT.md` for the stable UI/API response shape.
 
 ## Content Types
 
@@ -27,7 +29,7 @@ The MVP supports these content types:
 - `modified`: both versions have the item, but one or more comparison fields differ.
 - `unchanged`: both versions have the item and comparison fields are equal.
 
-`deprecated` is not a status. It is a metadata flag because an item can be both `modified` and deprecated.
+`deprecated` is not a status. It is a metadata flag because an item can be both `modified` and deprecated. It comes from docs metadata, not from raw playground captures.
 
 For system variables, the comparison fields are:
 
@@ -92,7 +94,7 @@ The JSON output has this shape:
     "removed": 2,
     "modified": 26,
     "unchanged": 863,
-    "deprecated": 0
+    "deprecated": 18
   },
   "filtered_total": 937,
   "rows": [
@@ -138,14 +140,15 @@ The current metadata table is intentionally sparse:
 config_item_metadata
 ```
 
-The importer seeds basic metadata from `VARIABLES_INFO` and `SHOW CONFIG`, such as item key, component, scope, and inferred value type. Rich product fields still need a documentation/source enrichment pass:
+The importer seeds basic metadata from `VARIABLES_INFO` and `SHOW CONFIG`, such as item key, component, scope, and inferred value type. `scripts/extract-doc-metadata.py` enriches it from docs with:
 
 - description
 - docs URL
+- new since
 - deprecated since
 - removed since
 - replacement
 - persists to cluster
 - applies to SET_VAR
 
-Do not guess these fields for the UI. Leave them empty until sourced from docs or code.
+Lower-confidence docs matches are kept in `metadata/doc-metadata-candidates.json` for review instead of being auto-applied.

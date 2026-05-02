@@ -354,6 +354,7 @@ def import_capture(conn, repo_root: pathlib.Path, capture_dir: pathlib.Path, met
                 None,
                 None,
                 None,
+                None,
                 "variables_info",
                 json.dumps({"seen_in": [version]}, ensure_ascii=False),
             )
@@ -403,6 +404,7 @@ def import_capture(conn, repo_root: pathlib.Path, capture_dir: pathlib.Path, met
                 None,
                 None,
                 None,
+                None,
                 "show_config",
                 json.dumps({"seen_in": [version]}, ensure_ascii=False),
             )
@@ -423,21 +425,23 @@ def import_capture(conn, repo_root: pathlib.Path, capture_dir: pathlib.Path, met
         """
         INSERT INTO config_item_metadata (
           content_type, component, item_key, display_name, description, value_type,
-          variable_scope, docs_url, deprecated_since, removed_since, replacement,
+          variable_scope, docs_url, new_since, deprecated_since, removed_since, replacement,
           persists_to_cluster, applies_to_set_var, source, metadata
-        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         ON DUPLICATE KEY UPDATE
           display_name=COALESCE(config_item_metadata.display_name, VALUES(display_name)),
           description=COALESCE(config_item_metadata.description, VALUES(description)),
           value_type=COALESCE(config_item_metadata.value_type, VALUES(value_type)),
           variable_scope=COALESCE(config_item_metadata.variable_scope, VALUES(variable_scope)),
           docs_url=COALESCE(config_item_metadata.docs_url, VALUES(docs_url)),
+          new_since=COALESCE(config_item_metadata.new_since, VALUES(new_since)),
           deprecated_since=COALESCE(config_item_metadata.deprecated_since, VALUES(deprecated_since)),
           removed_since=COALESCE(config_item_metadata.removed_since, VALUES(removed_since)),
           replacement=COALESCE(config_item_metadata.replacement, VALUES(replacement)),
           persists_to_cluster=COALESCE(config_item_metadata.persists_to_cluster, VALUES(persists_to_cluster)),
           applies_to_set_var=COALESCE(config_item_metadata.applies_to_set_var, VALUES(applies_to_set_var)),
           source=IF(config_item_metadata.source IN ('variables_info', 'show_config'), VALUES(source), config_item_metadata.source),
+          metadata=COALESCE(VALUES(metadata), config_item_metadata.metadata),
           imported_at=CURRENT_TIMESTAMP(6)
         """,
         [row for row in metadata_rows if row[2] and row[3] and row[1]],
@@ -503,6 +507,74 @@ def capture_counts(capture_dir: pathlib.Path) -> dict[str, int]:
     }
 
 
+def metadata_file_rows(repo_root: pathlib.Path) -> list[tuple[Any, ...]]:
+    path = repo_root / "metadata" / "config-item-metadata.json"
+    if not path.exists():
+        return []
+
+    payload = load_json(path)
+    rows = []
+    for item in payload.get("items", []):
+        metadata = dict(item.get("metadata") or {})
+        if item.get("confidence") is not None:
+            metadata["confidence"] = item.get("confidence")
+        if item.get("new_since"):
+            metadata["new_since"] = item.get("new_since")
+        if item.get("deprecated_since_versions"):
+            metadata["deprecated_since_versions"] = item.get("deprecated_since_versions")
+        rows.append(
+            (
+                item.get("content_type"),
+                item.get("component"),
+                item.get("item_key"),
+                item.get("display_name") or item.get("item_key"),
+                item.get("description"),
+                item.get("value_type"),
+                item.get("variable_scope"),
+                item.get("docs_url"),
+                item.get("new_since"),
+                item.get("deprecated_since"),
+                item.get("removed_since"),
+                item.get("replacement"),
+                item.get("persists_to_cluster"),
+                item.get("applies_to_set_var"),
+                item.get("source") or "docs",
+                json.dumps(metadata, ensure_ascii=False) if metadata else None,
+            )
+        )
+    return [row for row in rows if row[0] and row[1] and row[2]]
+
+
+def import_metadata_file(conn, repo_root: pathlib.Path) -> int:
+    rows = metadata_file_rows(repo_root)
+    return executemany(
+        conn,
+        """
+        INSERT INTO config_item_metadata (
+          content_type, component, item_key, display_name, description, value_type,
+          variable_scope, docs_url, new_since, deprecated_since, removed_since, replacement,
+          persists_to_cluster, applies_to_set_var, source, metadata
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        ON DUPLICATE KEY UPDATE
+          display_name=COALESCE(VALUES(display_name), config_item_metadata.display_name),
+          description=COALESCE(VALUES(description), config_item_metadata.description),
+          value_type=COALESCE(VALUES(value_type), config_item_metadata.value_type),
+          variable_scope=COALESCE(VALUES(variable_scope), config_item_metadata.variable_scope),
+          docs_url=COALESCE(VALUES(docs_url), config_item_metadata.docs_url),
+          new_since=COALESCE(VALUES(new_since), config_item_metadata.new_since),
+          deprecated_since=COALESCE(VALUES(deprecated_since), config_item_metadata.deprecated_since),
+          removed_since=COALESCE(VALUES(removed_since), config_item_metadata.removed_since),
+          replacement=COALESCE(VALUES(replacement), config_item_metadata.replacement),
+          persists_to_cluster=COALESCE(VALUES(persists_to_cluster), config_item_metadata.persists_to_cluster),
+          applies_to_set_var=COALESCE(VALUES(applies_to_set_var), config_item_metadata.applies_to_set_var),
+          source=COALESCE(VALUES(source), config_item_metadata.source),
+          metadata=COALESCE(VALUES(metadata), config_item_metadata.metadata),
+          imported_at=CURRENT_TIMESTAMP(6)
+        """,
+        rows,
+    )
+
+
 def main() -> int:
     args = parse_args()
     repo_root = pathlib.Path(args.repo_root).resolve()
@@ -512,13 +584,14 @@ def main() -> int:
         raise SystemExit("no capture directories found")
 
     if args.dry_run:
-        totals = {"versions": 0, "capture_files": 0, "cluster_instances": 0, "system_variables": 0, "component_configs": 0, "config_item_metadata": 0, "raw_snapshots": 0}
+        totals = {"versions": 0, "capture_files": 0, "cluster_instances": 0, "system_variables": 0, "component_configs": 0, "config_item_metadata": 0, "raw_snapshots": 0, "external_metadata": 0}
         for capture_dir in dirs:
             counts = capture_counts(capture_dir)
             totals["versions"] += 1
             for key, value in counts.items():
                 totals[key] += value
             print(json.dumps({"version": capture_dir.name, **counts}, ensure_ascii=False))
+        totals["external_metadata"] = len(metadata_file_rows(repo_root))
         print(json.dumps({"would_import": totals}, ensure_ascii=False, indent=2))
         return 0
 
@@ -530,7 +603,7 @@ def main() -> int:
 
         metadata = release_metadata(repo_root)
         commit = git_commit(repo_root)
-        totals = {"versions": 0, "capture_files": 0, "cluster_instances": 0, "system_variables": 0, "component_configs": 0, "config_item_metadata": 0, "raw_snapshots": 0}
+        totals = {"versions": 0, "capture_files": 0, "cluster_instances": 0, "system_variables": 0, "component_configs": 0, "config_item_metadata": 0, "raw_snapshots": 0, "external_metadata": 0}
         for capture_dir in dirs:
             counts = import_capture(conn, repo_root, capture_dir, metadata, commit, args.include_raw_payloads)
             conn.commit()
@@ -539,6 +612,8 @@ def main() -> int:
                 totals[key] += value
             print(json.dumps({"version": capture_dir.name, **counts}, ensure_ascii=False))
 
+        totals["external_metadata"] = import_metadata_file(conn, repo_root)
+        conn.commit()
         print(json.dumps({"imported": totals}, ensure_ascii=False, indent=2))
     finally:
         conn.close()

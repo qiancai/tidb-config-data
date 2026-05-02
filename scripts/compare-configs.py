@@ -86,6 +86,32 @@ def version_gte(version: str, other: str | None) -> bool:
     return bool(left and right and left >= right)
 
 
+def version_same_minor_gte(version: str, other: str | None) -> bool:
+    left = version_tuple(version)
+    right = version_tuple(other or "")
+    return bool(left and right and left[:2] == right[:2] and left >= right)
+
+
+def metadata_versions(meta: dict[str, Any], key: str) -> list[str]:
+    values = meta.get(key)
+    if not values:
+        values = (meta.get("metadata") or {}).get(key)
+    if isinstance(values, list):
+        return [str(value) for value in values]
+    return []
+
+
+def active_lifecycle_since(version: str, single_since: str | None, branch_since_versions: list[str]) -> str | None:
+    if branch_since_versions:
+        for since in branch_since_versions:
+            if version_same_minor_gte(version, since):
+                return since
+        return None
+    if single_since and version_gte(version, single_since):
+        return single_since
+    return None
+
+
 def load_json(path: pathlib.Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -223,7 +249,9 @@ def compare(repo_root: pathlib.Path, from_version: str, to_version: str, content
         effective_row = to_row or from_row or {}
         deprecated_since = meta.get("deprecated_since")
         removed_since = meta.get("removed_since")
-        is_deprecated = version_gte(to_version, deprecated_since)
+        deprecated_since_versions = metadata_versions(meta, "deprecated_since_versions")
+        active_deprecated_since = active_lifecycle_since(to_version, deprecated_since, deprecated_since_versions)
+        is_deprecated = active_deprecated_since is not None
         summary[status] += 1
         if is_deprecated:
             summary["deprecated"] += 1
@@ -267,7 +295,9 @@ def compare(repo_root: pathlib.Path, from_version: str, to_version: str, content
                 "to_value": to_value,
                 "field_changes": changes,
                 "is_deprecated": is_deprecated,
-                "deprecated_since": deprecated_since,
+                "new_since": meta.get("new_since"),
+                "deprecated_since": active_deprecated_since or deprecated_since,
+                "deprecated_since_versions": deprecated_since_versions,
                 "removed_since": removed_since,
                 "replacement": meta.get("replacement"),
                 "persists_to_cluster": meta.get("persists_to_cluster"),
@@ -327,6 +357,7 @@ def emit_csv(result: dict[str, Any]) -> None:
             "from_value",
             "to_value",
             "is_deprecated",
+            "new_since",
             "deprecated_since",
             "removed_since",
             "replacement",

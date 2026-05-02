@@ -9,8 +9,9 @@ The MVP workflow is script-first:
 3. `scripts/validate-capture.py` verifies JSON, counts, and checksums.
 4. `scripts/sanitize-configs.py` can create a sanitized copy of an existing capture.
 5. `scripts/sync-versions.py` syncs the release list from TiDB self-managed release notes.
-6. `scripts/import-tidb.py` imports validated repo data into a TiDB Cloud Starter query layer.
-7. `scripts/compare-configs.py` generates the repo-backed comparison read model.
+6. `scripts/extract-doc-metadata.py` enriches captured items with docs metadata and review candidates.
+7. `scripts/import-tidb.py` imports validated repo data into a TiDB Cloud Starter query layer.
+8. `scripts/compare-configs.py` generates the repo-backed comparison read model.
 
 ## MVP Scope
 
@@ -133,6 +134,24 @@ scripts/import-tidb.py --ssl --reset
 ```
 
 See `DATABASE.md` for connection environment variables, schema details, and raw payload policy.
+
+## Extract Docs Metadata
+
+Update the local docs refs:
+
+```bash
+git -C /Users/grcai/Documents/GitHub/docs fetch upstream --prune
+```
+
+Generate the program-facing metadata and review candidates:
+
+```bash
+scripts/extract-doc-metadata.py \
+  --docs-repo /Users/grcai/Documents/GitHub/docs \
+  --remote upstream
+```
+
+See `DOC_METADATA.md` for the extraction rules and review policy.
 
 ## Compare Versions
 

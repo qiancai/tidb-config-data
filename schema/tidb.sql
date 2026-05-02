@@ -90,6 +90,7 @@ CREATE TABLE IF NOT EXISTS config_item_metadata (
   value_type VARCHAR(64),
   variable_scope VARCHAR(191),
   docs_url VARCHAR(768),
+  new_since VARCHAR(32),
   deprecated_since VARCHAR(32),
   removed_since VARCHAR(32),
   replacement VARCHAR(255),
@@ -100,6 +101,7 @@ CREATE TABLE IF NOT EXISTS config_item_metadata (
   imported_at DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   PRIMARY KEY (content_type, component, item_key),
   KEY idx_config_item_metadata_component (component, item_key),
+  KEY idx_config_item_metadata_new (new_since),
   KEY idx_config_item_metadata_deprecated (deprecated_since),
   KEY idx_config_item_metadata_removed (removed_since)
 );

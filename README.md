@@ -10,6 +10,8 @@ The data is intended for comparing TiDB system variables and component configura
 - `COLLECTING.md`: reproducible capture workflow, scripts, endpoints, cleanup, and validation steps.
 - `DATABASE.md`: TiDB Cloud Starter schema, import workflow, and persistence policy.
 - `COMPARISON.md`: comparison status semantics, read model, and query/script usage.
+- `DOC_METADATA.md`: docs metadata extraction workflow and candidate review policy.
+- `MVP_DATA_CONTRACT.md`: stable read model contract for the first UI/API slice.
 - `v*/SUMMARY.md`: generated summary for one captured TiDB version.
 
 ## Current MVP Dataset
@@ -58,6 +60,16 @@ v8.5.6/
 
 Use `normalized/` for comparison, indexing, and database import. Use `raw-sanitized/` as the source snapshot fallback when normalized output misses details.
 
+Documentation-derived metadata lives under:
+
+```text
+metadata/
+  config-item-metadata.json
+  doc-metadata-candidates.json
+```
+
+Use `config-item-metadata.json` for UI enrichment and database import. Use `doc-metadata-candidates.json` as the review backlog for lower-confidence docs matches.
+
 ## Database Layer
 
 The Git repository is the canonical source of truth. A TiDB Cloud Starter database can be used as a rebuildable query layer for search, diff, APIs, and UI workflows.
@@ -72,6 +84,12 @@ See `COMPARISON.md` for the comparison read model:
 
 ```bash
 scripts/compare-configs.py --from-version v8.1.2 --to-version v8.5.6 --content-type system_variables
+```
+
+See `DOC_METADATA.md` for docs metadata enrichment:
+
+```bash
+scripts/extract-doc-metadata.py --docs-repo /Users/grcai/Documents/GitHub/docs --remote upstream
 ```
 
 ## Data Sources

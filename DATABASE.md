@@ -15,6 +15,8 @@ Store these on every official capture:
 - `capture_files`: file index from `manifest.json`, including path, size, and SHA-256.
 - `raw_snapshots`: raw file index for `raw-sanitized/`.
 - `config_item_metadata`: sparse product metadata used by the comparison UI.
+  - The importer seeds basic metadata from captures.
+  - If `metadata/config-item-metadata.json` exists, the importer overlays docs-derived metadata such as descriptions, docs links, `new_since`, `deprecated_since`, replacements, and source traceability.
 
 By default, raw payload content is not imported into the database. The DB stores `path`, `sha256`, and `bytes`; the Git repository keeps the actual sanitized raw snapshots. Use `--include-raw-payloads` only if a later API/UI flow needs raw endpoint payloads directly from SQL.
 
@@ -113,13 +115,33 @@ They cover:
 - Config items present in one version but absent in another.
 - Screenshot-style comparison rows and summary counts.
 
+## Docs Metadata
+
+Generate docs metadata before importing if the UI needs product-facing lifecycle fields:
+
+```bash
+scripts/extract-doc-metadata.py \
+  --docs-repo /Users/grcai/Documents/GitHub/docs \
+  --remote upstream
+```
+
+This writes:
+
+```text
+metadata/config-item-metadata.json
+metadata/doc-metadata-candidates.json
+```
+
+`config-item-metadata.json` is imported automatically by `scripts/import-tidb.py`. `doc-metadata-candidates.json` is intentionally not imported; it is a review backlog for lower-confidence matches.
+
 ## Operating Model
 
 Use this flow for future capture batches:
 
 1. Capture and validate data locally.
 2. Commit and push the sanitized repo data.
-3. Import the repo data into TiDB Cloud Starter with `scripts/import-tidb.py --ssl --reset`.
-4. Run the MVP query examples to verify that row counts and expected diffs look right.
+3. Extract docs metadata and review suspicious candidates when needed.
+4. Import the repo data into TiDB Cloud Starter with `scripts/import-tidb.py --ssl --reset`.
+5. Run the MVP query examples to verify that row counts and expected diffs look right.
 
 The database can always be rebuilt from Git, so schema and importer changes should be committed together with the dataset format they support.

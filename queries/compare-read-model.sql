@@ -1,5 +1,7 @@
 -- TiDB System Variables comparison read model.
 -- Change these two values before running.
+-- Branch-specific lifecycle fields such as metadata.deprecated_since_versions
+-- should be evaluated by the API layer after this row model is returned.
 SET @from_version = 'v8.1.2';
 SET @to_version = 'v8.5.6';
 
@@ -33,6 +35,7 @@ comparison_rows AS (
     new.default_value AS to_value,
     old.current_value AS from_current_value,
     new.current_value AS to_current_value,
+    meta.new_since,
     meta.deprecated_since IS NOT NULL AND cv_to.major * 1000000 + cv_to.minor * 1000 + cv_to.patch >= cv_dep.major * 1000000 + cv_dep.minor * 1000 + cv_dep.patch AS is_deprecated,
     meta.deprecated_since,
     meta.removed_since,
@@ -41,7 +44,8 @@ comparison_rows AS (
     meta.applies_to_set_var,
     meta.description,
     meta.docs_url,
-    COALESCE(meta.source, 'variables_info') AS source
+    COALESCE(meta.source, 'variables_info') AS source,
+    meta.metadata
   FROM item_keys AS keys
   LEFT JOIN system_variables AS old
     ON old.version = @from_version AND old.variable_name = keys.item_key
@@ -143,12 +147,14 @@ SELECT
   meta.value_type,
   old.value AS from_value,
   new.value AS to_value,
+  meta.new_since,
   meta.deprecated_since,
   meta.removed_since,
   meta.replacement,
   meta.description,
   meta.docs_url,
-  COALESCE(meta.source, 'show_config') AS source
+  COALESCE(meta.source, 'show_config') AS source,
+  meta.metadata
 FROM item_keys AS keys
 LEFT JOIN old_items AS old
   ON old.item_key = keys.item_key
