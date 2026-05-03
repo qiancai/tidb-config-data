@@ -9,7 +9,7 @@ The MVP workflow is script-first:
 3. `scripts/validate-capture.py` verifies JSON, counts, and checksums.
 4. `scripts/sanitize-configs.py` can create a sanitized copy of an existing capture.
 5. `scripts/sync-versions.py` syncs the release list from TiDB self-managed release notes.
-6. `scripts/extract-doc-metadata.py` enriches captured items with docs metadata and review candidates.
+6. `scripts/extract-release-note-events.py` extracts compatibility-change events from release notes.
 7. `scripts/import-tidb.py` imports validated repo data into a TiDB Cloud Starter query layer.
 8. `scripts/compare-configs.py` generates the repo-backed comparison read model.
 
@@ -135,7 +135,7 @@ scripts/import-tidb.py --ssl --reset
 
 See `DATABASE.md` for connection environment variables, schema details, and raw payload policy.
 
-## Extract Docs Metadata
+## Extract Release Note Events
 
 Update the local docs refs:
 
@@ -143,15 +143,15 @@ Update the local docs refs:
 git -C /Users/grcai/Documents/GitHub/docs fetch upstream --prune
 ```
 
-Generate the program-facing metadata and review candidates:
+Generate release-note events from the `release-8.5` docs branch:
 
 ```bash
-scripts/extract-doc-metadata.py \
+scripts/extract-release-note-events.py \
   --docs-repo /Users/grcai/Documents/GitHub/docs \
-  --remote upstream
+  --release-notes-ref upstream/release-8.5
 ```
 
-See `DOC_METADATA.md` for the extraction rules and review policy.
+The generated events feed `Change note`, deprecation, removal, and replacement metadata. Diff status itself still comes only from captured config data.
 
 ## Compare Versions
 

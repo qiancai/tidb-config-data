@@ -10,7 +10,6 @@ The data is intended for comparing TiDB system variables and component configura
 - `COLLECTING.md`: reproducible capture workflow, scripts, endpoints, cleanup, and validation steps.
 - `DATABASE.md`: TiDB Cloud Starter schema, import workflow, and persistence policy.
 - `COMPARISON.md`: comparison status semantics, read model, and query/script usage.
-- `DOC_METADATA.md`: docs metadata extraction workflow and candidate review policy.
 - `MVP_DATA_CONTRACT.md`: stable read model contract for the first UI/API slice.
 - `v*/SUMMARY.md`: generated summary for one captured TiDB version.
 
@@ -60,15 +59,14 @@ v8.5.6/
 
 Use `normalized/` for comparison, indexing, and database import. Use `raw-sanitized/` as the source snapshot fallback when normalized output misses details.
 
-Documentation-derived metadata lives under:
+Release-note-derived metadata lives under:
 
 ```text
 metadata/
-  config-item-metadata.json
-  doc-metadata-candidates.json
+  release-note-events.json
 ```
 
-Use `config-item-metadata.json` for UI enrichment and database import. Use `doc-metadata-candidates.json` as the review backlog for lower-confidence docs matches.
+Use `release-note-events.json` for compatibility-change notes, removals, deprecations, and replacements from release notes. Ordinary configuration docs are not part of the MVP data pipeline.
 
 ## Database Layer
 
@@ -86,10 +84,10 @@ See `COMPARISON.md` for the comparison read model:
 scripts/compare-configs.py --from-version v8.1.2 --to-version v8.5.6 --content-type system_variables
 ```
 
-See `DOC_METADATA.md` for docs metadata enrichment:
+Generate release-note events after updating the local docs refs:
 
 ```bash
-scripts/extract-doc-metadata.py --docs-repo /Users/grcai/Documents/GitHub/docs --remote upstream
+scripts/extract-release-note-events.py --docs-repo /Users/grcai/Documents/GitHub/docs
 ```
 
 ## Data Sources

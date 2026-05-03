@@ -5,7 +5,7 @@ The Config Comparison UI should be backed by a stable read model before adding a
 - select a source version and target version
 - select one content type
 - compute `new`, `removed`, `modified`, and `unchanged`
-- expose `deprecated` as an independent docs-derived flag
+- expose `deprecated` as an independent release-note-derived flag
 - render a searchable/filterable table
 
 See `MVP_DATA_CONTRACT.md` for the stable UI/API response shape.
@@ -29,7 +29,7 @@ The MVP supports these content types:
 - `modified`: both versions have the item, but one or more comparison fields differ.
 - `unchanged`: both versions have the item and comparison fields are equal.
 
-`deprecated` is not a status. It is a metadata flag because an item can be both `modified` and deprecated. It comes from docs metadata, not from raw playground captures.
+`deprecated` is not a status. It is a metadata flag because an item can be both `modified` and deprecated. It comes from release notes, not from raw playground captures or ordinary configuration docs.
 
 For system variables, the comparison fields are:
 
@@ -140,15 +140,6 @@ The current metadata table is intentionally sparse:
 config_item_metadata
 ```
 
-The importer seeds basic metadata from `VARIABLES_INFO` and `SHOW CONFIG`, such as item key, component, scope, and inferred value type. `scripts/extract-doc-metadata.py` enriches it from docs with:
+The importer seeds basic metadata from `VARIABLES_INFO` and `SHOW CONFIG`, such as item key, component, scope, and inferred value type.
 
-- description
-- docs URL
-- new since
-- deprecated since
-- removed since
-- replacement
-- persists to cluster
-- applies to SET_VAR
-
-Lower-confidence docs matches are kept in `metadata/doc-metadata-candidates.json` for review instead of being auto-applied.
+Compatibility-change notes, removals, deprecations, and replacements are extracted from release notes and are not inferred from ordinary configuration docs.

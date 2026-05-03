@@ -1,7 +1,7 @@
 -- TiDB System Variables comparison read model.
 -- Change these two values before running.
--- Branch-specific lifecycle fields such as metadata.deprecated_since_versions
--- should be evaluated by the API layer after this row model is returned.
+-- Release-note lifecycle fields should be evaluated by the API/static layer
+-- after this capture-data row model is returned.
 SET @from_version = 'v8.1.2';
 SET @to_version = 'v8.5.6';
 
@@ -35,15 +35,6 @@ comparison_rows AS (
     new.default_value AS to_value,
     old.current_value AS from_current_value,
     new.current_value AS to_current_value,
-    meta.new_since,
-    meta.deprecated_since IS NOT NULL AND cv_to.major * 1000000 + cv_to.minor * 1000 + cv_to.patch >= cv_dep.major * 1000000 + cv_dep.minor * 1000 + cv_dep.patch AS is_deprecated,
-    meta.deprecated_since,
-    meta.removed_since,
-    meta.replacement,
-    meta.persists_to_cluster,
-    meta.applies_to_set_var,
-    meta.description,
-    meta.docs_url,
     COALESCE(meta.source, 'variables_info') AS source,
     meta.metadata
   FROM item_keys AS keys
@@ -55,10 +46,6 @@ comparison_rows AS (
     ON meta.content_type = 'system_variables'
    AND meta.component = 'tidb'
    AND meta.item_key = keys.item_key
-  LEFT JOIN capture_versions AS cv_to
-    ON cv_to.version = @to_version
-  LEFT JOIN capture_versions AS cv_dep
-    ON cv_dep.version = meta.deprecated_since
 )
 SELECT *
 FROM comparison_rows
@@ -147,12 +134,6 @@ SELECT
   meta.value_type,
   old.value AS from_value,
   new.value AS to_value,
-  meta.new_since,
-  meta.deprecated_since,
-  meta.removed_since,
-  meta.replacement,
-  meta.description,
-  meta.docs_url,
   COALESCE(meta.source, 'show_config') AS source,
   meta.metadata
 FROM item_keys AS keys

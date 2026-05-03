@@ -72,16 +72,15 @@ Every row uses the same common fields:
   "to_value": "ON",
   "field_changes": {},
   "is_deprecated": true,
-  "new_since": null,
   "deprecated_since": "v8.0.0",
   "deprecated_since_versions": [],
   "removed_since": null,
   "replacement": null,
-  "persists_to_cluster": "Yes",
-  "applies_to_set_var": "No",
-  "description": "A short docs-derived description.",
-  "docs_url": "https://docs.pingcap.com/tidb/v8.5/system-variables#tidb_disable_txn_auto_retry",
-  "source": "docs"
+  "change_note": "Starting from v8.5.6, statistics Version 1 (`tidb_analyze_version = 1`) is deprecated and will be removed in a future release.",
+  "change_note_type": "deprecated",
+  "change_note_version": "v8.5.6",
+  "change_note_url": "https://docs.pingcap.com/tidb/v8.5/release-8.5.6",
+  "source": "variables_info"
 }
 ```
 
@@ -117,15 +116,23 @@ Component-config rows also include:
 - `modified`: both versions have the item, but comparison fields differ.
 - `unchanged`: both versions have the item and comparison fields are equal.
 
-`deprecated` is not a row status. It is a docs-derived independent flag.
+`deprecated` is not a row status. It is a release-note-derived independent flag for the target version.
+
+## Change Notes
+
+`change_note` is derived only from release notes in the compare interval. For example, comparing `v8.5.0` to `v8.5.6` reads release notes from `v8.5.1` through `v8.5.6`. The diff status (`new`, `removed`, `modified`, or `unchanged`) still comes only from captured config data.
+
+Release-note events use `modified`, `removed`, and `deprecated` as event types. If no release note matches an item in the compare interval, `change_note` is empty instead of falling back to ordinary configuration docs.
+
+Release-note events are extracted from the `release-8.5` branch of the docs repository by default.
 
 ## MVP Source Of Truth
 
 For the MVP:
 
 - Git data in this repository is the canonical source of truth.
-- `metadata/config-item-metadata.json` is included in the read model.
-- `metadata/doc-metadata-candidates.json` is retained as a review backlog but not shown in the UI.
+- `metadata/release-note-events.json` is included in the read model for change notes, removals, and deprecations.
+- Ordinary configuration docs are not included in the MVP read model.
 - TiDB Cloud Starter can be used later as a query layer, but the UI contract should remain the same.
 
 ## Reference Commands

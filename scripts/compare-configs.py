@@ -60,7 +60,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--to-version", required=True)
     parser.add_argument("--content-type", choices=sorted(CONTENT_TYPES), default="system_variables")
     parser.add_argument("--status", action="append", choices=["new", "removed", "modified", "unchanged"], default=[])
-    parser.add_argument("--search", help="Case-insensitive substring search over key, display name, and description")
+    parser.add_argument("--search", help="Case-insensitive substring search over key, change note, and values")
     parser.add_argument("--limit", type=int, default=0, help="Maximum rows to emit; 0 means no limit")
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--format", choices=["json", "csv"], default="json")
@@ -76,40 +76,6 @@ def version_tuple(version: str) -> tuple[int, ...]:
     if not match:
         return ()
     return tuple(int(part) for part in match.groups())
-
-
-def version_gte(version: str, other: str | None) -> bool:
-    if not other:
-        return False
-    left = version_tuple(version)
-    right = version_tuple(other)
-    return bool(left and right and left >= right)
-
-
-def version_same_minor_gte(version: str, other: str | None) -> bool:
-    left = version_tuple(version)
-    right = version_tuple(other or "")
-    return bool(left and right and left[:2] == right[:2] and left >= right)
-
-
-def metadata_versions(meta: dict[str, Any], key: str) -> list[str]:
-    values = meta.get(key)
-    if not values:
-        values = (meta.get("metadata") or {}).get(key)
-    if isinstance(values, list):
-        return [str(value) for value in values]
-    return []
-
-
-def active_lifecycle_since(version: str, single_since: str | None, branch_since_versions: list[str]) -> str | None:
-    if branch_since_versions:
-        for since in branch_since_versions:
-            if version_same_minor_gte(version, since):
-                return since
-        return None
-    if single_since and version_gte(version, single_since):
-        return single_since
-    return None
 
 
 def load_json(path: pathlib.Path) -> Any:
@@ -153,20 +119,71 @@ def metadata_key(content_type: str, component: str, item_key: str) -> str:
     return f"{content_type}\0{component}\0{item_key}"
 
 
-def load_metadata(repo_root: pathlib.Path) -> dict[str, dict[str, Any]]:
-    path = repo_root / "metadata" / "config-item-metadata.json"
+def load_release_events(repo_root: pathlib.Path) -> dict[str, list[dict[str, Any]]]:
+    path = repo_root / "metadata" / "release-note-events.json"
     if not path.exists():
         return {}
     payload = load_json(path)
-    rows = payload.get("items", payload if isinstance(payload, list) else [])
-    metadata: dict[str, dict[str, Any]] = {}
+    rows = payload.get("events", payload if isinstance(payload, list) else [])
+    events: dict[str, list[dict[str, Any]]] = {}
     for row in rows:
         content_type = row.get("content_type")
         component = row.get("component", "")
         item_key = row.get("item_key")
         if content_type and item_key:
-            metadata[metadata_key(content_type, component, item_key)] = row
-    return metadata
+            events.setdefault(metadata_key(content_type, component, item_key), []).append(row)
+    for item_events in events.values():
+        item_events.sort(key=lambda row: version_tuple(row.get("version", "")))
+    return events
+
+
+def event_applies_to_target(event_version: str | None, target_version: str) -> bool:
+    event = version_tuple(event_version or "")
+    target = version_tuple(target_version)
+    if not event or not target or event > target:
+        return False
+    if event[:2] == target[:2]:
+        return True
+    return event[2] == 0
+
+
+def event_in_compare_range(event_version: str | None, from_version: str, to_version: str) -> bool:
+    event = version_tuple(event_version or "")
+    source = version_tuple(from_version)
+    target = version_tuple(to_version)
+    if not event or not source or not target or source == target:
+        return False
+    low, high = sorted([source, target])
+    return low < event <= high
+
+
+def active_release_event_since(events: list[dict[str, Any]], to_version: str, event_type: str) -> str | None:
+    for event in events:
+        if event.get("event_type") == event_type and event_applies_to_target(event.get("version"), to_version):
+            return event.get("version")
+    return None
+
+
+def release_events_in_range(events: list[dict[str, Any]], from_version: str, to_version: str) -> list[dict[str, Any]]:
+    actionable = {"modified", "removed", "deprecated"}
+    return [
+        event
+        for event in events
+        if event.get("event_type") in actionable and event_in_compare_range(event.get("version"), from_version, to_version)
+    ]
+
+
+def change_note_from_events(events: list[dict[str, Any]]) -> str | None:
+    if not events:
+        return None
+    if len(events) == 1:
+        return events[0].get("change_note")
+    notes = []
+    for event in events:
+        note = event.get("change_note")
+        if note:
+            notes.append(f"{event.get('version')}: {note}")
+    return "\n".join(notes) if notes else None
 
 
 def load_rows(repo_root: pathlib.Path, version: str, content_type: str) -> dict[str, dict[str, Any]]:
@@ -226,14 +243,10 @@ def row_status(from_row: dict[str, Any] | None, to_row: dict[str, Any] | None, c
     return "unchanged"
 
 
-def merged_metadata(metadata: dict[str, dict[str, Any]], content_type: str, component: str, item_key: str) -> dict[str, Any]:
-    return metadata.get(metadata_key(content_type, component, item_key), {})
-
-
 def compare(repo_root: pathlib.Path, from_version: str, to_version: str, content_type: str) -> dict[str, Any]:
     from_rows = load_rows(repo_root, from_version, content_type)
     to_rows = load_rows(repo_root, to_version, content_type)
-    metadata = load_metadata(repo_root)
+    release_events = load_release_events(repo_root)
     spec = CONTENT_TYPES[content_type]
     component = spec["component"]
     keys = sorted(set(from_rows) | set(to_rows))
@@ -245,13 +258,23 @@ def compare(repo_root: pathlib.Path, from_version: str, to_version: str, content
         to_row = to_rows.get(item_key)
         changes = field_changes(from_row, to_row, spec["compare_fields"])
         status = row_status(from_row, to_row, changes)
-        meta = merged_metadata(metadata, content_type, component, item_key)
+        item_release_events = release_events.get(metadata_key(content_type, component, item_key), [])
+        interval_release_events = release_events_in_range(item_release_events, from_version, to_version)
         effective_row = to_row or from_row or {}
-        deprecated_since = meta.get("deprecated_since")
-        removed_since = meta.get("removed_since")
-        deprecated_since_versions = metadata_versions(meta, "deprecated_since_versions")
-        active_deprecated_since = active_lifecycle_since(to_version, deprecated_since, deprecated_since_versions)
-        is_deprecated = active_deprecated_since is not None
+        deprecated_since = active_release_event_since(item_release_events, to_version, "deprecated")
+        removed_since = active_release_event_since(item_release_events, to_version, "removed")
+        deprecated_since_versions = sorted(
+            {
+                event["version"]
+                for event in item_release_events
+                if event.get("event_type") == "deprecated" and event.get("version")
+            },
+            key=version_tuple,
+        )
+        active_deprecated_since = deprecated_since
+        is_deprecated = active_deprecated_since is not None and to_row is not None
+        change_note = change_note_from_events(interval_release_events)
+        first_interval_event = interval_release_events[0] if interval_release_events else {}
         summary[status] += 1
         if is_deprecated:
             summary["deprecated"] += 1
@@ -259,8 +282,8 @@ def compare(repo_root: pathlib.Path, from_version: str, to_version: str, content
         if content_type == "system_variables":
             from_value = from_row.get("DEFAULT_VALUE") if from_row else None
             to_value = to_row.get("DEFAULT_VALUE") if to_row else None
-            variable_scope = meta.get("variable_scope") or effective_row.get("VARIABLE_SCOPE")
-            value_type = meta.get("value_type") or infer_value_type(
+            variable_scope = effective_row.get("VARIABLE_SCOPE")
+            value_type = infer_value_type(
                 from_value,
                 to_value,
                 possible_values=effective_row.get("POSSIBLE_VALUES"),
@@ -277,7 +300,7 @@ def compare(repo_root: pathlib.Path, from_version: str, to_version: str, content
         else:
             from_value = from_row.get("Value") if from_row else None
             to_value = to_row.get("Value") if to_row else None
-            value_type = meta.get("value_type") or infer_value_type(from_value, to_value)
+            value_type = infer_value_type(from_value, to_value)
             extra = {
                 "scope": None,
                 "instances": (to_row or from_row or {}).get("_instances"),
@@ -289,22 +312,22 @@ def compare(repo_root: pathlib.Path, from_version: str, to_version: str, content
                 "content_type": content_type,
                 "component": component,
                 "item_key": item_key,
-                "display_name": meta.get("display_name") or item_key,
+                "display_name": item_key,
                 "value_type": value_type,
                 "from_value": from_value,
                 "to_value": to_value,
                 "field_changes": changes,
                 "is_deprecated": is_deprecated,
-                "new_since": meta.get("new_since"),
-                "deprecated_since": active_deprecated_since or deprecated_since,
+                "deprecated_since": active_deprecated_since if is_deprecated else None,
                 "deprecated_since_versions": deprecated_since_versions,
                 "removed_since": removed_since,
-                "replacement": meta.get("replacement"),
-                "persists_to_cluster": meta.get("persists_to_cluster"),
-                "applies_to_set_var": meta.get("applies_to_set_var"),
-                "description": meta.get("description"),
-                "docs_url": meta.get("docs_url"),
-                "source": meta.get("source") or ("variables_info" if content_type == "system_variables" else "show_config"),
+                "replacement": first_interval_event.get("replacement"),
+                "change_note": change_note,
+                "change_note_type": first_interval_event.get("event_type"),
+                "change_note_version": first_interval_event.get("version"),
+                "change_note_url": first_interval_event.get("release_note_url"),
+                "change_note_events": interval_release_events,
+                "source": "variables_info" if content_type == "system_variables" else "show_config",
                 **extra,
             }
         )
@@ -325,10 +348,7 @@ def row_matches(row: dict[str, Any], statuses: set[str], search: str | None) -> 
     if not search:
         return True
     needle = search.lower()
-    haystack = " ".join(
-        str(row.get(key) or "")
-        for key in ["item_key", "display_name", "description", "from_value", "to_value"]
-    ).lower()
+    haystack = " ".join(str(row.get(key) or "") for key in ["item_key", "display_name", "change_note", "from_value", "to_value"]).lower()
     return needle in haystack
 
 
@@ -357,14 +377,11 @@ def emit_csv(result: dict[str, Any]) -> None:
             "from_value",
             "to_value",
             "is_deprecated",
-            "new_since",
             "deprecated_since",
             "removed_since",
             "replacement",
-            "persists_to_cluster",
-            "applies_to_set_var",
-            "description",
-            "docs_url",
+            "change_note",
+            "change_note_version",
             "source",
         ],
     )

@@ -16,7 +16,7 @@ Store these on every official capture:
 - `raw_snapshots`: raw file index for `raw-sanitized/`.
 - `config_item_metadata`: sparse product metadata used by the comparison UI.
   - The importer seeds basic metadata from captures.
-  - If `metadata/config-item-metadata.json` exists, the importer overlays docs-derived metadata such as descriptions, docs links, `new_since`, `deprecated_since`, replacements, and source traceability.
+  - Ordinary configuration docs are not imported for descriptions, docs links, lifecycle fields, or replacements.
 
 By default, raw payload content is not imported into the database. The DB stores `path`, `sha256`, and `bytes`; the Git repository keeps the actual sanitized raw snapshots. Use `--include-raw-payloads` only if a later API/UI flow needs raw endpoint payloads directly from SQL.
 
@@ -40,7 +40,7 @@ The current MVP schema is intentionally denormalized enough to make version diff
 - `system_variables` uses `(version, variable_name)` as the primary key.
 - `component_configs` uses `(version, component, instance, name)` as the primary key.
 - `capture_files` and `raw_snapshots` keep checksums so the database can be traced back to Git artifacts.
-- `config_item_metadata` starts with derived metadata and can later be enriched from docs and code.
+- `config_item_metadata` starts with metadata derived from captured `VARIABLES_INFO` and `SHOW CONFIG` rows.
 
 ## Import To TiDB Cloud Starter
 
@@ -115,24 +115,23 @@ They cover:
 - Config items present in one version but absent in another.
 - Screenshot-style comparison rows and summary counts.
 
-## Docs Metadata
+## Release Note Events
 
-Generate docs metadata before importing if the UI needs product-facing lifecycle fields:
+Generate release-note events from the `release-8.5` docs branch when the UI needs change notes, deprecation, removal, or replacement metadata:
 
 ```bash
-scripts/extract-doc-metadata.py \
+scripts/extract-release-note-events.py \
   --docs-repo /Users/grcai/Documents/GitHub/docs \
-  --remote upstream
+  --release-notes-ref upstream/release-8.5
 ```
 
 This writes:
 
 ```text
-metadata/config-item-metadata.json
-metadata/doc-metadata-candidates.json
+metadata/release-note-events.json
 ```
 
-`config-item-metadata.json` is imported automatically by `scripts/import-tidb.py`. `doc-metadata-candidates.json` is intentionally not imported; it is a review backlog for lower-confidence matches.
+Release-note events are consumed by the comparison read model. They are not inferred from ordinary configuration docs.
 
 ## Operating Model
 
@@ -140,7 +139,7 @@ Use this flow for future capture batches:
 
 1. Capture and validate data locally.
 2. Commit and push the sanitized repo data.
-3. Extract docs metadata and review suspicious candidates when needed.
+3. Extract release-note events when release notes change.
 4. Import the repo data into TiDB Cloud Starter with `scripts/import-tidb.py --ssl --reset`.
 5. Run the MVP query examples to verify that row counts and expected diffs look right.
 
