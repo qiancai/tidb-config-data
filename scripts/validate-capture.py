@@ -5,10 +5,12 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
-import json
 import pathlib
 import sys
+
+from _common import infer_cluster_tag
+from _common import load_json
+from _common import sha256
 
 
 REQUIRED = [
@@ -31,19 +33,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("capture_dir")
     parser.add_argument("--require-sanitized", action="store_true")
     return parser.parse_args()
-
-
-def sha256(path: pathlib.Path) -> str:
-    h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
-
-
-def load_json(path: pathlib.Path):
-    with path.open() as f:
-        return json.load(f)
 
 
 def check_sha256sums(base: pathlib.Path, errors: list[str]) -> None:
@@ -137,7 +126,7 @@ def main() -> int:
         check_normalized_content(base, errors)
 
         if args.require_sanitized:
-            suspicious = ["/Users/", "127.0.0.1", "tidb-v856"]
+            suspicious = ["/Users/", "127.0.0.1", "localhost", infer_cluster_tag(base)]
             for path in base.rglob("*"):
                 if not path.is_file() or path.name == "SHA256SUMS":
                     continue

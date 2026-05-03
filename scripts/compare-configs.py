@@ -11,6 +11,8 @@ import re
 import sys
 from typing import Any
 
+from _common import infer_value_type
+
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -93,26 +95,6 @@ def normalize_value(value: Any) -> str | None:
 def display_value(value: Any) -> str:
     normalized = normalize_value(value)
     return "-" if normalized is None else normalized
-
-
-def infer_value_type(*values: Any, possible_values: str | None = None) -> str | None:
-    candidates = [str(value).strip() for value in values if value is not None and str(value).strip() not in {"", "-"}]
-    upper_values = {value.upper() for value in candidates}
-    if possible_values:
-        possible = {item.strip().upper() for item in possible_values.split(",") if item.strip()}
-        if possible and possible <= {"ON", "OFF", "TRUE", "FALSE", "YES", "NO", "0", "1"}:
-            return "bool"
-        if possible:
-            return "enum"
-    if upper_values and upper_values <= {"ON", "OFF", "TRUE", "FALSE", "YES", "NO", "0", "1"}:
-        return "bool"
-    if candidates and all(re.fullmatch(r"[-+]?\d+", value) for value in candidates):
-        return "int"
-    if candidates and all(re.fullmatch(r"[-+]?(\d+(\.\d*)?|\.\d+)", value) for value in candidates):
-        return "float"
-    if candidates:
-        return "string"
-    return None
 
 
 def metadata_key(content_type: str, component: str, item_key: str) -> str:
@@ -212,7 +194,7 @@ def collapse_config_rows(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]
             value = values
         collapsed[name] = {
             "Type": items[0].get("Type"),
-            "Instance": ",".join(values),
+            "Instance": ",".join(values.keys()),
             "Name": name,
             "Value": value,
             "_instances": values,

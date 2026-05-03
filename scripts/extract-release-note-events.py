@@ -11,6 +11,11 @@ import re
 import subprocess
 from typing import Any
 
+from _common import load_json
+from _common import metadata_relpath
+from _common import normalize_version
+from _common import write_json
+
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DEFAULT_DOCS_REPO = ROOT.parent / "docs"
@@ -69,27 +74,13 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", default=str(ROOT), help="Config data repository root")
     parser.add_argument("--docs-repo", default=str(DEFAULT_DOCS_REPO), help="Local pingcap/docs repository")
-    parser.add_argument("--release-notes-ref", default="upstream/release-8.5", help="Docs git ref that contains the release notes")
+    parser.add_argument(
+        "--release-notes-ref",
+        help="Docs git ref that contains the release notes. Defaults to upstream/release-<max scope minor>",
+    )
     parser.add_argument("--scope", default=str(ROOT / "mvp-versions.json"), help="Version scope JSON")
     parser.add_argument("--output", default=str(ROOT / "metadata" / "release-note-events.json"))
     return parser.parse_args()
-
-
-def load_json(path: pathlib.Path) -> Any:
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-def write_json(path: pathlib.Path, payload: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-
-def normalize_version(version: str) -> str:
-    match = re.match(r"^v?(\d+)\.(\d+)(?:\.(\d+))?", version)
-    if not match:
-        return version
-    major, minor, patch = match.groups()
-    return f"v{int(major)}.{int(minor)}.{int(patch or 0)}"
 
 
 def version_tuple(version: str | None) -> tuple[int, int, int] | None:
@@ -110,6 +101,15 @@ def version_minor(version: str) -> tuple[int, int] | None:
 def versions_from_scope(scope_path: pathlib.Path) -> list[str]:
     payload = load_json(scope_path)
     return [normalize_version(item["version"]) for item in payload.get("versions", [])]
+
+
+def default_release_notes_ref(scope_versions: list[str]) -> str:
+    parsed_versions = [version_tuple(version) for version in scope_versions]
+    parsed_versions = [version for version in parsed_versions if version]
+    if not parsed_versions:
+        return "upstream/master"
+    major, minor, _ = max(parsed_versions)
+    return f"upstream/release-{major}.{minor}"
 
 
 def release_note_url(version: str) -> str:
@@ -633,20 +633,21 @@ def main() -> int:
     scope_path = pathlib.Path(args.scope).resolve()
 
     scope_versions = versions_from_scope(scope_path)
+    docs_ref = args.release_notes_ref or default_release_notes_ref(scope_versions)
     known = load_known_keys(repo_root)
-    paths = release_note_paths(docs_repo, args.release_notes_ref, scope_versions)
+    paths = release_note_paths(docs_repo, docs_ref, scope_versions)
     events: list[dict[str, Any]] = []
     for path in paths:
-        events.extend(parse_release_note(path, release_note_text(docs_repo, args.release_notes_ref, path), known))
+        events.extend(parse_release_note(path, release_note_text(docs_repo, docs_ref, path), known))
     events = dedupe_events(events)
 
     output = {
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "source": {
-            "docs_repo": str(docs_repo),
-            "docs_ref": args.release_notes_ref,
-            "docs_commit": git_commit(docs_repo, args.release_notes_ref),
-            "scope": str(scope_path),
+            "docs_repo": metadata_relpath(docs_repo, repo_root),
+            "docs_ref": docs_ref,
+            "docs_commit": git_commit(docs_repo, docs_ref),
+            "scope": metadata_relpath(scope_path, repo_root),
             "release_note_files": len(paths),
         },
         "counts": {

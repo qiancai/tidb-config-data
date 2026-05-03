@@ -63,6 +63,7 @@ v8.5.6/raw-sanitized/
 ```
 
 Use `--no-sanitize` only for local debugging.
+`collect-configs.py` checks `SELECT VERSION()` before collecting, so direct runs fail fast if the SQL endpoint is not the requested TiDB version. Password-protected SQL endpoints can be used with `--mysql-password-env` or `--ask-mysql-password`.
 
 ## Start Playground And Collect
 
@@ -86,13 +87,13 @@ The script waits for these endpoints:
 
 If the script starts the playground, it stops the playground after collection by default. Use `--reuse-running` to leave an existing cluster alone.
 
-For version-to-version isolation, the managed playground flow also runs the official playground cleanup step:
+For version-to-version isolation, the managed playground flow also runs the official tag-scoped playground cleanup step:
 
 ```bash
-tiup clean --all
+tiup clean <tag>
 ```
 
-This removes TiUP instantiated component data, but does not uninstall downloaded TiUP component packages.
+This removes only the data for the playground tag used by the capture, and does not uninstall downloaded TiUP component packages.
 
 ## Output Structure
 
@@ -140,15 +141,14 @@ See `DATABASE.md` for connection environment variables, schema details, and raw 
 Update the local docs refs:
 
 ```bash
-git -C /Users/grcai/Documents/GitHub/docs fetch upstream --prune
+git -C ../docs fetch upstream --prune
 ```
 
-Generate release-note events from the `release-8.5` docs branch:
+Generate release-note events. If `--release-notes-ref` is omitted, the script infers the docs release branch from the highest version in the scope file:
 
 ```bash
 scripts/extract-release-note-events.py \
-  --docs-repo /Users/grcai/Documents/GitHub/docs \
-  --release-notes-ref upstream/release-8.5
+  --docs-repo ../docs
 ```
 
 The generated events feed `Change note`, deprecation, removal, and replacement metadata. Diff status itself still comes only from captured config data.
@@ -176,6 +176,7 @@ https://docs.pingcap.com/releases/tidb-self-managed.md
 ```
 
 DMR versions are recorded, but not marked as selected for capture by default.
+LTS series are read from `release-policy.json`.
 
 ## Notes
 

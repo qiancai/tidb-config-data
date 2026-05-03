@@ -87,7 +87,7 @@ scripts/compare-configs.py --from-version v8.1.2 --to-version v8.5.6 --content-t
 Generate release-note events after updating the local docs refs:
 
 ```bash
-scripts/extract-release-note-events.py --docs-repo /Users/grcai/Documents/GitHub/docs
+scripts/extract-release-note-events.py --docs-repo ../docs
 ```
 
 ## Data Sources

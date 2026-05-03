@@ -15,6 +15,10 @@ import sys
 from collections.abc import Iterable
 from typing import Any
 
+from _common import infer_value_type
+from _common import load_json
+from _common import sha256
+
 try:
     import pymysql
 except ImportError as exc:  # pragma: no cover - dependency check
@@ -116,20 +120,6 @@ def reset_tables(conn) -> None:
     conn.commit()
 
 
-def sha256(path: pathlib.Path) -> str:
-    import hashlib
-
-    h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
-
-
-def load_json(path: pathlib.Path) -> Any:
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
 def git_commit(repo_root: pathlib.Path) -> str | None:
     try:
         return subprocess.check_output(
@@ -187,26 +177,6 @@ def raw_payload(path: pathlib.Path) -> tuple[str, str | None, str | None]:
     if path.suffix == ".json":
         return "json", json.dumps(load_json(path), ensure_ascii=False), None
     return "text", None, path.read_text(encoding="utf-8", errors="replace")
-
-
-def infer_value_type(*values: str | None, possible_values: str | None = None) -> str | None:
-    candidates = [value.strip() for value in values if value is not None and value.strip() not in {"", "-"}]
-    upper_values = {value.upper() for value in candidates}
-    if possible_values:
-        possible = {item.strip().upper() for item in possible_values.split(",") if item.strip()}
-        if possible and possible <= {"ON", "OFF", "TRUE", "FALSE", "YES", "NO", "0", "1"}:
-            return "bool"
-        if possible:
-            return "enum"
-    if upper_values and upper_values <= {"ON", "OFF", "TRUE", "FALSE", "YES", "NO", "0", "1"}:
-        return "bool"
-    if candidates and all(re.fullmatch(r"[-+]?\d+", value) for value in candidates):
-        return "int"
-    if candidates and all(re.fullmatch(r"[-+]?(\d+(\.\d*)?|\.\d+)", value) for value in candidates):
-        return "float"
-    if candidates:
-        return "string"
-    return None
 
 
 def batches(items: list[tuple[Any, ...]], size: int = 500) -> Iterable[list[tuple[Any, ...]]]:

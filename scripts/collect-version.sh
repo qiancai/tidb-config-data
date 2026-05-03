@@ -140,7 +140,19 @@ wait_ports_free() {
 }
 
 tag_pids() {
-  pgrep -f "${tag}" || true
+  ps -axo pid=,comm=,command= | awk -v tag="${tag}" '
+    {
+      pid=$1
+      comm=$2
+      command=$0
+      sub(/^[[:space:]]*[0-9]+[[:space:]]+[^[:space:]]+[[:space:]]+/, "", command)
+      is_playground = comm ~ /^(tiup|tidb-server|tikv-server|pd-server|tiflash|tiflash-proxy)$/
+      has_tag = index(command, "--tag " tag) || index(command, "--tag=" tag) || index(command, "/.tiup/data/" tag "/")
+      if (is_playground && has_tag) {
+        print pid
+      }
+    }
+  ' || true
 }
 
 kill_tag_processes() {
@@ -214,7 +226,7 @@ clear_existing_playground() {
     kill_tag_processes KILL
   fi
 
-  tiup clean --all >/dev/null 2>&1 || true
+  tiup clean "${tag}" >/dev/null 2>&1 || true
 }
 
 start_playground() {
@@ -225,7 +237,7 @@ start_playground() {
   sign_darwin_binaries
   clear_existing_playground
   wait_ports_free 60
-  screen -dmS "${tag}" /bin/zsh -lc "cd '${workdir}'; export NO_PROXY=127.0.0.1,localhost,::1 no_proxy=127.0.0.1,localhost,::1; tiup playground '${version}' --tag '${tag}' --host 127.0.0.1 --db 1 --pd 1 --kv 1 --tiflash 1 --without-monitor >> '${log_file}' 2>&1"
+  screen -dmS "${tag}" /bin/sh -c "cd '${workdir}'; export NO_PROXY=127.0.0.1,localhost,::1 no_proxy=127.0.0.1,localhost,::1; tiup playground '${version}' --tag '${tag}' --host 127.0.0.1 --db 1 --pd 1 --kv 1 --tiflash 1 --without-monitor >> '${log_file}' 2>&1"
   echo "started playground screen ${tag}; log ${log_file}"
 }
 
@@ -247,7 +259,7 @@ stop_playground() {
   fi
 
   wait_ports_free 60
-  tiup clean --all >/dev/null 2>&1 || true
+  tiup clean "${tag}" >/dev/null 2>&1 || true
 }
 
 started_playground=0

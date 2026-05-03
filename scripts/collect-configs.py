@@ -6,16 +6,22 @@ from __future__ import annotations
 import argparse
 import csv
 import datetime as dt
-import hashlib
+import getpass
 import io
 import json
 import os
 import pathlib
 import shutil
 import subprocess
-import sys
 import urllib.request
 from typing import Any
+
+from _common import NULL_MARKER
+from _common import default_cluster_tag
+from _common import sanitize_rows
+from _common import sanitize_rules as common_sanitize_rules
+from _common import sanitize_text
+from _common import sha256
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -82,6 +88,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--mysql-host", default="127.0.0.1")
     parser.add_argument("--mysql-port", default="4000")
     parser.add_argument("--mysql-user", default="root")
+    parser.add_argument("--mysql-password-env", default="MYSQL_PWD", help="Optional environment variable for MySQL password")
+    parser.add_argument("--ask-mysql-password", action="store_true", help="Prompt for a MySQL password")
+    parser.add_argument("--skip-version-check", action="store_true", help="Skip the TiDB VERSION() safety check")
     parser.add_argument("--tidb-status", default="http://127.0.0.1:10080/config")
     parser.add_argument("--tikv-status", default="http://127.0.0.1:20180/config?full=true")
     parser.add_argument("--pd-config", default="http://127.0.0.1:2379/pd/api/v1/config")
@@ -95,38 +104,8 @@ def normalize_version(version: str) -> str:
     return version if version.startswith("v") else f"v{version}"
 
 
-def default_cluster_tag(version: str) -> str:
-    cleaned = version.lstrip("v").replace(".", "").replace("-", "")
-    return f"tidb-v{cleaned}"
-
-
 def build_sanitize_rules(args: argparse.Namespace, cluster_tag: str) -> list[tuple[str, str]]:
-    home = pathlib.Path.home().as_posix()
-    rules = [
-        (f"{home}/.tiup/data/{cluster_tag}", "${TIUP_DATA_DIR}"),
-        (f"{home}/.tiup", "${TIUP_HOME}"),
-        (f"{home}/Documents/for-testing", "${PLAYGROUND_WORKDIR}"),
-        (f"{home}/Documents/GitHub", "${WORKSPACE}"),
-        (home, "${HOME}"),
-        (cluster_tag, "${PLAYGROUND_TAG}"),
-        ("127.0.0.1", "${LOCALHOST}"),
-        ("localhost", "${LOCALHOST_NAME}"),
-    ]
-    user = os.environ.get("USER")
-    if user:
-        rules.append((user, "${USER}"))
-    for item in args.extra_replace:
-        if "=" not in item:
-            raise SystemExit(f"--extra-replace must be FROM=TO, got {item!r}")
-        src, dst = item.split("=", 1)
-        rules.append((src, dst))
-    return [(src, dst) for src, dst in rules if src]
-
-
-def sanitize_text(text: str, rules: list[tuple[str, str]]) -> str:
-    for src, dst in rules:
-        text = text.replace(src, dst)
-    return text
+    return common_sanitize_rules(cluster_tag, args.extra_replace)
 
 
 def write_text(path: pathlib.Path, text: str, rules: list[tuple[str, str]] | None = None) -> None:
@@ -139,6 +118,19 @@ def write_text(path: pathlib.Path, text: str, rules: list[tuple[str, str]] | Non
 def write_json(path: pathlib.Path, payload: Any, rules: list[tuple[str, str]] | None = None) -> None:
     text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
     write_text(path, text, rules)
+
+
+def mysql_env(args: argparse.Namespace) -> dict[str, str]:
+    cached = getattr(args, "_mysql_env", None)
+    if cached is not None:
+        return cached
+    env = os.environ.copy()
+    if args.ask_mysql_password:
+        env["MYSQL_PWD"] = getpass.getpass("MySQL password: ")
+    elif args.mysql_password_env in os.environ:
+        env["MYSQL_PWD"] = os.environ[args.mysql_password_env]
+    args._mysql_env = env
+    return env
 
 
 def run_mysql(args: argparse.Namespace, sql: str) -> str:
@@ -156,7 +148,7 @@ def run_mysql(args: argparse.Namespace, sql: str) -> str:
         "-e",
         sql,
     ]
-    return subprocess.check_output(cmd, text=True)
+    return subprocess.check_output(cmd, text=True, env=mysql_env(args))
 
 
 def run_mysql_json_rows(args: argparse.Namespace, sql: str) -> list[dict[str, Any]]:
@@ -175,7 +167,7 @@ def run_mysql_json_rows(args: argparse.Namespace, sql: str) -> list[dict[str, An
         "-e",
         sql,
     ]
-    output = subprocess.check_output(cmd, text=True)
+    output = subprocess.check_output(cmd, text=True, env=mysql_env(args))
     rows = []
     for line in output.splitlines():
         if line.strip():
@@ -187,7 +179,7 @@ def tsv_to_rows(tsv_text: str) -> list[dict[str, str | None]]:
     rows: list[dict[str, str | None]] = []
     reader = csv.DictReader(tsv_text.splitlines(), delimiter="\t")
     for row in reader:
-        rows.append({key: (None if val == "NULL" else val) for key, val in row.items()})
+        rows.append({key: (None if val == NULL_MARKER else val) for key, val in row.items()})
     return rows
 
 
@@ -196,14 +188,8 @@ def rows_to_tsv(rows: list[dict[str, Any]], columns: list[str]) -> str:
     writer = csv.DictWriter(output, fieldnames=columns, delimiter="\t", lineterminator="\n")
     writer.writeheader()
     for row in rows:
-        writer.writerow({column: "NULL" if row.get(column) is None else row.get(column) for column in columns})
+        writer.writerow({column: NULL_MARKER if row.get(column) is None else row.get(column) for column in columns})
     return output.getvalue()
-
-
-def sanitize_rows(rows: list[dict[str, Any]], rules: list[tuple[str, str]] | None) -> list[dict[str, Any]]:
-    if not rules:
-        return rows
-    return json.loads(sanitize_text(json.dumps(rows, ensure_ascii=False), rules))
 
 
 def http_get_json(url: str) -> Any:
@@ -215,6 +201,18 @@ def http_get_json(url: str) -> Any:
     return json.loads(data.decode("utf-8"))
 
 
+def check_tidb_version(args: argparse.Namespace, expected_version: str) -> None:
+    if args.skip_version_check:
+        return
+    rows = tsv_to_rows(run_mysql(args, "SELECT VERSION() AS tidb_version"))
+    actual = str(rows[0].get("tidb_version") if rows else "")
+    if f"TiDB-{expected_version}" not in actual:
+        raise SystemExit(
+            f"version mismatch: expected TiDB-{expected_version}, got {actual!r}; "
+            "use --skip-version-check only when intentionally collecting from a compatible non-playground source"
+        )
+
+
 def copy_text_file(src: pathlib.Path, dst: pathlib.Path, rules: list[tuple[str, str]] | None) -> bool:
     if not src.exists():
         return False
@@ -223,21 +221,13 @@ def copy_text_file(src: pathlib.Path, dst: pathlib.Path, rules: list[tuple[str, 
     return True
 
 
-def file_hash(path: pathlib.Path) -> str:
-    h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
-
-
 def list_files(base: pathlib.Path) -> list[dict[str, Any]]:
     files: list[dict[str, Any]] = []
     for path in sorted(p for p in base.rglob("*") if p.is_file()):
         rel = path.relative_to(base).as_posix()
         if rel in {"manifest.json", "SHA256SUMS"}:
             continue
-        files.append({"path": rel, "bytes": path.stat().st_size, "sha256": file_hash(path)})
+        files.append({"path": rel, "bytes": path.stat().st_size, "sha256": sha256(path)})
     return files
 
 
@@ -247,7 +237,7 @@ def write_sha256sums(base: pathlib.Path) -> None:
         rel = path.relative_to(base).as_posix()
         if rel == "SHA256SUMS":
             continue
-        lines.append(f"{file_hash(path)}  ./{rel}\n")
+        lines.append(f"{sha256(path)}  ./{rel}\n")
     (base / "SHA256SUMS").write_text("".join(lines), encoding="utf-8")
 
 
@@ -292,6 +282,9 @@ def main() -> int:
     if output_dir.exists():
         if not args.force:
             raise SystemExit(f"{output_dir} already exists; pass --force to overwrite")
+    check_tidb_version(args, version)
+
+    if output_dir.exists():
         shutil.rmtree(output_dir)
 
     normalized_dir = output_dir / "normalized"
@@ -306,8 +299,13 @@ def main() -> int:
             tsv = rows_to_tsv(rows, NORMALIZED_COLUMNS[name])
         else:
             tsv = run_mysql(args, sql)
-            rows = tsv_to_rows(sanitize_text(tsv, rules) if rules else tsv)
-        write_text(normalized_dir / f"{name}.tsv", tsv, None if name == "system_variables" else rules)
+            if rules:
+                tsv = sanitize_text(tsv, rules)
+            rows = tsv_to_rows(tsv)
+        if rules:
+            tsv = sanitize_text(tsv, rules)
+            rows = sanitize_rows(rows, rules)
+        write_text(normalized_dir / f"{name}.tsv", tsv, None)
         write_json(normalized_dir / f"{name}.json", rows, None)
         counts[name] = len(rows)
 

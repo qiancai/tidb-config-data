@@ -41,13 +41,14 @@ The current MVP schema is intentionally denormalized enough to make version diff
 - `component_configs` uses `(version, component, instance, name)` as the primary key.
 - `capture_files` and `raw_snapshots` keep checksums so the database can be traced back to Git artifacts.
 - `config_item_metadata` starts with metadata derived from captured `VARIABLES_INFO` and `SHOW CONFIG` rows.
+- Foreign key constraints are intentionally omitted for TiDB Cloud Starter compatibility and because the database is rebuildable from validated Git captures. Run the importer from a clean reset if a partial import fails.
 
 ## Import To TiDB Cloud Starter
 
 Install the Python dependency:
 
 ```bash
-python3 -m pip install pymysql
+python3 -m pip install -r requirements.txt
 ```
 
 Set connection environment variables:
@@ -117,12 +118,11 @@ They cover:
 
 ## Release Note Events
 
-Generate release-note events from the `release-8.5` docs branch when the UI needs change notes, deprecation, removal, or replacement metadata:
+Generate release-note events when the UI needs change notes, deprecation, removal, or replacement metadata:
 
 ```bash
 scripts/extract-release-note-events.py \
-  --docs-repo /Users/grcai/Documents/GitHub/docs \
-  --release-notes-ref upstream/release-8.5
+  --docs-repo ../docs
 ```
 
 This writes:

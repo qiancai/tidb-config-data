@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-03T14:14:41.119721+00:00",
+  "generated_at": "2026-05-03T15:37:17.743873+00:00",
   "source": {
-    "docs_repo": "/Users/grcai/Documents/GitHub/docs",
+    "docs_repo": "../docs",
     "docs_ref": "upstream/release-8.5",
     "docs_commit": "8241cc70f6c59b30f157cacac90f4de45e6d024e",
-    "scope": "/Users/grcai/Documents/GitHub/tidb-config-data/mvp-versions.json",
+    "scope": "mvp-versions.json",
     "release_note_files": 36
   },
   "counts": {

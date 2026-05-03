@@ -4,12 +4,15 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
-import os
 import pathlib
 import shutil
 from typing import Any
+
+from _common import infer_cluster_tag
+from _common import sanitize_rules as common_sanitize_rules
+from _common import sanitize_text
+from _common import sha256
 
 
 TEXT_SUFFIXES = {".json", ".tsv", ".toml", ".md", ".txt", ".yaml", ".yml"}
@@ -20,46 +23,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("source_dir")
     parser.add_argument("target_dir")
     parser.add_argument("--force", action="store_true")
-    parser.add_argument("--cluster-tag", default="tidb-v856")
+    parser.add_argument("--cluster-tag", help="TiUP playground tag. Defaults to a value inferred from source_dir")
     parser.add_argument("--extra-replace", action="append", default=[], metavar="FROM=TO")
     return parser.parse_args()
 
 
 def sanitize_rules(args: argparse.Namespace) -> list[tuple[str, str]]:
-    home = pathlib.Path.home().as_posix()
-    rules = [
-        (f"{home}/.tiup/data/{args.cluster_tag}", "${TIUP_DATA_DIR}"),
-        (f"{home}/.tiup", "${TIUP_HOME}"),
-        (f"{home}/Documents/for-testing", "${PLAYGROUND_WORKDIR}"),
-        (f"{home}/Documents/GitHub", "${WORKSPACE}"),
-        (home, "${HOME}"),
-        (args.cluster_tag, "${PLAYGROUND_TAG}"),
-        ("127.0.0.1", "${LOCALHOST}"),
-        ("localhost", "${LOCALHOST_NAME}"),
-    ]
-    user = os.environ.get("USER")
-    if user:
-        rules.append((user, "${USER}"))
-    for item in args.extra_replace:
-        if "=" not in item:
-            raise SystemExit(f"--extra-replace must be FROM=TO, got {item!r}")
-        src, dst = item.split("=", 1)
-        rules.append((src, dst))
-    return [(src, dst) for src, dst in rules if src]
-
-
-def sanitize_text(text: str, rules: list[tuple[str, str]]) -> str:
-    for src, dst in rules:
-        text = text.replace(src, dst)
-    return text
-
-
-def sha256(path: pathlib.Path) -> str:
-    h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
+    return common_sanitize_rules(args.cluster_tag, args.extra_replace)
 
 
 def update_manifest(target: pathlib.Path, rules: list[tuple[str, str]]) -> None:
@@ -76,7 +46,10 @@ def update_manifest(target: pathlib.Path, rules: list[tuple[str, str]]) -> None:
             continue
         files.append({"path": rel, "bytes": path.stat().st_size, "sha256": sha256(path)})
     data["files"] = files
-    manifest_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+    manifest_path.write_text(
+        sanitize_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", rules),
+        encoding="utf-8",
+    )
 
 
 def write_sha256sums(target: pathlib.Path) -> None:
@@ -95,6 +68,7 @@ def main() -> int:
     target = pathlib.Path(args.target_dir).resolve()
     if not source.exists():
         raise SystemExit(f"source does not exist: {source}")
+    args.cluster_tag = args.cluster_tag or infer_cluster_tag(source)
     if target.exists():
         if not args.force:
             raise SystemExit(f"target exists: {target}; pass --force to overwrite")
